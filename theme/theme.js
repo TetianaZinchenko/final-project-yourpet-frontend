@@ -34,7 +34,7 @@ export const theme = Object.freeze({
     mobile: '(min-width: 320px)',
     tablet: '(min-width: 768px)',
     desktop: '(min-width: 1280px)',
-    mobileTablet: '(min-width: 320px) and (max-width: 761px)',
+    mobileTablet: '(min-width: 320px) and (max-width: 767px)',
     tabletDesktop: '(min-width: 768px) and (max-width: 1279px)',
   },
 });
