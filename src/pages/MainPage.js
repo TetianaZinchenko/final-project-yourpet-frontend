@@ -1,5 +1,9 @@
-export const MainPage = () => {
+import { Hero } from "components/Hero/Hero"
+
+const MainPage = () => {
     return (
-        <h1>Main Page</h1>
+        <Hero/>
     )
 }
+
+export default MainPage

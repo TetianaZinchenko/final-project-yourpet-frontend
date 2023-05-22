@@ -18,8 +18,9 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="/main" element={<MainPage />} />
+      <Route path="/" element={<SharedLayout />}>
+          <Route path="" element={<Navigate to="/main" replace />} />
+          <Route path="main" element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/notices/:categoryName" element={<NoticesPage />} />

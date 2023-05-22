@@ -7,7 +7,7 @@ export const Container = styled.div`
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
-    background-color: #FEF9F9;
+    background-color: ${props => props.theme.colors.background};
     color: #111111;
 
     @media screen and (min-width: 768px) {
