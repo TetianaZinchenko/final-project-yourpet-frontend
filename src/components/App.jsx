@@ -23,7 +23,7 @@ export const App = () => {
           <Route path="main" element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/notices/:categoryName" element={<NoticesPage />} />
+          <Route path="/notices" element={<NoticesPage />} />
           {/* Privat route */}
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
