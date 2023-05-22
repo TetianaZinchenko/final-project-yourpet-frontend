@@ -1,13 +1,27 @@
 {
   "files": {
     "main.css": "/final-project-yourpet-frontend/static/css/main.66bf42d8.css",
-    "main.js": "/final-project-yourpet-frontend/static/js/main.f03cc6a0.js",
+    "main.js": "/final-project-yourpet-frontend/static/js/main.3f340cee.js",
+    "static/js/829.23e1ec05.chunk.js": "/final-project-yourpet-frontend/static/js/829.23e1ec05.chunk.js",
+    "static/js/50.fdccb245.chunk.js": "/final-project-yourpet-frontend/static/js/50.fdccb245.chunk.js",
+    "static/js/588.7cfbf6ca.chunk.js": "/final-project-yourpet-frontend/static/js/588.7cfbf6ca.chunk.js",
+    "static/js/254.c3da7f83.chunk.js": "/final-project-yourpet-frontend/static/js/254.c3da7f83.chunk.js",
+    "static/js/75.23ddf2f9.chunk.js": "/final-project-yourpet-frontend/static/js/75.23ddf2f9.chunk.js",
+    "static/js/782.a671e229.chunk.js": "/final-project-yourpet-frontend/static/js/782.a671e229.chunk.js",
+    "static/js/520.38e27c89.chunk.js": "/final-project-yourpet-frontend/static/js/520.38e27c89.chunk.js",
     "index.html": "/final-project-yourpet-frontend/index.html",
     "main.66bf42d8.css.map": "/final-project-yourpet-frontend/static/css/main.66bf42d8.css.map",
-    "main.f03cc6a0.js.map": "/final-project-yourpet-frontend/static/js/main.f03cc6a0.js.map"
+    "main.3f340cee.js.map": "/final-project-yourpet-frontend/static/js/main.3f340cee.js.map",
+    "829.23e1ec05.chunk.js.map": "/final-project-yourpet-frontend/static/js/829.23e1ec05.chunk.js.map",
+    "50.fdccb245.chunk.js.map": "/final-project-yourpet-frontend/static/js/50.fdccb245.chunk.js.map",
+    "588.7cfbf6ca.chunk.js.map": "/final-project-yourpet-frontend/static/js/588.7cfbf6ca.chunk.js.map",
+    "254.c3da7f83.chunk.js.map": "/final-project-yourpet-frontend/static/js/254.c3da7f83.chunk.js.map",
+    "75.23ddf2f9.chunk.js.map": "/final-project-yourpet-frontend/static/js/75.23ddf2f9.chunk.js.map",
+    "782.a671e229.chunk.js.map": "/final-project-yourpet-frontend/static/js/782.a671e229.chunk.js.map",
+    "520.38e27c89.chunk.js.map": "/final-project-yourpet-frontend/static/js/520.38e27c89.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.66bf42d8.css",
-    "static/js/main.f03cc6a0.js"
+    "static/js/main.3f340cee.js"
   ]
 }

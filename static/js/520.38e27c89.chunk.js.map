@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/520.38e27c89.chunk.js","mappings":"wKAQA,UARqB,WACnB,OACE,+BACE,0CAGL,C","sources":["pages/NotFoundPage.jsx"],"sourcesContent":["const NotFoundPage = () => {\n  return (\n    <>\n      <h2>NotFound 404</h2>\n    </>\n  );\n};\n\nexport default NotFoundPage;\n"],"names":[],"sourceRoot":""}
