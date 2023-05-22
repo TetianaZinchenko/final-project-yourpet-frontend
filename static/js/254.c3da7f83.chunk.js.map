@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/254.c3da7f83.chunk.js","mappings":"kNAAaA,EAAc,WACvB,OACI,uCAEP,C","sources":["pages/NoticesPage.js"],"sourcesContent":["export const NoticesPage = () => {\n    return (\n        <h1>NoticesPage</h1>\n    )\n}"],"names":["NoticesPage"],"sourceRoot":""}

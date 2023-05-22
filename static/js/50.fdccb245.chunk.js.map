@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/50.fdccb245.chunk.js","mappings":"iNAAaA,EAAe,WACxB,OACI,wCAEP,C","sources":["pages/RegisterPage.js"],"sourcesContent":["export const RegisterPage = () => {\n    return (\n        <h1>RegisterPage</h1>\n    )\n}"],"names":["RegisterPage"],"sourceRoot":""}
