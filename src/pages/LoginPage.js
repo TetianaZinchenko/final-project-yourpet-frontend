@@ -1,4 +1,3 @@
-
 import LoginForm from 'components/LoginForm/LoginForm';
 
 const  LoginPage = () => {
@@ -9,3 +8,4 @@ const  LoginPage = () => {
   );
 };
 export default LoginPage;
+

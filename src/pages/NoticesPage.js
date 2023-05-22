@@ -1,5 +1,7 @@
-export const NoticesPage = () => {
+const NoticesPage = () => {
     return (
         <h1>NoticesPage</h1>
     )
 }
+
+export default NoticesPage
