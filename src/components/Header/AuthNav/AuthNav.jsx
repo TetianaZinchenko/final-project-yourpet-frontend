@@ -1,16 +1,14 @@
-import { Link } from 'react-router-dom'
-import{Button,BtnContain} from './AuthNav.styled'
-// import{IoPawOutline} from "react-icons"
+import pawprint from '../../../icons/pawprintWithe.svg';
+import { BtnContain, LoginLink, RegisterLink, SVG } from './AuthNav.styled';
 
 export const AuthNav = () => {
   return (
     <BtnContain>
-      <Link to="/register">
-        <Button type='button'>Registration</Button>
-      </Link>
-      <Link  to="/login">
-         <Button type='button'>Log IN </Button>
-      </Link>
+      <LoginLink to="/login">
+        Log IN
+        <SVG src={pawprint} alt="" width={24} height={24} />
+      </LoginLink>
+      <RegisterLink to="/register">Registration</RegisterLink>
     </BtnContain>
   );
 };
