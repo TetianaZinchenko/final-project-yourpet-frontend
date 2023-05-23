@@ -1,23 +1,26 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
-
+import bg_mobile from '../../images/bg_mobile.png'
+import bg_tablet from '../../images/bg_tablet.png'
+import bg_desktop from '../../images/bg_desktop.png'
 export const FormContainer = styled.div`
   width: 100%;
   min-height: calc(100vh - 58px);
-
-  background-position: bottom;
-  background-repeat: no-repeat;
+  background-image: url(${bg_mobile});
+  //background-position: center;
+  background-repeat: space repeat;
   background-size: contain;
+  background-position-y: center;
 
   @media (min-width: 768px) {
-
-    padding-top: 184px;
+    background-image: url(${bg_tablet});
+    padding-top: 92px;
     padding-bottom: 268px;
     min-height: calc(100vh - 64px);
   }
   @media (min-width: 1280px) {
-
-    padding-top: 50px;
+    background-image: url(${bg_desktop});
+    padding-top: 82px;
     padding-bottom: 147px;
   }
 `;
@@ -38,19 +41,17 @@ export const Forma = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 44px;
-  padding-bottom: 40px;
-  margin: 0 auto;
+  padding: 40px 10px;
+  background-color: #fff;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 20px;
+  margin: 92px auto;
 
   @media (min-width: 768px) {
     width: 608px;
-    margin: 0 auto;
     padding: 60px 0 40px 0;
-    background-color: #fff;
-    border-radius: 40px;
-    -webkit-box-shadow: 7px 4px 14px 0 rgba(0, 0, 0, 0.11);
-    -moz-box-shadow: 7px 4px 14px 0 rgba(0, 0, 0, 0.11);
-    box-shadow: 7px 4px 14px 0 rgba(0, 0, 0, 0.11);
+    margin: 82px auto;
+
   }
   @media (min-width: 1280px) {
     width: 618px;
@@ -80,13 +81,13 @@ export const ShowPassword = styled.span`
 `;
 
 export const Input = styled(Field)`
-  width: 280px;
+  width: 250px;
   font-size: 14px;
   line-height: 1.3;
   padding: 11px 0 12px 14px;
   background: white;
   border: 1px solid #54ADFF;
-  border-radius: 40px;
+  border-radius: 50px;
   margin-bottom: 16px;
   &:focus,
   &:hover {
@@ -102,8 +103,6 @@ export const Input = styled(Field)`
   }
 `;
 
-
-
 export const Button = styled.button`
   width: 100%;
   padding: 11px 0 12px 14px;
@@ -111,7 +110,7 @@ export const Button = styled.button`
   color: #fff;
   background: #54ADFF;
   border: 1px solid #54ADFF;
-  border-radius: 40px;
+  border-radius: 50px;
   margin: 24px 0 40px 0;
   transform: scale(1);
   transition: transform 0.5s;
@@ -169,10 +168,6 @@ export const ErrBox = styled.div`
     left: 33px;
   }
 `;
-
-
-
-
 
 export const StyledLink = styled.a`
   color: #54ADFF;
