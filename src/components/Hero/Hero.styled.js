@@ -10,16 +10,17 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 20px;
 
   @media screen and (${props => props.theme.media.tablet}) {
     padding-top: 80px;
+    gap: 27px;
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
+    position: relative;
     padding-top: 30px;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
   }
 `;
 
@@ -49,23 +50,21 @@ export const Title = styled.h1`
   }
 `;
 
-export const HeroImg = styled.img`
+export const HeroImg = styled.picture`
   width: 320px;
   height: 391px;
-
-  margin-top: 20px;
 
   @media screen and (${props => props.theme.media.tablet}) {
     width: 768px;
     height: 823px;
 
-    margin-top: 27px;
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 917px;
     height: 670px;
-
-    margin-top: 0;
   }
 `;
