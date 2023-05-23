@@ -1,12 +1,8 @@
 import React from 'react';
-// import LogoImg from '../../../images/logo_desktop.png';
 import { Link } from 'react-router-dom';
 
+// import LogoImg from '../../../images/logo_desktop.png';
+
 export const Logo = () => {
-  return (
-    <Link to="/main">
-      {/* <img src={LogoImg} alt="logo" /> */}
-    </Link>
-   
-  );
+  return <Link to="/main">{/* <img src={LogoImg} alt="logo" /> */}</Link>;
 };

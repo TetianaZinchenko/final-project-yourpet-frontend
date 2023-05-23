@@ -18,7 +18,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-      <Route path="/" element={<SharedLayout />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route path="" element={<Navigate to="/main" replace />} />
           <Route path="main" element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -27,10 +27,11 @@ export const App = () => {
           {/* Privat route */}
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
-          <Route
+          {/* <Route
             path="*"
             element={<Navigate to="404" component={<NotFoundPage />} />}
-          />
+          /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </ThemeProvider>
