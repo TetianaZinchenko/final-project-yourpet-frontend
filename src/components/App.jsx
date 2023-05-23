@@ -13,6 +13,7 @@ const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const AddPetPage = lazy(() => import('../pages/AddPetPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 
 export const App = () => {
   return (
@@ -27,6 +28,7 @@ export const App = () => {
           {/* Privat route */}
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
           {/* <Route
             path="*"
             element={<Navigate to="404" component={<NotFoundPage />} />}

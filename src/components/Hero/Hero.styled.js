@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Wrap = styled.div`
+  position: relative;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
 
@@ -18,7 +20,6 @@ export const Wrap = styled.div`
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
-    position: relative;
     padding-top: 30px;
     flex-direction: row;
   }
@@ -26,8 +27,6 @@ export const Wrap = styled.div`
 
 export const Title = styled.h1`
   width: 100%;
-
-  /* font-weight: 700; */
   font-weight: ${props => props.theme.fontWeights.bold};
   font-size: 32px;
   line-height: calc(44 / 32);
@@ -40,31 +39,54 @@ export const Title = styled.h1`
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
-    /* max-width: 588px; */
+    position: absolute;
+    top: 188px;
     max-width: 501px;
 
     font-weight: ${props => props.theme.fontWeights.extrabold};
-    /* font-weight: 800; */
     font-size: 68px;
     line-height: calc(88 / 68);
   }
 `;
 
-export const HeroImg = styled.picture`
+export const ImgWrap = styled.div`
+  position: absolute;
+
+  top: 168px;
+  right: -50%;
+  transform: translateX(-50%);
   width: 320px;
   height: 391px;
 
   @media screen and (${props => props.theme.media.tablet}) {
+    top: 307px;
+    right: -50%;
+    transform: translateX(-50%);
     width: 768px;
-    height: 823px;
-
+    height: 818px;
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
-    position: absolute;
-    bottom: 0;
+    top: 20px;
     right: 0;
+    transform: translateX(0);
     width: 917px;
     height: 670px;
   }
 `;
+
+export const HeroImg = styled.picture`
+  width: 474px;
+  height: 393px;
+
+  @media screen and (${props => props.theme.media.tablet}) {
+    width: 985px;
+    height: 818px;
+  }
+
+  @media screen and (${props => props.theme.media.desktop}) {
+    width: 917px;
+    height: 988px;
+  }
+`;
+
