@@ -1,7 +1,6 @@
 import { ReactComponent as SearchIcon } from '../../../icons/search.svg';
 import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
 import PropTypes from 'prop-types';
-
 import { useState, useEffect } from 'react';
 import { Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
 
