@@ -12,6 +12,7 @@ import {
 } from '../../images/bg_page/index';
 
 export const Container = styled.div`
+  width: 100%;
   height: calc(100vh - 48px);
   background-image: url(${mobile1x});
   background-size: contain;
