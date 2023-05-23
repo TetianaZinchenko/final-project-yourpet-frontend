@@ -60,20 +60,19 @@ export const LoginLink = styled(NavLink)`
     &:hover,
   &:focus {
 border: ${theme.colors.white}
-      color: ${theme.colors.yellow};
+      color: ${theme.colors.white};
   }
 
   &.active {
     
-     color: ${theme.colors.yellow};
+     color: ${theme.colors.white};
   }
 
   @media screen and (min-width: 767px) {
     margin-top: 0;
   }
 `;
-export const SVG = styled.svg`
+export const SVG = styled.img`
   margin-left: 8px;
-  // fill:${theme.colors.white};
-  fill: red;
+  
 `;
