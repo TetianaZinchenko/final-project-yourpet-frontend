@@ -14,34 +14,25 @@ export const Hero = () => {
     <ContainerWithBg>
       <Wrap>
         <Title>Take good care of your small pets</Title>
-        {/* <HeroImg src={DeskImgHero} alt="" /> */}
-        
         <HeroImg>
-              <source
-                    srcSet={`${home_mobile_1x} 1x, ${home_mobile_2x} 2x`}
-                    width="320"
-                    media="(max-width: 767px)"
-                  />
-              <source
-                    srcSet={`${home_tablet_1x} 1x, ${home_tablet_2x} 2x`}
-                    width="768"
-                    media="(max-width: 1279px)"
-                  />
-                  <img
-                    srcSet={`${home_desktop_1x} 1x, ${home_desktop_2x} 2x`}
-                    src={`${home_desktop_1x}`}
-                    alt="dogs and cats"
-                    width="917"
-                    loading="lazy"
-                  />
+          <source
+            srcSet={`${home_mobile_1x} 1x, ${home_mobile_2x} 2x`}
+            width="320"
+            media="(max-width: 767px)"
+          />
+          <source
+            srcSet={`${home_tablet_1x} 1x, ${home_tablet_2x} 2x`}
+            width="768"
+            media="(max-width: 1279px)"
+          />
+          <img
+            srcSet={`${home_desktop_1x} 1x, ${home_desktop_2x} 2x`}
+            src={`${home_desktop_1x}`}
+            alt="dogs and cats"
+            width="917"
+            loading="lazy"
+          />
         </HeroImg>
-        {/* <HeroImg
-          srcSet={`${home_mobile_1x} 320w, ${home_mobile_2x} 640w, ${home_tablet_1x} 768w, ${home_tablet_2x} 1536w`}
-          src={home_mobile_1x}
-          sizes="(max-width: 767px) 320px, (max-width: 767px) 640px, (min-width: 768px) 768px, (min-width: 768px) 1536px, 100vw"
-          alt="hero"
-          loading="lazy"
-        /> */}
       </Wrap>
     </ContainerWithBg>
   );
