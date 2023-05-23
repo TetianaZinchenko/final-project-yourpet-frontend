@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/final-project-yourpet-frontend/static/css/main.b7fa9b0c.css",
-    "main.js": "/final-project-yourpet-frontend/static/js/main.e007a14f.js",
+    "main.js": "/final-project-yourpet-frontend/static/js/main.34ab1cf3.js",
     "static/js/486.679b262c.chunk.js": "/final-project-yourpet-frontend/static/js/486.679b262c.chunk.js",
     "static/js/854.58b394f9.chunk.js": "/final-project-yourpet-frontend/static/js/854.58b394f9.chunk.js",
     "static/js/714.54257cef.chunk.js": "/final-project-yourpet-frontend/static/js/714.54257cef.chunk.js",
     "static/js/374.04fe1fee.chunk.js": "/final-project-yourpet-frontend/static/js/374.04fe1fee.chunk.js",
     "static/js/75.76983862.chunk.js": "/final-project-yourpet-frontend/static/js/75.76983862.chunk.js",
     "static/js/782.b89e7ffe.chunk.js": "/final-project-yourpet-frontend/static/js/782.b89e7ffe.chunk.js",
-    "static/css/252.279c7ecf.chunk.css": "/final-project-yourpet-frontend/static/css/252.279c7ecf.chunk.css",
-    "static/js/252.9e412991.chunk.js": "/final-project-yourpet-frontend/static/js/252.9e412991.chunk.js",
+    "static/css/577.01d02589.chunk.css": "/final-project-yourpet-frontend/static/css/577.01d02589.chunk.css",
+    "static/js/577.6ce98cce.chunk.js": "/final-project-yourpet-frontend/static/js/577.6ce98cce.chunk.js",
     "static/js/283.1e3a2105.chunk.js": "/final-project-yourpet-frontend/static/js/283.1e3a2105.chunk.js",
     "static/js/131.f3f3d420.chunk.js": "/final-project-yourpet-frontend/static/js/131.f3f3d420.chunk.js",
     "static/js/735.68a845b9.chunk.js": "/final-project-yourpet-frontend/static/js/735.68a845b9.chunk.js",
@@ -34,18 +34,17 @@
     "static/media/desc-bg-page_1x.png": "/final-project-yourpet-frontend/static/media/desc-bg-page_1x.cf58327b31c66737de00.png",
     "static/media/mobile-bg-page_1x.png": "/final-project-yourpet-frontend/static/media/mobile-bg-page_1x.0cd02ce1d43a46754e63.png",
     "static/media/pawprintWithe.svg": "/final-project-yourpet-frontend/static/media/pawprintWithe.928282e7d857d16e0fad65e8342455d7.svg",
-    "static/media/pawprint.svg": "/final-project-yourpet-frontend/static/media/pawprint.9665b17b7c7a662f73a37820f7257d33.svg",
     "index.html": "/final-project-yourpet-frontend/index.html",
     "main.b7fa9b0c.css.map": "/final-project-yourpet-frontend/static/css/main.b7fa9b0c.css.map",
-    "main.e007a14f.js.map": "/final-project-yourpet-frontend/static/js/main.e007a14f.js.map",
+    "main.34ab1cf3.js.map": "/final-project-yourpet-frontend/static/js/main.34ab1cf3.js.map",
     "486.679b262c.chunk.js.map": "/final-project-yourpet-frontend/static/js/486.679b262c.chunk.js.map",
     "854.58b394f9.chunk.js.map": "/final-project-yourpet-frontend/static/js/854.58b394f9.chunk.js.map",
     "714.54257cef.chunk.js.map": "/final-project-yourpet-frontend/static/js/714.54257cef.chunk.js.map",
     "374.04fe1fee.chunk.js.map": "/final-project-yourpet-frontend/static/js/374.04fe1fee.chunk.js.map",
     "75.76983862.chunk.js.map": "/final-project-yourpet-frontend/static/js/75.76983862.chunk.js.map",
     "782.b89e7ffe.chunk.js.map": "/final-project-yourpet-frontend/static/js/782.b89e7ffe.chunk.js.map",
-    "252.279c7ecf.chunk.css.map": "/final-project-yourpet-frontend/static/css/252.279c7ecf.chunk.css.map",
-    "252.9e412991.chunk.js.map": "/final-project-yourpet-frontend/static/js/252.9e412991.chunk.js.map",
+    "577.01d02589.chunk.css.map": "/final-project-yourpet-frontend/static/css/577.01d02589.chunk.css.map",
+    "577.6ce98cce.chunk.js.map": "/final-project-yourpet-frontend/static/js/577.6ce98cce.chunk.js.map",
     "283.1e3a2105.chunk.js.map": "/final-project-yourpet-frontend/static/js/283.1e3a2105.chunk.js.map",
     "131.f3f3d420.chunk.js.map": "/final-project-yourpet-frontend/static/js/131.f3f3d420.chunk.js.map",
     "735.68a845b9.chunk.js.map": "/final-project-yourpet-frontend/static/js/735.68a845b9.chunk.js.map",
@@ -53,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.b7fa9b0c.css",
-    "static/js/main.e007a14f.js"
+    "static/js/main.34ab1cf3.js"
   ]
 }
