@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
-import bg_mobile from '../../images/bg_mobile.png'
-import bg_tablet from '../../images/bg_tablet.png'
-import bg_desktop from '../../images/bg_desktop.png'
+import bg_mobile from '../../images/bg_page/mobile-bg-page_1x.png';
+import bg_tablet from '../../images/bg_page/tablet-bg-page_1x.png';
+import bg_desktop from '../../images/bg_page/desc-bg-page_1x.png';
+
 export const FormContainer = styled.div`
   width: 100%;
   min-height: calc(100vh - 58px);
   background-image: url(${bg_mobile});
-  //background-position: center;
   background-repeat: space repeat;
   background-size: contain;
   background-position-y: center;
@@ -51,7 +51,6 @@ export const Forma = styled(Form)`
     width: 608px;
     padding: 60px 0 40px 0;
     margin: 82px auto;
-
   }
   @media (min-width: 1280px) {
     width: 618px;
@@ -72,7 +71,7 @@ export const ShowPassword = styled.span`
   height: 25px;
   right: 15px;
   top: 13px;
-  color: #54ADFF;
+  color: #54adff;
   cursor: pointer;
   svg {
     width: inherit;
@@ -86,13 +85,13 @@ export const Input = styled(Field)`
   line-height: 1.3;
   padding: 11px 0 12px 14px;
   background: white;
-  border: 1px solid #54ADFF;
+  border: 1px solid #54adff;
   border-radius: 50px;
   margin-bottom: 16px;
   &:focus,
   &:hover {
     outline: none;
-  };
+  }
   @media (min-width: 768px) {
     width: 448px;
     font-size: 18px;
@@ -108,8 +107,8 @@ export const Button = styled.button`
   padding: 11px 0 12px 14px;
   text-align: center;
   color: #fff;
-  background: #54ADFF;
-  border: 1px solid #54ADFF;
+  background: #54adff;
+  border: 1px solid #54adff;
   border-radius: 50px;
   margin: 24px 0 40px 0;
   transform: scale(1);
@@ -170,7 +169,7 @@ export const ErrBox = styled.div`
 `;
 
 export const StyledLink = styled.a`
-  color: #54ADFF;
+  color: #54adff;
   text-decoration: none;
   :hover,
   :focus {
