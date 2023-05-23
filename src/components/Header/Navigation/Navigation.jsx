@@ -1,19 +1,18 @@
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { AuthNav } from '../AuthNav/AuthNav';
-import { NavBar } from '../NavBar/NavBar';
-import { NavContain, MobileBtn } from './Navigation.styled';
+// import {UserNav} from '../UserNav/UserNav'
+import { AuthNav } from "../AuthNav/AuthNav";
+import { NavBar } from "../MenuNav/Navlinks/NavBar/NavBar";
+// import { useAuth } from 'hooks/useAuth';
 
 export const Navigation = () => {
+  //  const { isLoggedIn } = useAuth();
   return (
     <>
-      <NavContain>
-        <NavBar />
-        <AuthNav />
-        <MobileBtn>
-          <AiOutlineMenu size={24} />
-          <AiOutlineClose size={24} color="red" />
-        </MobileBtn>
-      </NavContain>
+      <NavBar />
+          {/* {isLoggedIn ? <UserNav /> : <AuthNav />} */}
+<AuthNav/>
+      
+
+     
     </>
   );
 };
