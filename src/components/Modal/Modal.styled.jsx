@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { theme } from 'theme/theme';
+const { media } = theme;
 
 export const Overlay = styled.div`
   position: fixed;
@@ -26,17 +28,17 @@ export const ModalWindow = styled.div`
   box-shadow: ${props => props.theme.shadows.defaultShadow};
   border-radius: 20px;
 
-  @media screen and (min-width: ($mobile - 0.02px)) {
+  @media screen and ${media.mobile}) {
     width: 280px;
   }
-  @media screen and (min-width: $tablet) {
+  @media screen and ${media.tablet} {
     top: 148px;
 
     padding: 60px 129px;
     width: 608px;
     height: 354px;
   }
-  @media screen and (min-width: $desktop) {
+  @media screen and ${media.desktop} {
     top: 112px;
   }
 `;

@@ -3,8 +3,8 @@ import { Btn } from './AddPetButton.styled';
 
 export const AddPetButton = () => {
   return (
-    <Btn>
-      <BsPlusLg />
+    <Btn to="/add-pet">
+      <BsPlusLg/>
       Add pet
     </Btn>
   );
