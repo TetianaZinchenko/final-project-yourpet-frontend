@@ -14,8 +14,10 @@ const Modal = ({ onClick, children }) => {
     };
 
     window.addEventListener('keydown', onEscClick);
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onEscClick);
+      document.body.style.overflow = 'unset';
     };
   }, [onClick]);
 

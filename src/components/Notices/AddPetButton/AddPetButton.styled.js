@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import { theme } from 'theme/theme';
 const { fonts, fontSizes, fontWeights, colors, shadows, media } = theme;
 
-export const Btn = styled.button`
+export const Btn = styled(NavLink)`
   position: fixed;
   z-index: 999;
   top: 50%;
@@ -17,7 +18,7 @@ export const Btn = styled.button`
   height: 80px;
   border-radius: 50px;
   border: none;
-
+  text-decoration: none;
   background: ${colors.blue};
   box-shadow: ${shadows.defaultShadow};
 
