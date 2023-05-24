@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/782.b89e7ffe.chunk.js","mappings":"yKAMA,UANmB,WACf,OACI,sCAEP,C","sources":["pages/AddPetPage.js"],"sourcesContent":["const AddPetPage = () => {\n    return (\n        <h1>AddPetPage</h1>\n    )\n}\n\nexport default AddPetPage"],"names":[],"sourceRoot":""}
