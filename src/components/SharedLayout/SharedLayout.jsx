@@ -6,6 +6,7 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
+      <Notices/>
       <main>
         <Suspense fallback={null}>
           <Outlet />
