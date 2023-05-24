@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
-import {AiOutlineCheck, AiOutlineClose} from 'react-icons/ai';
+import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 import { signIn } from 'redux/auth/authOperations';
 import {
   Forma,
@@ -34,7 +34,7 @@ const LoginSchema = () =>
       .max(16, `Too long max 16 characters`)
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/,
-        'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number',
+        'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number'
       )
       .trim(),
   });
@@ -43,14 +43,15 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [showPass, setShowPass] = useState(false);
   const formSubmit = values => {
-    dispatch(signIn(values))};
+    dispatch(signIn(values));
+  };
   const showPassword = () => {
     setShowPass(!showPass);
   };
-  const clearInput = ()=>{
+  const clearInput = () => {
     const inputs = document.querySelector('input[type=email]');
-      inputs.value = '';
-  }
+    inputs.value = '';
+  };
   return (
     <Section>
       <FormContainer>
@@ -61,7 +62,7 @@ const LoginForm = () => {
             password: '',
           }}
           onSubmit={(values, { resetForm }) => {
-            formSubmit({values});
+            formSubmit({ values });
             resetForm();
           }}
         >
@@ -69,21 +70,37 @@ const LoginForm = () => {
             <Forma>
               <Title>Login</Title>
               <div>
-                <Input name="email" type="email"  autoComplete="off" placeholder="Email"  style={{
-                  border:
-                    touched.email &&
-                    (errors.email
-                      ? '1px solid #F43F5E'
-                      : '1px solid #00C3AD')
-                }}/>
+                <Input
+                  name="email"
+                  type="email"
+                  autoComplete="off"
+                  placeholder="Email"
+                  style={{
+                    border:
+                      touched.email &&
+                      (errors.email
+                        ? '1px solid #F43F5E'
+                        : '1px solid #00C3AD'),
+                  }}
+                />
                 {touched.email &&
                   (errors.email ? (
                     <ErrBox>{errors.email}</ErrBox>
                   ) : (
                     <AppBox>Email is correct</AppBox>
                   ))}
-                <ClearInput > {touched.email &&
-                  (!errors.email ?  <AiOutlineCheck style={{fill:'#00C3AD'}} /> : <AiOutlineClose style={{fill:'#F43F5E'}} onClick={clearInput}/>)}</ClearInput>
+                <ClearInput>
+                  {' '}
+                  {touched.email &&
+                    (!errors.email ? (
+                      <AiOutlineCheck style={{ fill: '#00C3AD' }} />
+                    ) : (
+                      <AiOutlineClose
+                        style={{ fill: '#F43F5E' }}
+                        onClick={clearInput}
+                      />
+                    ))}
+                </ClearInput>
               </div>
               <div>
                 <Input
@@ -95,17 +112,18 @@ const LoginForm = () => {
                       touched.password &&
                       (errors.password
                         ? '1px solid #F43F5E'
-                        : '1px solid #00C3AD')
+                        : '1px solid #00C3AD'),
                   }}
                 />
                 <ShowPassword onClick={showPassword}>
                   {!showPass ? <ImEyeBlocked /> : <ImEye />}
                 </ShowPassword>
-                { touched.password && (errors.password ? (
-                  <ErrBox>{errors.password}</ErrBox>
-                ) : (
-                  <AppBox>Password is secure</AppBox>
-                ))}
+                {touched.password &&
+                  (errors.password ? (
+                    <ErrBox>{errors.password}</ErrBox>
+                  ) : (
+                    <AppBox>Password is secure</AppBox>
+                  ))}
               </div>
 
               <Button type="submit">Login</Button>
@@ -118,7 +136,7 @@ const LoginForm = () => {
           )}
         </Formik>
       </FormContainer>
-    // </Section>
+    </Section>
   );
 };
 export default LoginForm;
