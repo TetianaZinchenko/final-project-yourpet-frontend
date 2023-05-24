@@ -10,7 +10,7 @@ display:none;
     right: 25px;
     position: absolute;
     cursor: pointer;
-    z-index: 120;
+    z-index: 100;
   }
  
 `;
