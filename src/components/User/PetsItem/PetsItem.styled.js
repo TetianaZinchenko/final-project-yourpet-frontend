@@ -13,6 +13,11 @@ export const PetItem = styled.li`
   background-color: ${colors.white};
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 
+  :hover,
+  :focus {
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
+  }
+
   @media screen and ${media.tablet} {
     min-height: 256px;
     padding: 20px;
