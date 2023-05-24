@@ -58,7 +58,6 @@ export const ImgWrap = styled.picture`
   height: calc(100vh - 216px);
   min-height: 394px;
 
-
   @media screen and (${props => props.theme.media.tablet}) {
     min-width: 100vw;
     overflow-y: visible;
@@ -80,7 +79,6 @@ export const HeroImg = styled.img`
   max-height: 494px;
   object-fit: cover;
   object-position: center;
-  
 
   @media screen and (${props => props.theme.media.tablet}) {
     margin-top: -100px;
@@ -188,4 +186,3 @@ export const HeroImg = styled.img`
 //     height: 988px;
 //   }
 // `;
-
