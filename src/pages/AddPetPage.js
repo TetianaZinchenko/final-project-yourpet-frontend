@@ -1,7 +1,7 @@
-const AddPetPage = () => {
-    return (
-        <h1>AddPetPage</h1>
-    )
-}
+import { AddPet } from 'components/AddPet/AddPet';
 
-export default AddPetPage
+const AddPetPage = () => {
+  return <AddPet />;
+};
+
+export default AddPetPage;
