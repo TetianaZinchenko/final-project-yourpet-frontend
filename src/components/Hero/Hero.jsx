@@ -19,7 +19,6 @@ export const Hero = () => {
       <Wrap>
         <Title>Take good care of your small pets</Title>
         <ImgWrap>
-        <HeroImg>
           <source
             srcSet={`${home_mobile_1x} 1x, ${home_mobile_2x} 2x, ${home_mobile_3x} 3x`}
             width="474"
@@ -30,15 +29,13 @@ export const Hero = () => {
             width="985"
             media="(max-width: 1279px)"
           />
-          <img
+          <HeroImg
             srcSet={`${home_desktop_1x} 1x, ${home_desktop_2x} 2x, ${home_desktop_3x} 3x`}
             src={`${home_desktop_1x}`}
             alt="dogs and cats"
-            width="917"
             loading="lazy"
           />
           
-        </HeroImg>
         </ImgWrap>
       </Wrap>
     </Section>

@@ -7,13 +7,19 @@ body *::after {
 }
 
 body {
+  box-sizing: border-box;
   margin: 0;
+  padding-top: 20px;
   background-color: #fef9f9;
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   color: #111111;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    padding-top: 24px;
+  }
 }
 
 h1,

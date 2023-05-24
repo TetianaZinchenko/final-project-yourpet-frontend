@@ -19,11 +19,11 @@ export const SectionStyle = styled.section`
 
     ${props => props.$bg && `
   width: 100vw;  
+  height: calc(100vh - 48px);
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
-  height: calc(100vh - 48px);
   background-image: url(${mobile1x});
 
   background-color: ${props => props.theme.colors.background};
