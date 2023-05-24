@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   FriendItem,
   FriendLinkTitle,
@@ -8,9 +10,14 @@ import {
   Text,
   ContactLink,
   TextWrapper,
+  WorkTime,
 } from './FriendsItem.styled';
-import defaultFriendImage from '../../../images/friends/02_mobile.png';
 
+import defaultFriendImage from '../../../images/friends/02_mobile.png';
+import WorkTimePopup from './WorkTimePopup';
+
+const dayNow = new Date();
+const numberOfDay = dayNow.getDay();
 
 
 export const FriendsItem = ({
@@ -22,6 +29,15 @@ export const FriendsItem = ({
     phone,
     email
 }) => {
+
+    const [isVisible, setIsVisible] = useState(true);
+
+    const week = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+    const newWorkDays =
+        workDays &&
+        workDays.map((day, index) => {
+            return { day: week[index], ...day };
+        });
 
     return (
    
@@ -41,9 +57,40 @@ export const FriendsItem = ({
                 } alt={title} />
         
                 <FriendInfoBox>
-                    <TextWrapper>
-                        <TextTitle>Time:</TextTitle>
-                        <Text>8:00-20:00</Text>
+                    <TextWrapper
+                        onClick={() => {
+                            setIsVisible(!isVisible);
+                        }}
+                        onMouseLeave={() => {
+                            setIsVisible(true);
+                        }}>
+                        
+                        {workDays === null ||
+                            workDays === undefined ||
+                            workDays.length === 0 ? (
+                        <>
+                            <TextTitle>Time: </TextTitle>
+                            <Text>day and night</Text>
+                        </>
+                        ) : (
+                            <>
+                                {workDays[numberOfDay - 1]?.isOpen ? (
+                                <>
+                                    <TextTitle>Time:</TextTitle>
+                                    <WorkTime>
+                                        {workDays[numberOfDay - 1].from}-
+                                        {workDays[numberOfDay - 1].to}
+                                    </WorkTime>
+                                </>
+                                ) : (
+                                    <>
+                                        <TextTitle>Time:</TextTitle>
+                                        <WorkTime>Closed</WorkTime>
+                                    </>
+                                )}
+                                {isVisible || <WorkTimePopup shedule={newWorkDays} />}
+                            </>
+                        )}
                     </TextWrapper>
                     <TextWrapper>
                         <TextTitle>Address:</TextTitle>
