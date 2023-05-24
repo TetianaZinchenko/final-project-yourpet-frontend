@@ -1,5 +1,20 @@
 import styled from '@emotion/styled';
 
+export const PageTitle = styled.h2`
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    margin-bottom: 24px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 40px;
+  }
+   @media screen and (min-width: 1280px) {
+      margin-bottom: 60px;
+  }
+`;
+
 export const FriendItem = styled.li`
     width: 280px;
     padding: 16px 12px;
@@ -43,24 +58,7 @@ export const FriendBox = styled.div`
   align-items: flex-start;
 `;
 
-// export const FriendImgBoxWrap = styled.div`
-// width: 100px;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-
-// @media screen and (min-width: 768px) {
-//    width: 120px;
-//   }
-// `;
-
-
 export const FriendImgBox = styled.img`
-//   display: block;
-//   width: 100%;
-//   height: auto;
-//   object-fit: contain; 
- 
   margin-right: 16px;
   max-width: 100%;
 
@@ -72,58 +70,28 @@ export const FriendImgBox = styled.img`
     max-width: 158px;
     margin-right: 16px;
   }
-
-
-
-
-
-
 `;
 
 export const FriendInfoBox = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: space-around;
-//   padding-left: 10px;
-
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   position: relative;
-
-
- 
+  gap: 12px;
 `;
 
 export const TextWrapper = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  :not(:last-child) {
-    margin-bottom: 12px;
-  }
 `;
 
-// export const WorkTime = styled.p`
-//   font: inherit;
-//   font-weight: 500;
-// //   font-size: ;
-//   line-height: 1.34;
-//   display: flex;
-//   align-items: center;
-//   padding: 0;
-//   cursor: pointer;
-//   border: none;
-//   background-color: inherit;
-
-//   :focus {
-//     color: blue;
-//   }
-
-// `;
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
 
 export const TextTitle = styled.p`
   font-weight: 500;
@@ -140,10 +108,9 @@ export const TextTitle = styled.p`
   }
 
   @media screen and (min-width: 1280px) {
-    font-size: 16x;
+    font-size: 16px;
     line-height: 1.375;
-  }
-  
+  } 
 `;
 
 export const Text = styled.p`
@@ -166,7 +133,6 @@ export const Text = styled.p`
     font-size: 16px;
     line-height: 1.375;
   }
-
 `;
 
 export const ContactLink = styled.a`
@@ -192,29 +158,80 @@ export const ContactLink = styled.a`
   }
 `;
 
-// export const WorkTimeList = styled.ul`
-//   padding: 12px;
-//   position: absolute;
-//   top: 48px;
-//   left: 0;
+export const WorkTime = styled.p`
+  font: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.34;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
 
-//   display: flex;
-//   flex-direction: column;
-//   align-items: stretch;
-//   justify-content: center;
+  :focus {
+    color: blue;
+  }
 
-//   background: #ffffff;
-//   border: 1px solid blue;
-//   box-shadow: ;
-//   border-radius: 8px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.37; 
+  }
+`;
 
-//   color: black;
-// `;
 
-// export const WorkTimeItem = styled.li`
-//   width: 100px;
-//   :not(:last-child) {
-//     margin-bottom: 4px;
-//   }
+export const WorkTimeList = styled.ul`
+  padding: 12px;
+  position: absolute;
+  top: 48px;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1px solid blue;
+  box-shadow: ;
+  border-radius: 8px;
+
+  color: black;
+`;
+
+export const WorkTimeItem = styled.li`
+  width: 121px;
+  font-size: 14px;
+  :not(:last-child) {
+    margin-bottom: 4px;
+  }
  
-// `;
+`;
+
+export const WorkTimeItemCurrent = styled.li`
+  color: ${({ theme }) => theme.colors.blue};
+  font-weight: 600;
+  :not(:last-child) {
+    margin-bottom: 4px;
+  }
+`;
+
+export const WorkTimeText = styled.p`
+  display: flex;
+  justify-content: space-between;
+  font: inherit;
+  font-size: ${({ theme }) => theme.fontSizes[0]};
+  font-weight: inherit;
+  line-height: 1.34;
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    font-size: ${({ theme }) => theme.fontSizes[1]};
+    line-height: 1.36;
+    
+  }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    font-size: ${({ theme }) => theme.fontSizes[2]};
+    line-height: 1.38;
+  }
+`;
