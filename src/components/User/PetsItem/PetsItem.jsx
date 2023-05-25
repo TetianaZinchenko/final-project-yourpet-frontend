@@ -1,4 +1,4 @@
-import { PetItem, PetImage, PetTextWrap, DeletePetBtn, PetText, PetTextHead, PetTextComment } from "./PetsItem.styled"
+import { PetItem, PetImage, PetTextWrap, DeletePetBtn, PetText, PetTextHead, PetTextComment, TitleDelete } from "./PetsItem.styled"
 import { useState } from "react";
 import { ModalApproveAction } from "../ModalApproveAction/ModalApproveAction";
 import sprite from "../../../icons/icons.svg";
@@ -35,7 +35,9 @@ export const PetsItem = ({ info: { id, img_path, name, birth, breed, comments } 
                     <PetTextComment><PetTextHead>Comments: </PetTextHead>{comments}</PetTextComment>
                 </PetTextWrap>
             </PetItem>
-            {isApprovalModalOpen && <ModalApproveAction onApprove={onApprove} onClose={onClose}> Do you really want to delete?</ModalApproveAction>}
+            {isApprovalModalOpen && <ModalApproveAction onApprove={onApprove} onClose={onClose}>
+                <TitleDelete>Delete pets?</TitleDelete>
+            </ModalApproveAction>}
         </>
     )
 }
