@@ -68,4 +68,6 @@ export const AddPetBtn = styled(Link)`
   :focus {
     background: ${colors.blueGradient};
   }
+
+  stroke: ${colors.white};
 `;
