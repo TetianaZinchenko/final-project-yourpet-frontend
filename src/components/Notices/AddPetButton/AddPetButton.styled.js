@@ -38,7 +38,7 @@ export const Btn = styled(NavLink)`
     background: ${colors.blueGradient};
   }
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     position: static;
     margin-top: 20px;
     margin-right: 32px;

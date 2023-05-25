@@ -13,7 +13,9 @@ export const Logo = () => {
       <Link to="/main">
         {/* <ImgMob src={LogoMob} alt="logo" width={116} height={20} />
         <ImgTab src={LogoTab} alt="logo" width={162} height={28} /> */}
-        <ImgDesk src={LogoDesk} alt="logo" width={162} height={28} />
+        <ImgDesk src={LogoDesk} alt="logo" width={162} height={28} /> 
+
+
       </Link>
     </LogoWrapper>
   );

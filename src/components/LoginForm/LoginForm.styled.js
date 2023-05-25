@@ -79,6 +79,8 @@ export const ShowPassword = styled.span`
   }
 `;
 
+
+
 export const Input = styled(Field)`
   width: 250px;
   font-size: 14px;
@@ -161,14 +163,49 @@ export const ErrBox = styled.div`
   white-space: nowrap;
   bottom: 0;
   left: 15px;
-  color: red;
+  color:  #F43F5E;
+  font-size: 14px;
+  @media (min-width: 768px) {
+    left: 33px;
+  }
+`;
+export const AppBox = styled.div`
+  position: absolute;
+  white-space: nowrap;
+  bottom: 0;
+  left: 15px;
+  color: #00C3AD;
   font-size: 14px;
   @media (min-width: 768px) {
     left: 33px;
   }
 `;
 
+export const ClearInput = styled.span`
+  display: inline-block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 15px;
+  top: 13px;
+  cursor: pointer;
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+`;
 export const StyledLink = styled.a`
+  color: #54adff;
+  text-decoration: none;
+  :hover,
+  :focus {
+    color: blue;
+  }
+`;
+
+export const GoogleLink = styled.a`
+  display: flex;
+  align-items: center;
   color: #54adff;
   text-decoration: none;
   :hover,

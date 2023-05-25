@@ -1,11 +1,13 @@
+import UserIcon from '../../../icons/user-1.svg';
+import { UserContainNav,UserImage,UserName } from "./UserNav.styled";
 
-// import { useAuth } from 'hooks/useAuth.js';
+const UserNav = ({name}) => {
+  return (
+    <UserContainNav to="/user">UserPage
+      <UserImage src={UserIcon} alt="userlogo" />
+      <UserName>{name} Anna</UserName>
+    </UserContainNav>
+  );
+};
 
-// export const UserNav = () => {
-//   const { isLoggedIn } = useAuth();
-//   return (
-//     <nav>{isLoggedIn && <Link to="/user">User</Link>}</nav>
-//   );
-// };
-
-
+export default UserNav;

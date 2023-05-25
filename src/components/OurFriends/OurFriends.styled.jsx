@@ -1,13 +1,17 @@
 import styled from '@emotion/styled';
 
 export const FriendList = styled.ul`
+
+@media screen and (max-width: 767px) {
   display: flex;
   flex-direction: column;
-  padding: 0px 20px 75px 20px;
-
-  gap: 20px;
-
+  align-items: center;
+  justify-content: center;
   
+  padding: 0px 20px 75px 20px;
+  gap: 20px;
+  }
+
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -18,7 +22,6 @@ export const FriendList = styled.ul`
   @media screen and (min-width: 1280px) {
      grid-template-columns: 1fr 1fr 1fr;
   }
-
 `;
 
 export default FriendList;
