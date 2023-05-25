@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfinal_project_yourpet_frontend=self.webpackChunkfinal_project_yourpet_frontend||[]).push([[75],{3075:function(e,n,r){r.r(n);var t=r(184);n.default=function(){return(0,t.jsx)("h1",{children:"UserPage"})}}}]);
-//# sourceMappingURL=75.76983862.chunk.js.map
