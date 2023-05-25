@@ -1,7 +1,7 @@
 import { PetItem, PetImage, PetTextWrap, DeletePetBtn, PetText, PetTextHead, PetTextComment } from "./PetsItem.styled"
-import sprite from "../../../icons/icons.svg";
 import { useState } from "react";
 import { ModalApproveAction } from "../ModalApproveAction/ModalApproveAction";
+import sprite from "../../../icons/icons.svg";
 
 export const PetsItem = ({ info: { id, img_path, name, birth, breed, comments } }) => {
     const [isApprovalModalOpen, setIsApprovalModalOpen] = useState(false);
