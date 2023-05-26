@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import {List, Button} from './NoticesCategoriesNav.styled';
+// import PropTypes from 'prop-types';
+import { List, Button } from './NoticesCategoriesNav.styled';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
@@ -29,8 +29,6 @@ export const NoticesCategoriesNav = ({ isUser }) => {
   return <List>{items}</List>;
 };
 
-NoticesCategoriesNav.propTypes = {
-    isUser: PropTypes.bool.isRequired,
-  };
-
-
+// NoticesCategoriesNav.propTypes = {
+//     isUser: PropTypes.bool.isRequired,
+//   };
