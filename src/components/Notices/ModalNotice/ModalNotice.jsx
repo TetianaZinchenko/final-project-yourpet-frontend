@@ -21,9 +21,31 @@ import {
 
 const modalRoot = document.querySelector('#modal-root');
 
+export const getCurrentCategory = category => {
+  switch (category) {
+    case 'for-free':
+      return 'in a good hands';
+    case 'lost/found':
+      return category;
+    default:
+      return 'sell';
+  }
+};
+
 export const ModalNotice = ({
   onClose,
-  pet: { image, title, location, birthday, sex, name, breed, email, phone },
+  pet: {
+    avatar,
+    category,
+    title,
+    location,
+    petBirthday,
+    sex,
+    price,
+    name,
+    breed,
+    description,
+  },
 }) => {
   useEffect(() => {
     const handleKeyDown = e => {
@@ -54,28 +76,24 @@ export const ModalNotice = ({
         <ContainerInfo>
           <ImageContainer>
             {' '}
-            <Image src={image} alt="dog" />
-            <Type>in good hands</Type>
+            <Image src={avatar} alt="dog" />
+            <Type>{getCurrentCategory(category)}</Type>
           </ImageContainer>
           <div style={{ width: '321px', padding: '0 12px' }}>
             {' '}
             <Title>{title}</Title>
             <List>
               <Item>Name: {name}</Item>
-              <Item>Birthday: {birthday}</Item>
+              <Item>Birthday: {petBirthday}</Item>
               <Item>Breed: {breed}</Item>
               <Item>Place: {location}</Item>
               <Item>The sex: {sex}</Item>
-              <Item>Email: {email}</Item>
-              <Item>Phone: {phone}</Item>
+              <Item>Email: email</Item>
+              <Item>Phone: phone</Item>
             </List>
           </div>
         </ContainerInfo>
-        <Comment>
-          Comments: Rich would be the perfect addition to an active family that
-          loves to play and go on walks. I bet he would love having a doggy
-          playmate too!{' '}
-        </Comment>
+        <Comment>{description}</Comment>
         <BtnContainer>
           <ContactLink href="tel:+380971234567">Contact</ContactLink>
           <AddToFav type="button">

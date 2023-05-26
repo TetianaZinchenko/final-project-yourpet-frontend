@@ -15,6 +15,19 @@ import {
   Span,
   SpanText,
 } from './NoticeCategoryItem.styled';
+import { getCurrentCategory } from '../ModalNotice/ModalNotice';
+
+const getCurrentAge = date => {
+  const dateArr = date.split('.');
+  const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
+  const age =
+    (new Date().getTime() - new Date(birthdayDate)) /
+    (24 * 3600 * 1000 * 365.25);
+  if (age < 1) {
+    return `${Math.floor((age * 365.25) / 30)} mo.`;
+  }
+  return Math.floor(age) === 1 ? `1 year` : `${Math.floor(age)} years`;
+};
 
 const makeCityName = cityName => {
   if (cityName.length > 6) {
@@ -24,19 +37,19 @@ const makeCityName = cityName => {
 };
 
 const choseSexIcon = sex => {
-  return sex === 'female' ? <BsGenderFemale /> : <BsGenderMale />;
+  return sex.toLowerCase() === 'female' ? <BsGenderFemale /> : <BsGenderMale />;
 };
 
 export const NoticeCategoryItem = ({
-  pet: { title, location, age, sex, image, id },
+  pet: { title, location, age, sex, avatar, _id, category, petBirthday },
   onClose,
 }) => {
   return (
     <Container>
       <ImageContainer>
         {' '}
-        <Image src={image} alt={title} />
-        <Type>in good hands</Type>
+        <Image src={avatar} alt={title} />
+        <Type>{getCurrentCategory(category)}</Type>
         <BtnAddToFav type="button">
           <FiHeart size={20} />
         </BtnAddToFav>
@@ -47,7 +60,7 @@ export const NoticeCategoryItem = ({
           </Span>
           <Span>
             <AiOutlineClockCircle />
-            <SpanText>{age}</SpanText>
+            <SpanText>{getCurrentAge(petBirthday)}</SpanText>
           </Span>
           <Span>
             {choseSexIcon(sex)}
@@ -57,7 +70,7 @@ export const NoticeCategoryItem = ({
       </ImageContainer>
       <Info>
         <Title>{title}</Title>
-        <BtnLaernMore type="button" onClick={() => onClose(id)}>
+        <BtnLaernMore type="button" onClick={() => onClose(_id)}>
           Learn more
         </BtnLaernMore>
       </Info>

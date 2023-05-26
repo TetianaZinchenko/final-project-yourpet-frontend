@@ -8,7 +8,7 @@ export const NoticesCategoriesList = ({ pets, onClose }) => {
       <AddPetButton />
       <List>
         {pets.map(pet => (
-          <li key={pet.id}>
+          <li key={pet._id}>
             <NoticeCategoryItem pet={pet} onClose={onClose} />
           </li>
         ))}
