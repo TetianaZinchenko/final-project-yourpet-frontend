@@ -1,13 +1,12 @@
 import UserIcon from '../../../icons/user-1.svg';
 import { UserContainNav,UserImage,UserName } from "./UserNav.styled";
 
-const UserNav = ({name}) => {
+export const UserNav = ({email}) => {
   return (
-    <UserContainNav to="/user">UserPage
+    <UserContainNav to="/user">
       <UserImage src={UserIcon} alt="userlogo" />
-      <UserName>{name} Anna</UserName>
+      <UserName>{email} Anna</UserName>
     </UserContainNav>
   );
 };
 
-export default UserNav;
