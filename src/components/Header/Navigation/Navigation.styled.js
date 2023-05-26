@@ -13,10 +13,10 @@ export const MobileBtn = styled.div`
     z-index: 100;
   }
   @media ((min-width: 768px) and (max-width: 1279px)) {
-    display:block;
+    display: block;
     right: 0px;
-     top: 33px;
-     position: absolute;
+    top: 33px;
+    position: absolute;
     cursor: pointer;
     z-index: 100;
   }

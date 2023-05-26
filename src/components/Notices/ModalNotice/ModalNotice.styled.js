@@ -25,7 +25,7 @@ export const Content = styled.div`
   padding-top: 40px;
   padding-bottom: 16px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 681px;
     padding: 0;
     border-radius: 40px;
@@ -63,7 +63,7 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 0px 0px 40px 40px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 262px;
     height: 298px;
     margin: 0;
@@ -80,7 +80,7 @@ export const ContainerInfo = styled.div`
   gap: 12px;
   flex-direction: column;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     flex-direction: row;
     gap: 24px;
     padding: 32px 32px 24px;
@@ -99,7 +99,7 @@ export const BtnClose = styled.button`
   border: none;
   background-color: ${colors.transparent};
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     right: 19px;
     top: 16px;
   }
@@ -117,7 +117,7 @@ export const Title = styled.h2`
 
   color: ${colors.black};
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     font-size: 28px;
     line-height: 38px;
     width: 250px;
@@ -145,7 +145,7 @@ export const Item = styled.li`
 
   color: ${colors.black};
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     font-size: ${fontSizes[2]}px;
     line-height: 22px;
   }
@@ -165,7 +165,7 @@ export const Comment = styled.p`
 
   color: ${colors.black};
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     font-size: 16px;
     line-height: 24px;
     width: 618px;
@@ -202,7 +202,7 @@ export const ContactLink = styled.a`
     outline: none;
   }
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 129px;
   }
 `;
@@ -243,7 +243,7 @@ export const AddToFav = styled.button`
     border-radius: 40px;
   }
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 129px;
   }
 `;
@@ -254,7 +254,7 @@ export const BtnContainer = styled.div`
   gap: 8px;
   padding: 0 12px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     flex-direction: row;
     gap: 17px;
     margin: 0 auto;

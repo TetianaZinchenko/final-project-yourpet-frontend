@@ -15,14 +15,14 @@ export const List = styled.ul`
   justify-content: center;
   align-items: center;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     gap: 32px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 704px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     width: 1248px;
   }
 `;
