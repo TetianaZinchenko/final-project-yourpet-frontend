@@ -6,7 +6,7 @@ export const NavContain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  hight: 100%;
+  height: 100%;
 `;
 export const LinksWrapper = styled.ul`
   display: flex;

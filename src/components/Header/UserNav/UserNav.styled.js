@@ -13,6 +13,6 @@ export const UserImage = styled.img`
   margin-right: 12px ;
 `;
 
-export const UserNavName = styled.span`
+export const UserName = styled.span`
   color: #FFC107;
 `;
