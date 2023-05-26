@@ -1,11 +1,12 @@
-// import { PetsData } from 'components/User/PetsData/PetsData';
+import { Section } from 'components/Section/Section';
+import { User } from 'components/User/User';
 
 const UserPage = () => {
   return (
-    <>
-      <h1> UserPage</h1>
-      {/* <PetsData /> */}
-    </>
+    <Section $bg>
+      <h1>UserPage</h1>
+      <User></User>
+    </Section>
   );
 };
 
