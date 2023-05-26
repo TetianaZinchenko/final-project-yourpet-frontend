@@ -6,13 +6,13 @@ import defaultImage from '../../../images/desktop/photo_default_desktop.png';
 import chekIcon from '../../../icons/check.svg';
 
 export const UserData = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(defaultImage);
   const [isPreviewConfirmed, setIsPreviewConfirmed] = useState(false);
 
   const handleFileInputChange = event => {
     const file = event.target.files[0];
-    setSelectedFile(file);
+    // setSelectedFile(file);
     setIsPreviewConfirmed(false);
     if (file) {
       const reader = new FileReader();
@@ -30,7 +30,7 @@ export const UserData = () => {
 
   const handleRejectPreview = () => {
     // Вы можете выполнить здесь необходимые действия после отклонения превью
-    setSelectedFile(null);
+    // setSelectedFile(null);
     setPreviewUrl(defaultImage);
     setIsPreviewConfirmed(false);
   };

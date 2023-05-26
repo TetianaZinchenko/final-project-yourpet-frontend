@@ -5,15 +5,15 @@ import styles from './UserDataItem.module.css';
 
 const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
   const [value, setValue] = useState(initialValue);
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    setIsEditing(true);
+    // setIsEditing(true);
     setActiveField();
   };
 
   const handleSave = () => {
-    setIsEditing(false);
+    // setIsEditing(false);
     setActiveField(false); // Закрываем форму после сохранения
     // Здесь вы можете выполнить дополнительные действия с сохраненными данными,
     // например, отправить их на сервер или вызвать колбэк-функцию для обработки данных.
