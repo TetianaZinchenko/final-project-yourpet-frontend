@@ -5,9 +5,13 @@ export const PageTitle = styled.h2`
     font-size: 24px;
     line-height: 33px;
     text-align: center;
+    margin-top: 44px;
     margin-bottom: 24px;
 
     @media screen and (min-width: 768px) {
+      font-size: 48px;
+      line-height: 1.375;
+      margin-top: 89px;
       margin-bottom: 40px;
   }
    @media screen and (min-width: 1280px) {
@@ -27,7 +31,7 @@ export const FriendItem = styled.li`
     border-radius: 40px;
   }
   @media screen and (min-width: 1280px) {
-    max-width: 395px;
+    width: 395px;
    
 
     &:hover {
@@ -60,11 +64,11 @@ export const FriendBox = styled.div`
 
 export const FriendImgBox = styled.img`
   margin-right: 16px;
-  max-width: 100%;
+  max-width: 100px;
 
- @media screen and (min-width: 768px}) {
-    max-width: 120px;
-    margin-right: 14px;
+ @media screen and (min-width: 768px) {
+     max-width: 120px;
+     margin-right: 14px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 158px;

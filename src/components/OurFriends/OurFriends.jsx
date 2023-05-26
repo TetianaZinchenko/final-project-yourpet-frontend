@@ -8,7 +8,7 @@ const OurFriends = ({ friends }) => {
         title,
         url,
         addressUrl,
-        // imageUrl,
+        imageUrl,
         address,
         workDays,
         phone,
@@ -19,7 +19,7 @@ const OurFriends = ({ friends }) => {
         title={title}
         url={url}
         addressUrl={addressUrl}
-        // imageUrl={imageUrl}
+        imageUrl={imageUrl}
         address={address}
         workDays={workDays}
         phone={phone}

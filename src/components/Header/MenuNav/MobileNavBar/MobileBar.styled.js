@@ -3,25 +3,23 @@ import { NavLink } from 'react-router-dom';
 import { theme } from 'theme/theme';
 
 export const NavContain = styled.div`
-  
-  height:calc(100vh - 48px);
-   position: absolute;
-   margin-top:40px;
+  height: calc(100vh - 48px);
+  position: absolute;
+  margin-top: 20px;
   left: 0;
-  width:100vw ;
+  width: 100vw;
   top: 48px;
-  z-index:10 ;
- 
+  z-index: 10;
+
   background-color: ${theme.colors.background};
 `;
 export const LinksWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
- align-items:center;
+  align-items: center;
   width: 100;
   height: 100;
-  
 
   margin: 0;
   padding: 0;

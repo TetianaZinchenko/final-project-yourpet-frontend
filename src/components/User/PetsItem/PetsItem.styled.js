@@ -47,6 +47,7 @@ export const PetImage = styled.img`
 `;
 
 export const PetTextWrap = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -57,6 +58,32 @@ export const PetTextWrap = styled.div`
 
   @media screen and ${media.desktop} {
     gap: 12px;
+  }
+`;
+
+export const DeletePetBtn = styled.button`
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  border: none;
+  background-color: ${colors.transparent};
+
+  fill: none;
+  stroke: ${colors.blue};
+
+  @media screen and ${media.tablet} {
+    top: 0;
+    right: 0;
   }
 `;
 
@@ -92,5 +119,24 @@ export const PetTextComment = styled(PetText)`
   @media screen and ${media.desktop} {
     padding-top: 4px;
     line-height: 22px;
+  }
+`;
+
+export const TitleDelete = styled.h2`
+  margin-bottom: 24px;
+  text-align: center;
+
+  font-family: ${fonts.main};
+  font-weight: ${fontWeights.medium};
+  font-size: ${fontSizes[5]}px;
+  line-height: 33px;
+  letter-spacing: 0.04em;
+
+  color: ${colors.black};
+
+  @media screen and ${media.tablet} {
+    margin-bottom: 52px;
+    font-size: 36px;
+    line-height: 49px;
   }
 `;
