@@ -1,7 +1,7 @@
 import { FiHeart } from 'react-icons/fi';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
+// import { AiOutlineClockCircle } from 'react-icons/ai';
+// import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import {
   Image,
   Title,
@@ -15,6 +15,11 @@ import {
   Span,
   SpanText,
 } from './NoticeCategoryItem.styled';
+import pawprint from '../../../icons/pawprint.svg';
+import clock from '../../../icons/clock.svg';
+import female from '../../../icons/female.svg';
+import male from '../../../icons/male.svg';
+
 import { getCurrentCategory } from '../ModalNotice/ModalNotice';
 
 const getCurrentAge = date => {
@@ -37,7 +42,7 @@ const makeCityName = cityName => {
 };
 
 const choseSexIcon = sex => {
-  return sex.toLowerCase() === 'female' ? <BsGenderFemale /> : <BsGenderMale />;
+  return sex.toLowerCase() === 'female' ? female : male;
 };
 
 export const NoticeCategoryItem = ({
@@ -59,11 +64,12 @@ export const NoticeCategoryItem = ({
             <SpanText>{makeCityName(location)}</SpanText>
           </Span>
           <Span>
-            <AiOutlineClockCircle />
+            {/* <AiOutlineClockCircle /> */}
+            <img src={clock} alt="" />
             <SpanText>{getCurrentAge(petBirthday)}</SpanText>
           </Span>
           <Span>
-            {choseSexIcon(sex)}
+            <img src={choseSexIcon(sex)} alt="" />
             <SpanText>{sex}</SpanText>
           </Span>
         </SpanContainer>
@@ -72,6 +78,13 @@ export const NoticeCategoryItem = ({
         <Title>{title}</Title>
         <BtnLaernMore type="button" onClick={() => onClose(_id)}>
           Learn more
+          <img
+            src={pawprint}
+            alt=""
+            width={24}
+            height={24}
+            fill={'currentColor'}
+          />
         </BtnLaernMore>
       </Info>
     </Container>
