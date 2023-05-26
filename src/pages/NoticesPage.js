@@ -8,7 +8,7 @@ import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/No
 import pets from 'pets.json';
 
 export default function NoticesPage() {
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   // const { isLoggedIn } = useSelector(selectIsLoggedIn);
   const [showModal, setShowModal] = useState(false);
   const [pet, setPet] = useState({});
@@ -25,7 +25,7 @@ export default function NoticesPage() {
   };
 
   const onFormSubmit = query => {
-    setQuery(query);
+    // setQuery(query);
   };
 
   return (
