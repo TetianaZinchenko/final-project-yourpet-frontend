@@ -21,16 +21,16 @@ export const NavContain = styled.div`
 `;
 
 export const MenuMobileHeader = styled.div`
-   display: flex;
+  display: flex;
   padding: 38px 37px;
   align-items: center;
   justify-content: space-between;
 
-   @media (min-width: 768px) {
+  @media (min-width: 768px) {
     padding: 20px 30px;
     margin-bottom: 0;
   }
-`
+`;
 export const MobileBtn = styled.div`
   cursor: pointer;
   position: absolute;
