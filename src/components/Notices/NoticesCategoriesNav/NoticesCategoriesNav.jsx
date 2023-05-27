@@ -29,8 +29,8 @@ export const NoticesCategoriesNav = ({ isUser }) => {
   return <List>{items}</List>;
 };
 
-NoticesCategoriesNav.propTypes = {
-    isUser: PropTypes.bool.isRequired,
-  };
+// NoticesCategoriesNav.propTypes = {
+//     isUser: PropTypes.bool.isRequired,
+//   };
 
 

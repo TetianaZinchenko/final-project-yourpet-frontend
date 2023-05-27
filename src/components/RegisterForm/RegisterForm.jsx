@@ -20,6 +20,7 @@ import {
   GoogleLink, ClearInput, AppBox,
 } from '../LoginForm/LoginForm.styled';
 import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
+import icons from '../../icons/icons.svg';
 
 
 
@@ -48,9 +49,9 @@ export const RegisterForm = () => {
   const dispatch = useDispatch();
 
 
-  const formSubmit = values => {
-    dispatch(signUp(values ))
-
+  const formSubmit = ({ email, password }, { resetForm }) => {
+    dispatch(signUp({ email, password }));
+    resetForm();
   }
 
   const showPassword = () => {
@@ -74,11 +75,8 @@ export const RegisterForm = () => {
           password: '',
           confirmPassword: '',
         }}
-                onSubmit={(values, { setSubmitting, resetForm }) => {
-          formSubmit({values});
-          setSubmitting(false);
-          resetForm()
-        }}>
+                onSubmit={formSubmit}
+        >
           {({ errors, touched }) => (
           <Forma>
             <Title>Register</Title>
@@ -87,38 +85,31 @@ export const RegisterForm = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                style={{
-                  border:
-                    touched.email &&
-                    (errors.email
-                      ? '1px solid #F43F5E'
-                      : '1px solid #00C3AD')
-                }}
+                error={errors.email && touched.email && 'false'}
+                valid={!errors.email && touched.email ? 'true' :  undefined}
+
               />
               {touched.email && (errors.email ? (
                 <ErrBox>{errors.email}</ErrBox>
               ) : (
                 <AppBox>Email is correct</AppBox>
               ))}
-              <ClearInput > {touched.email &&
-                (!errors.email ?  <AiOutlineCheck style={{fill:'#00C3AD'}} /> : <AiOutlineClose style={{fill:'#F43F5E'}} onClick={clearInput}/>)}</ClearInput>
+              <ClearInput > {(!errors.email ? <svg style={{ fill: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
+                :  <svg style={{ fill: '#F43F5E' }} onClick={clearInput}><use href={icons +'#icon-cross-small'}></use></svg>
+                )}</ClearInput>
             </div>
             <div>
               <Input
                 name="password"
                 type={showPass ? 'text' : 'password'}
                 placeholder="Password"
-                style={{
-                  border:
-                    touched.password &&
-                    (errors.password
-                      ? '1px solid #F43F5E'
-                      : '1px solid #00C3AD')
-                }}
+                error={errors.password && touched.password && 'false'}
+                valid={!errors.password && touched.password ? 'true' :  undefined}
               />
 
-              <ShowPassword onClick={showPassword}>
-                {!showPass ? <ImEyeBlocked /> : <ImEye />}
+              <ShowPassword onClick={showPassword}  error={errors.password && touched.password && 'false'}
+                            valid={!errors.password && touched.password && '!null'}>
+                {!showPass ? <svg><use href={icons +'#icon-eye-closed'}></use></svg> :  <svg><use href={icons +'#icon-eye-open'}></use></svg>}
               </ShowPassword>
               {touched.password && (errors.password ? (
                 <ErrBox>{errors.password}</ErrBox>
@@ -132,16 +123,13 @@ export const RegisterForm = () => {
                 name="confirmPassword"
                 type={showConfirmPass ? 'text' : 'password'}
                 placeholder="Confirm Password"
-                style={{
-                  border:
-                    touched.confirmPassword &&
-                    (errors.confirmPassword
-                      ? '1px solid #F43F5E'
-                      : '1px solid #00C3AD')
-                }}
+                error={errors.confirmPassword && touched.confirmPassword && 'false'}
+                valid={!errors.confirmPassword && touched.confirmPassword ?'true' :  undefined}
+
               />
-              <ShowPassword onClick={showConfirmPassword}>
-                {!showConfirmPass ? <ImEyeBlocked /> : <ImEye />}
+              <ShowPassword onClick={showConfirmPassword} error={errors.confirmPassword && touched.confirmPassword && 'false'}
+                            valid={!errors.confirmPassword && touched.confirmPassword && '!null'}>
+                {!showPass ? <svg><use href={icons +'#icon-eye-closed'}></use></svg> :  <svg><use href={icons +'#icon-eye-open'}></use></svg>}
               </ShowPassword>
               {touched.confirmPassword &&
                 (errors.confirmPassword ? (
@@ -150,7 +138,7 @@ export const RegisterForm = () => {
                 <AppBox>Password is matched</AppBox>
                 ))}
             </div>
-            <Button type="button" onClick={formSubmit} >
+            <Button type="submit"  >
               Registration
             </Button>
             <div><GoogleLink href="https://google"> <FcGoogle style={{width: "2em", height: "2em" }}/> Register with a Google account</GoogleLink></div>

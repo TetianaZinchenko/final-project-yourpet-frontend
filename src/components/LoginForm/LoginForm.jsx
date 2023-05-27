@@ -2,9 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
-import { ImEye, ImEyeBlocked } from 'react-icons/im';
-import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
+import { Formik} from 'formik';
+import icons from '../../icons/icons.svg'
 import { signIn } from 'redux/auth/authOperations';
 import {
   Forma,
@@ -18,7 +17,8 @@ import {
   StyledLink,
   ClearInput,
 } from './LoginForm.styled';
-import { Section } from '../Section/Section';
+
+
 
 const LoginSchema = () =>
   yup.object().shape({
@@ -39,12 +39,14 @@ const LoginSchema = () =>
       .trim(),
   });
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
   const [showPass, setShowPass] = useState(false);
-  const formSubmit = values => {
-    dispatch(signIn(values));
+  const formSubmit = ({ email, password }, { resetForm }) => {
+    dispatch(signIn({ email, password }));
+    resetForm();
   };
+
   const showPassword = () => {
     setShowPass(!showPass);
   };
@@ -53,18 +55,13 @@ const LoginForm = () => {
     inputs.value = '';
   };
   return (
-    <Section>
+
       <FormContainer>
         <Formik
           validationSchema={LoginSchema}
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          onSubmit={(values, { resetForm }) => {
-            formSubmit({ values });
-            resetForm();
-          }}
+          initialValues={{ email: '',
+            password: '',}}
+          onSubmit={formSubmit}
         >
           {({ errors, touched }) => (
             <Forma>
@@ -75,13 +72,8 @@ const LoginForm = () => {
                   type="email"
                   autoComplete="off"
                   placeholder="Email"
-                  style={{
-                    border:
-                      touched.email &&
-                      (errors.email
-                        ? '1px solid #F43F5E'
-                        : '1px solid #00C3AD'),
-                  }}
+                  error={errors.email && touched.email && 'false'}
+                  valid={!errors.email && touched.email ? 'true' :  undefined}
                 />
                 {touched.email &&
                   (errors.email ? (
@@ -92,14 +84,9 @@ const LoginForm = () => {
                 <ClearInput>
                   {' '}
                   {touched.email &&
-                    (!errors.email ? (
-                      <AiOutlineCheck style={{ fill: '#00C3AD' }} />
-                    ) : (
-                      <AiOutlineClose
-                        style={{ fill: '#F43F5E' }}
-                        onClick={clearInput}
-                      />
-                    ))}
+                    (!errors.email ? <svg style={{ fill: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
+                     :  <svg style={{ fill: '#F43F5E' }} onClick={clearInput}><use href={icons +'#icon-cross-small'}></use></svg>
+                    )}
                 </ClearInput>
               </div>
               <div>
@@ -107,16 +94,12 @@ const LoginForm = () => {
                   name="password"
                   type={showPass ? 'text' : 'password'}
                   placeholder="Password"
-                  style={{
-                    border:
-                      touched.password &&
-                      (errors.password
-                        ? '1px solid #F43F5E'
-                        : '1px solid #00C3AD'),
-                  }}
+                  error={errors.password && touched.password && 'false'}
+                  valid={!errors.password && touched.password ? 'true' :  undefined}
                 />
-                <ShowPassword onClick={showPassword}>
-                  {!showPass ? <ImEyeBlocked /> : <ImEye />}
+
+                <ShowPassword onClick={showPassword}  error={errors.password && touched.password && 'false'}  valid={!errors.password && touched.password && '!null'}>
+                  {!showPass ? <svg><use href={icons +'#icon-eye-closed'}></use></svg> :  <svg><use href={icons +'#icon-eye-open'}></use></svg>}
                 </ShowPassword>
                 {touched.password &&
                   (errors.password ? (
@@ -126,7 +109,7 @@ const LoginForm = () => {
                   ))}
               </div>
 
-              <Button type="submit">Login</Button>
+              <Button type="submit" >Login</Button>
 
               <div>
                 <span>Don't have an account?</span>{' '}
@@ -136,7 +119,6 @@ const LoginForm = () => {
           )}
         </Formik>
       </FormContainer>
-    </Section>
   );
 };
-export default LoginForm;
+

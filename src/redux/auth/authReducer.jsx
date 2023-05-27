@@ -5,25 +5,24 @@ import {
   logOut,
   refreshUser,
   signInWhithToken,
-  updateInfo,
 } from './authOperations';
-
 
 
 const initialState = {
   user: {
     email: null,
     id: null,
+    password: null
   },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
   extraReducers: builder =>
     builder
       .addCase(signUp.pending, (state, _) => state)
@@ -33,9 +32,9 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
-        state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
-        state.token = payload.dataUser.token;
+        state.user.email = payload.email;
+        state.user.id = payload.id;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(signIn.pending, (state, _) => state)
@@ -45,9 +44,9 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
-        state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
-        state.token = payload.dataUser.token;
+        state.user.email = payload.email;
+        state.user.id = payload.id;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(signInWhithToken.pending, (state, _) => state)
@@ -57,19 +56,8 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(signInWhithToken.fulfilled, (state, { payload }) => {
-        state.user.email = payload.dataUser.email;
-        state.token = payload.dataUser.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(updateInfo.pending, (state, _) => state)
-      .addCase(updateInfo.rejected, (state, _) => {
-        state.token = null;
-        state.isLoggedIn = false;
-      })
-      .addCase(updateInfo.fulfilled, (state, { payload }) => {
-        state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
-        state.token = payload.dataUser.token;
+        state.user.email = payload.email;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.pending, (state, _) => state)
@@ -88,8 +76,8 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
+        state.user.email = payload.email;
+        state.user.id = payload.id;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       }),

@@ -1,28 +1,73 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
-import bg_mobile from '../../images/bg_page/mobile-bg-page_1x.png';
-import bg_tablet from '../../images/bg_page/tablet-bg-page_1x.png';
-import bg_desktop from '../../images/bg_page/desc-bg-page_1x.png';
+import {
+  desc1x,
+  desc2x,
+  desc3x,
+  tablet1x,
+  tablet2x,
+  tablet3x,
+  mobile1x,
+  mobile2x,
+  mobile3x,
+} from '../../images/bg_page/index';
+
 
 export const FormContainer = styled.div`
-  width: 100%;
-  min-height: calc(100vh - 58px);
-  background-image: url(${bg_mobile});
-  background-repeat: space repeat;
-  background-size: contain;
-  background-position-y: center;
+  width: 100vw;
+  min-height: calc(100vh - 48px);
+  margin: 0 auto;
+  padding-top: 92px;
+  background-image: url(${mobile1x});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center top;
 
+  @media screen and (min-device-pixel-ratio: 2),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+    background-image: url(${mobile2x});
+  }
+  @media screen and (min-device-pixel-ratio: 3),
+  screen and (min-resolution: 288dpi),
+  screen and (min-resolution: 3dppx) {
+    background-image: url(${mobile3x});
+  }
   @media (min-width: 768px) {
-    background-image: url(${bg_tablet});
     padding-top: 92px;
     padding-bottom: 268px;
     min-height: calc(100vh - 64px);
+    background-image: url(${tablet1x});
+
+  @media screen and (min-device-pixel-ratio: 2),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+    background-image: url(${tablet2x});
   }
+
+  @media screen and (min-device-pixel-ratio: 3),
+  screen and (min-resolution: 288dpi),
+  screen and (min-resolution: 3dppx) {
+    background-image: url(${tablet3x});
+  }
+}
   @media (min-width: 1280px) {
-    background-image: url(${bg_desktop});
     padding-top: 82px;
     padding-bottom: 147px;
+    background-image: url(${desc1x});
+    @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+      background-image: url(${desc2x});
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+      background-image: url(${desc3x});
+    }
   }
+
 `;
 export const Title = styled.h2`
   font-size: 24px;
@@ -45,16 +90,18 @@ export const Forma = styled(Form)`
   background-color: #fff;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
-  margin: 92px auto;
+
 
   @media (min-width: 768px) {
     width: 608px;
     padding: 60px 0 40px 0;
-    margin: 82px auto;
+    margin-left: 80px;
+
   }
   @media (min-width: 1280px) {
     width: 618px;
     padding: 60px 0 60px 0;
+    margin-left: 300px;
   }
   > div {
     position: relative;
@@ -71,15 +118,19 @@ export const ShowPassword = styled.span`
   height: 25px;
   right: 15px;
   top: 13px;
-  color: #54adff;
-  cursor: pointer;
+  fill: ${props =>
+    props.error
+      ? props.theme.colors.red
+      : props.valid
+        ? props.theme.colors.green
+        : props.theme.colors.blue};
+
   svg {
     width: inherit;
     height: inherit;
+
   }
 `;
-
-
 
 export const Input = styled(Field)`
   width: 250px;
@@ -87,7 +138,13 @@ export const Input = styled(Field)`
   line-height: 1.3;
   padding: 11px 0 12px 14px;
   background: white;
-  border: 1px solid #54adff;
+  border: 1px solid;
+    border-color: ${props =>
+  props.error
+    ? props.theme.colors.red
+    : props.valid
+      ? props.theme.colors.green
+      : props.theme.colors.blue};
   border-radius: 50px;
   margin-bottom: 16px;
   &:focus,
@@ -188,11 +245,15 @@ export const ClearInput = styled.span`
   height: 25px;
   right: 15px;
   top: 13px;
+  color: #54adff;
   cursor: pointer;
   svg {
     width: inherit;
     height: inherit;
   }
+  //&.isValid{
+  //  display: none;
+  //}
 `;
 export const StyledLink = styled.a`
   color: #54adff;
