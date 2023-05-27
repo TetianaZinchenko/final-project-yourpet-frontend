@@ -13,6 +13,7 @@ import {
 import { authSlice } from './auth/authReducer';
 import { modalsReducer } from './modal/modalReducer';
 import { noticesReducer } from './notices/noticesSlice';
+import { friendsReducer } from './friends/friendsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authSlice.reducer),
     modal: modalsReducer,
     notices: noticesReducer,
+    friends: friendsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
