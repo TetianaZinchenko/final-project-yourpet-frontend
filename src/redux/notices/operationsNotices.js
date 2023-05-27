@@ -8,7 +8,8 @@ export const fetchNotices = createAsyncThunk(
       const response = await axios.get(
         'https://final-project-yourpe-backend.onrender.com/posts/'
       );
-      return response.data.data.posts;
+      return response.data;
+      
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

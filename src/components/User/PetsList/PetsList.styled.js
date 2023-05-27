@@ -12,7 +12,7 @@ export const List = styled.ul`
   align-items: center;
   gap: 20px;
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     gap: 24px;
   }
 `;

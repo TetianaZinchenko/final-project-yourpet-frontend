@@ -25,8 +25,8 @@ export const getCurrentCategory = category => {
   switch (category) {
     case 'for-free':
       return 'in a good hands';
-    case 'lost/found':
-      return category;
+    case 'lost-found':
+      return 'lost/found';
     default:
       return 'sell';
   }

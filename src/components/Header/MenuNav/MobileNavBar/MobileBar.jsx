@@ -1,18 +1,18 @@
-import {
-  NavContain,
-  LinksWrapper,
-  LinkItem,
-  StyledLink,
-} from './MobileBar.styled';
+import { AiOutlineClose } from 'react-icons/ai';
+
 import { AuthNav } from 'components/Header/AuthNav/AuthNav';
 import { UserNav } from 'components/Header/UserNav/UserNav';
 import { Logo } from 'components/Header/Logo/Logo';
-import { AiOutlineClose } from 'react-icons/ai';
+
 import {
   MobileBtn,
   MenuMobileHeader,
   CurrentLink,
   MobileContainUser,
+  NavContain,
+  LinksWrapper,
+  LinkItem,
+  StyledLink,
 } from './MobileBar.styled';
 
 export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {

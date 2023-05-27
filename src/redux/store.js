@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import { authSlice } from './auth/authReducer';
 import { noticesReducer } from './notices/noticesSlice';
+import { friendsReducer } from './friends/friendsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -23,6 +24,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice.reducer),
     notices: noticesReducer,
+    friends: friendsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
