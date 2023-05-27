@@ -265,3 +265,64 @@ export const BtnContainer = styled.div`
     padding-bottom: 24px;
   }
 `;
+
+export const RemoveContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  font-family: ${fonts.main};
+`;
+
+export const RemoveTitle = styled.div`
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: ${fontWeights.bold};
+`;
+
+export const RemoveDescription = styled.div`
+  margin-top: 40px;
+  width: 393px;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+`;
+
+export const RemoveItemTitle = styled.div`
+  font-weight: ${fontWeights.bold};
+`;
+
+export const RemoveButtonsContainer = styled.div`
+  margin-top: 48px;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+`;
+
+export const RemoveButtonCancel = styled.button`
+  padding: 9px 35px;
+  border-radius: 40px;
+  border-color: ${colors.blue};
+  background: ${colors.white};
+  color: ${colors.blue};
+  font-size: 16px;
+  line-height: 22px;
+  font-family: ${fonts.main};
+  font-weight: ${fontWeights.bold};
+`;
+
+export const RemoveButtonYes = styled.button`
+  display: flex;
+  padding: 9px 34px;
+  border-radius: 40px;
+  background: ${colors.blue};
+  color: ${colors.white};
+  font-size: 16px;
+  line-height: 22px;
+  font-family: ${fonts.main};
+  font-weight: ${fontWeights.bold};
+  border-color: ${colors.blue};
+  gap: 12px;
+  letter-spacing: 0.04em;
+`;
