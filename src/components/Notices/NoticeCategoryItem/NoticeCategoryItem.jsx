@@ -27,8 +27,6 @@ import clock from '../../../icons/clock.svg';
 import female from '../../../icons/female.svg';
 import male from '../../../icons/male.svg';
 
-import { getCurrentCategory } from '../ModalNotice/ModalNotice';
-
 const getCurrentAge = date => {
   const dateArr = date.split('.');
   const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
@@ -53,7 +51,8 @@ const choseSexIcon = sex => {
 };
 
 export const NoticeCategoryItem = ({ pet }) => {
-  const { _id, title, location, age, sex, image, favorite, owner } = pet;
+  const { _id, title, location, petBirthday, sex, image, favorite, owner } =
+    pet;
 
   const auth = useSelector(selectAuth);
   const isLoggedIn = useSelector(selectIsLoggedIn);

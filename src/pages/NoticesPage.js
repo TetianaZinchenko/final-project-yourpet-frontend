@@ -54,10 +54,6 @@ export default function NoticesPage() {
     dispatch(fetchNotices());
   }, [dispatch]);
 
-  const onFormSubmit = query => {
-    // setQuery(query);
-  };
-
   return (
     <>
       <h1>Find your favorite pet</h1>
