@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ModalNotice } from 'components/Notices/ModalNotice/ModalNotice';
 import { NoticesCategoriesList } from '../components/Notices/NoticesCategoriesList/NoticesCategoriesList';
-// import pets from 'pets.json';
 
 import {
   getNotices,
@@ -15,6 +14,7 @@ import { fetchNotices } from 'redux/notices/operationsNotices';
 
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
+import { useParams } from 'react-router-dom';
 
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
 
@@ -28,6 +28,11 @@ export default function NoticesPage() {
   // const isLoading = useSelector(getIsLoading);
   const notices = useSelector(getNotices);
   // const error = useSelector(getError);
+
+  const { categoryName } = useParams();
+  const visibleNotices = notices.filter(
+    notice => notice.category === categoryName
+  );
 
   useEffect(() => {
     dispatch(fetchNotices());
@@ -55,7 +60,7 @@ export default function NoticesPage() {
       <NoticesCategoriesNav /*isUser={isLoggedIn}*/ />
 
       {notices.length > 0 && (
-        <NoticesCategoriesList onClose={toggleModal} pets={notices} />
+        <NoticesCategoriesList onClose={toggleModal} pets={visibleNotices} />
       )}
 
       {showModal && <ModalNotice onClose={toggleModal} pet={pet} />}

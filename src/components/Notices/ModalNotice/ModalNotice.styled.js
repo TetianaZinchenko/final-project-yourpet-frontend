@@ -193,12 +193,13 @@ export const ContactLink = styled.a`
   font-size: ${fontSizes[2]}px;
   line-height: 22px;
   color: ${colors.blue};
+  transition: all 250ms ease-in-out;
 
   :hover,
   :focus {
     background: ${colors.blueGradient};
     color: ${colors.background};
-    border: none;
+    /* border: none; */
     outline: none;
   }
 
