@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/final-project-yourpet-frontend/static/css/main.eb4c7fff.css",
-    "main.js": "/final-project-yourpet-frontend/static/js/main.90282c29.js",
+    "main.js": "/final-project-yourpet-frontend/static/js/main.3e34e563.js",
     "static/js/888.8db2b178.chunk.js": "/final-project-yourpet-frontend/static/js/888.8db2b178.chunk.js",
     "static/js/854.f7894ddc.chunk.js": "/final-project-yourpet-frontend/static/js/854.f7894ddc.chunk.js",
     "static/js/948.81802603.chunk.js": "/final-project-yourpet-frontend/static/js/948.81802603.chunk.js",
@@ -35,6 +35,7 @@
     "static/media/mobile-bg-page_3x.png": "/final-project-yourpet-frontend/static/media/mobile-bg-page_3x.65f7cead316da53a12e3.png",
     "static/media/tablet-bg-page_1x.png": "/final-project-yourpet-frontend/static/media/tablet-bg-page_1x.b7eb05ffad718448eedb.png",
     "static/media/mobile-bg-page_2x.png": "/final-project-yourpet-frontend/static/media/mobile-bg-page_2x.3718878183569fc70412.png",
+    "static/media/logo.svg": "/final-project-yourpet-frontend/static/media/logo.6e2f51eeb062dc6472f5e4aa1de019f4.svg",
     "static/media/desc-bg-page_1x.png": "/final-project-yourpet-frontend/static/media/desc-bg-page_1x.cf58327b31c66737de00.png",
     "static/media/mobile-bg-page_1x.png": "/final-project-yourpet-frontend/static/media/mobile-bg-page_1x.0cd02ce1d43a46754e63.png",
     "static/media/pawprintWithe.svg": "/final-project-yourpet-frontend/static/media/pawprintWithe.928282e7d857d16e0fad65e8342455d7.svg",
@@ -50,7 +51,7 @@
     "static/media/check.svg": "/final-project-yourpet-frontend/static/media/check.011fe73330be962a2c6606bffd26d2fb.svg",
     "static/media/cross-small.svg": "/final-project-yourpet-frontend/static/media/cross-small.b4fa34af66444619d3ef2189b3a17546.svg",
     "main.eb4c7fff.css.map": "/final-project-yourpet-frontend/static/css/main.eb4c7fff.css.map",
-    "main.90282c29.js.map": "/final-project-yourpet-frontend/static/js/main.90282c29.js.map",
+    "main.3e34e563.js.map": "/final-project-yourpet-frontend/static/js/main.3e34e563.js.map",
     "888.8db2b178.chunk.js.map": "/final-project-yourpet-frontend/static/js/888.8db2b178.chunk.js.map",
     "854.f7894ddc.chunk.js.map": "/final-project-yourpet-frontend/static/js/854.f7894ddc.chunk.js.map",
     "948.81802603.chunk.js.map": "/final-project-yourpet-frontend/static/js/948.81802603.chunk.js.map",
@@ -70,6 +71,6 @@
   },
   "entrypoints": [
     "static/css/main.eb4c7fff.css",
-    "static/js/main.90282c29.js"
+    "static/js/main.3e34e563.js"
   ]
 }
