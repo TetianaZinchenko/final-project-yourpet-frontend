@@ -8,8 +8,6 @@ import {
   updateInfo,
 } from './authOperations';
 
-
-
 const initialState = {
   user: {
     email: null,

@@ -1,27 +1,69 @@
-import { useState } from 'react';
-import { ModalNotice } from 'components/Notices/ModalNotice/ModalNotice';
+import { useSelector, useDispatch } from 'react-redux';
 import { NoticesCategoriesList } from '../components/Notices/NoticesCategoriesList/NoticesCategoriesList';
-import pets from 'pets.json';
+import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
+import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
+import { useParams } from 'react-router-dom';
+import { fetchNotices } from 'redux/notices/noticesOperations';
+import { selectAuth } from 'redux/auth/authSelectors';
+
+import {
+  getNotices,
+  getIsLoading,
+  // getError,
+} from 'redux/notices/noticesSelectors';
+import { useEffect } from 'react';
 
 export default function NoticesPage() {
-  const [showModal, setShowModal] = useState(false);
-  const [pet, setPet] = useState({});
+  const auth = useSelector(selectAuth);
 
-  const body = document.querySelector('body');
-  showModal
-    ? body.classList.add('modal-open')
-    : body.classList.remove('modal-open');
+  const dispatch = useDispatch();
+  const notices = useSelector(getNotices);
+  const isLoading = useSelector(getIsLoading);
 
-  const toggleModal = id => {
-    setShowModal(!showModal);
-    const pet = pets.find(pet => pet.id === id);
-    setPet(pet);
-  };
+  const { categoryName } = useParams();
+
+  let visibleNotices = [];
+  switch (categoryName) {
+    case 'favorite':
+      if (!!auth.user.id) {
+        visibleNotices = notices.filter(notice => {
+          return notice.favorite.includes(auth.user.id);
+        });
+      }
+      break;
+
+    case 'my-pets':
+      if (!!auth.user.id) {
+        visibleNotices = notices.filter(notice => {
+          return notice.owner === auth.user.id;
+        });
+      }
+      break;
+
+    default:
+      visibleNotices = notices.filter(
+        notice => notice.category === categoryName
+      );
+      break;
+  }
+
+  // todo: useSelector(Filter)
+  // filtered visibleNotices by filter
+
+  useEffect(() => {
+    dispatch(fetchNotices());
+  }, [dispatch]);
 
   return (
     <>
-      <NoticesCategoriesList onClose={toggleModal} pets={pets} />
-      {showModal && <ModalNotice onClose={toggleModal} pet={pet} />}
+      <h1>Find your favorite pet</h1>
+      <NoticesSearch />
+      <NoticesCategoriesNav />
+      {isLoading ? (
+        <>Loading...</>
+      ) : (
+        <NoticesCategoriesList pets={visibleNotices} />
+      )}
     </>
   );
 }
