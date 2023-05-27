@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
 
-export const NoticesSearch = ({ onFormSubmit }) => {
+export const NoticesSearch = () => {
   const [query, setQuery] = useState('');
 
   // useEffect(() => {
   //   if (!query) onFormSubmit(query);
   // }, [onFormSubmit, query]);
 
-  useEffect(() => {})
+  useEffect(() => {});
 
   const submitHandler = event => {
     event.preventDefault();
 
-    onFormSubmit(query);
+    //onFormSubmit(query);
   };
 
   const onInputChange = event => {
