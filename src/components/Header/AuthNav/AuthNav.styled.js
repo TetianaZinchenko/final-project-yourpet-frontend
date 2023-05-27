@@ -10,13 +10,13 @@ export const BtnContain = styled.div`
     margin-bottom: 40px;
     align-items: center;
   }
-@media  (max-width: 1279px) {
-display: flex;
+  @media (max-width: 1279px) {
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-}
-  
+    margin-right:28px;
+  }
 
   @media (min-width: 1280px) {
     display: flex;

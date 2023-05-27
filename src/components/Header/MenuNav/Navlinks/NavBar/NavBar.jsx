@@ -9,7 +9,7 @@ export const NavBar = () => {
           <StyledLink to="/news">News</StyledLink>
         </LinkItem>
         <LinkItem>
-          <StyledLink to="/notices">Find pet</StyledLink>
+          <StyledLink to="/notices/sell">Find pet</StyledLink>
         </LinkItem>
         <LinkItem>
           <StyledLink to="/friends">Our friends</StyledLink>

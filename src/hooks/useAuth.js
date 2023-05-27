@@ -12,3 +12,14 @@ export const useAuth = () => {
     user: useSelector(getUser),
   };
 };
+
+//   const isLoggedIn = useSelector(selectIsLoggedIn);
+//   const isRefreshing = useSelector(selectIsRefreshing);
+//   const user = useSelector(getUser);
+
+//   return {
+//     isLoggedIn,
+//     isRefreshing,
+//     user,
+//   };
+// };

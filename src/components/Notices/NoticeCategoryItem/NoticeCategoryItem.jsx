@@ -1,7 +1,7 @@
 import { FiHeart, FiTrash2 } from 'react-icons/fi';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
+// import { AiOutlineClockCircle } from 'react-icons/ai';
+// import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import {
   Image,
   Title,
@@ -16,10 +16,30 @@ import {
   SpanText,
   BtnRemoveMy,
 } from './NoticeCategoryItem.styled';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { showModal } from 'redux/modal/modalReducer';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { favoriteNotice } from 'redux/notices/noticesOperations';
+
+import pawprint from '../../../icons/pawprint.svg';
+import clock from '../../../icons/clock.svg';
+import female from '../../../icons/female.svg';
+import male from '../../../icons/male.svg';
+
+import { getCurrentCategory } from '../ModalNotice/ModalNotice';
+
+const getCurrentAge = date => {
+  const dateArr = date.split('.');
+  const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
+  const age =
+    (new Date().getTime() - new Date(birthdayDate)) /
+    (24 * 3600 * 1000 * 365.25);
+  if (age < 1) {
+    return `${Math.floor((age * 365.25) / 30)} mo.`;
+  }
+  return Math.floor(age) === 1 ? `1 year` : `${Math.floor(age)} years`;
+};
 
 const makeCityName = cityName => {
   if (cityName.length > 6) {
@@ -29,7 +49,7 @@ const makeCityName = cityName => {
 };
 
 const choseSexIcon = sex => {
-  return sex === 'female' ? <BsGenderFemale /> : <BsGenderMale />;
+  return sex.toLowerCase() === 'female' ? female : male;
 };
 
 export const NoticeCategoryItem = ({ pet }) => {
@@ -95,11 +115,12 @@ export const NoticeCategoryItem = ({ pet }) => {
             <SpanText>{makeCityName(location)}</SpanText>
           </Span>
           <Span>
-            <AiOutlineClockCircle />
-            <SpanText>{age}</SpanText>
+            {/* <AiOutlineClockCircle /> */}
+            <img src={clock} alt="" />
+            <SpanText>{getCurrentAge(petBirthday)}</SpanText>
           </Span>
           <Span>
-            {choseSexIcon(sex)}
+            <img src={choseSexIcon(sex)} alt="" />
             <SpanText>{sex}</SpanText>
           </Span>
         </SpanContainer>
@@ -108,6 +129,13 @@ export const NoticeCategoryItem = ({ pet }) => {
         <Title>{title}</Title>
         <BtnLaernMore type="button" onClick={onSelectItemHandle}>
           Learn more
+          <img
+            src={pawprint}
+            alt=""
+            width={24}
+            height={24}
+            fill={'currentColor'}
+          />
         </BtnLaernMore>
       </Info>
     </Container>

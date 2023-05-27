@@ -3,16 +3,40 @@ import { NavLink } from 'react-router-dom';
 import { theme } from 'theme/theme';
 
 export const NavContain = styled.div`
-  height: calc(100vh - 48px);
-  position: absolute;
-  margin-top: 20px;
-  left: 0;
-  width: 100vw;
-  top: 48px;
-  z-index: 10;
-
+  overflow: hidden;
   background-color: ${theme.colors.background};
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s;
+
+  &.active {
+    top: 0;
+  }
 `;
+
+export const MenuMobileHeader = styled.div`
+  display: flex;
+  padding: 38px 37px;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    padding: 20px 30px;
+    margin-bottom: 0;
+  }
+`;
+export const MobileBtn = styled.div`
+  cursor: pointer;
+  position: absolute;
+  right: 37px;
+`;
+
 export const LinksWrapper = styled.ul`
   display: flex;
   flex-direction: column;
