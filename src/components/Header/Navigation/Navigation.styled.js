@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-// import { theme } from 'theme/theme';
+import { theme } from 'theme/theme';
+
 
 export const MobileBtn = styled.div`
   display: none;
@@ -10,14 +11,19 @@ export const MobileBtn = styled.div`
     right: 25px;
     position: absolute;
     cursor: pointer;
-    z-index: 100;
+    z-index: 100;  
+    color:${theme.colors.yellow};
+      
+  
   }
   @media ((min-width: 768px) and (max-width: 1279px)) {
     display: block;
-    right: 0px;
-    top: 33px;
+    right: 16px;
+    top: 30px;
     position: absolute;
     cursor: pointer;
     z-index: 100;
-  }
+   
+    color:${theme.colors.yellow}  
+    }
 `;

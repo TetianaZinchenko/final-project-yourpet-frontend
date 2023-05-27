@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineMenu,AiOutlineClose} from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { NavBar } from '../MenuNav/Navlinks/NavBar/NavBar';
@@ -20,12 +20,13 @@ export const Navigation = ({ isLoggedIn }) => {
   const handleOpen = () => (isOpen ? setOpen(false) : setOpen(true));
 
   return (
+    
     <>
       <MobileBtn onClick={handleOpen}>
         {isOpen && !isDesktop ? (
-          <AiOutlineClose size={24} color="#FFC107" />
+          <AiOutlineClose size={24}/>
         ) : (
-          <AiOutlineMenu size={24} color="#FFC107" />
+          <AiOutlineMenu size={24} />
         )}
       </MobileBtn>
       {isOpen && !isDesktop && (
@@ -37,4 +38,5 @@ export const Navigation = ({ isLoggedIn }) => {
       {!isMobile ? isLoggedIn ? <UserNav /> : <AuthNav /> : null}
     </>
   );
+ 
 };
