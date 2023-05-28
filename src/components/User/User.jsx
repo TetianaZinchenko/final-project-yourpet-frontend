@@ -1,5 +1,9 @@
+import { UserContainer } from './UserContainer/UserContainer';
+
 export const User = () => {
-    return (
-        <></>
-    )
-}
+  return (
+    <>
+      <UserContainer></UserContainer>
+    </>
+  );
+};

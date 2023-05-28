@@ -18,13 +18,13 @@ export const PetItem = styled.li`
     box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
   }
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     min-height: 256px;
     padding: 20px;
     border-radius: 40px;
     flex-direction: row;
   }
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     min-height: auto;
     gap: 32px;
   }
@@ -35,11 +35,11 @@ export const PetImage = styled.img`
   height: 240px;
   border-radius: 20px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 128px;
     height: 128px;
   }
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     width: 161px;
     height: 161px;
     border-radius: 40px;
@@ -47,16 +47,43 @@ export const PetImage = styled.img`
 `;
 
 export const PetTextWrap = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     gap: 16px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     gap: 12px;
+  }
+`;
+
+export const DeletePetBtn = styled.button`
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  border: none;
+  background-color: ${colors.transparent};
+
+  fill: none;
+  stroke: ${colors.blue};
+
+  @media screen and (${media.tablet}) {
+    top: 0;
+    right: 0;
   }
 `;
 
@@ -69,7 +96,7 @@ export const PetText = styled.p`
   letter-spacing: 0.04em;
   color: ${colors.black};
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     font-size: ${fontSizes[2]}px;
     line-height: 22px;
   }
@@ -78,7 +105,7 @@ export const PetText = styled.p`
 export const PetTextHead = styled.span`
   font-weight: ${fontWeights.bold};
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     font-weight: ${fontWeights.semibold};
   }
 `;
@@ -86,11 +113,30 @@ export const PetTextHead = styled.span`
 export const PetTextComment = styled(PetText)`
   line-height: 22px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     line-height: 18px;
   }
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     padding-top: 4px;
     line-height: 22px;
+  }
+`;
+
+export const TitleDelete = styled.h2`
+  margin-bottom: 24px;
+  text-align: center;
+
+  font-family: ${fonts.main};
+  font-weight: ${fontWeights.medium};
+  font-size: ${fontSizes[5]}px;
+  line-height: 33px;
+  letter-spacing: 0.04em;
+
+  color: ${colors.black};
+
+  @media screen and (${media.tablet}) {
+    margin-bottom: 52px;
+    font-size: 36px;
+    line-height: 49px;
   }
 `;

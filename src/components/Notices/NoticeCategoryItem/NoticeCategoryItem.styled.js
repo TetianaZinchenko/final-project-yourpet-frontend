@@ -14,11 +14,11 @@ export const Container = styled.div`
   box-shadow: ${shadows.defaultShadow};
   border-radius: 0px 0px 40px 40px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 336px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     width: 288px;
   }
 `;
@@ -33,12 +33,12 @@ export const Image = styled.img`
   height: 280px;
   object-fit: cover;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     width: 336px;
     height: 288px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     width: 288px;
   }
 `;
@@ -122,6 +122,36 @@ export const BtnAddToFav = styled.button`
   right: 12px;
   top: 12px;
 
+  background: #cce4fb;
+  border: none;
+  border-radius: 50px;
+
+  svg {
+    fill: ${changeColorInBtn()};
+    transition: all 200ms ease-in-out;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: ${colors.blue};
+    stroke-width: 1.5;
+  }
+
+  svg:hover {
+    fill: ${colors.blue};
+  }
+
+  svg.active {
+    fill: ${colors.blue};
+  }
+`;
+
+export const BtnRemoveMy = styled.button`
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 12px;
+  top: 64px;
+
   background: #c5dff6;
   border: none;
   border-radius: 50px;
@@ -135,7 +165,12 @@ export const BtnAddToFav = styled.button`
     color: ${colors.blue};
     strokewidth: 1.5;
   }
+
   svg:hover {
+    fill: ${colors.blue};
+  }
+
+  svg.active {
     fill: ${colors.blue};
   }
 `;
@@ -148,12 +183,12 @@ export const SpanContainer = styled.div`
   flex-direction: row;
   gap: 12px;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     gap: 24px;
     left: 24px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     gap: 12px;
     left: 12px;
   }
@@ -177,7 +212,7 @@ export const Span = styled.span`
     color: ${colors.blue};
     width: 22px;
     height: 22px;
-    strokewidth: 1.5;
+    stroke-width: 1.5;
   }
 `;
 
