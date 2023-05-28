@@ -70,7 +70,7 @@ export const ImgWrap = styled.picture`
     margin-left: -154px;
     min-width: auto;
     width: calc(100vw - 363px);
-    height: calc(100vh - 70px);
+    height: calc(100vh - 52px);
   }
 `;
 
@@ -83,15 +83,14 @@ export const HeroImg = styled.img`
   @media screen and (${props => props.theme.media.tablet}) {
     margin-top: -100px;
     min-width: 960px;
-    min-height: 927px;
+    min-height: 915px;
   }
 
   @media screen and (${props => props.theme.media.desktop}) {
     margin-top: 0;
-    min-width: 896px;
+    min-width: 872px;
     max-width: 842px;
-    max-height: auto;
-    min-height: 924px;
+    min-height: 896px;
   }
 `;
 
