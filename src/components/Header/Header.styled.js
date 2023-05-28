@@ -19,11 +19,4 @@ export const HeaderContain = styled.div`
     width: 100%;
     height: 48px;
   }
-
-  /* display: flex;
-  justify-content: space-between;
-  text-align: center;
-  width: 100%;
-  height: 48px;
-  padding: 0 16px; */
-`;
+  `;
