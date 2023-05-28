@@ -19,6 +19,9 @@ import {
 
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
 
+// import { useEffect } from 'react';
+import Loader from 'components/Loader/Loader';
+
 export default function NoticesPage() {
   // const [query, setQuery] = useState('');
   // const { isLoggedIn } = useSelector(selectIsLoggedIn);
@@ -104,14 +107,22 @@ export default function NoticesPage() {
   return (
     <>
       <h1>Find your favorite pet</h1>
+
       <NoticesSearch onFormSubmit={onFormSubmit} />
       <NoticesCategoriesNav isUser={selectIsLoggedIn} />
       {/* {notices.length > 0 && (
         <NoticesCategoriesList onClose={toggleModal} pets={notices} /> */}
       {/* <NoticesSearch /> */}
       {/* <NoticesCategoriesNav /> */}
-      {isLoading ? (
+      {/* {isLoading ? (
         <>Loading...</>
+      ) : (
+        <NoticesCategoriesList onClose={toggleModal} pets={visibleNotices} />
+      )} */}
+      {/* <NoticesSearch /> */}
+      {/* <NoticesCategoriesNav /> */}
+      {isLoading ? (
+        <Loader />
       ) : (
         <NoticesCategoriesList onClose={toggleModal} pets={visibleNotices} />
       )}
