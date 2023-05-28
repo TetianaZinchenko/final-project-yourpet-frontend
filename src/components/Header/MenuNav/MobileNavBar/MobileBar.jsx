@@ -1,26 +1,29 @@
+import { AiOutlineClose } from 'react-icons/ai';
+
+import { AuthNav } from 'components/Header/AuthNav/AuthNav';
+import { UserNav } from 'components/Header/UserNav/UserNav';
+import { Logo } from 'components/Header/Logo/Logo';
+
 import {
+  MobileBtn,
+  MenuMobileHeader,
+  MobileContainUser,
   NavContain,
   LinksWrapper,
   LinkItem,
   StyledLink,
 } from './MobileBar.styled';
-import { AuthNav } from 'components/Header/AuthNav/AuthNav';
-import { UserNav } from 'components/Header/UserNav/UserNav';
-import { Logo } from 'components/Header/Logo/Logo';
-import { AiOutlineClose } from 'react-icons/ai';
-import { MobileBtn, MenuMobileHeader } from './MobileBar.styled';
 
 export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {
   return (
     <NavContain>
       <MenuMobileHeader>
-        <Logo />
+        <Logo handleClose={handleClose} />
         <MobileBtn>
           <AiOutlineClose size={24} color="#FFC107" onClick={handleClose} />
         </MobileBtn>
       </MenuMobileHeader>
-
-      <LinksWrapper>
+      <MobileContainUser>
         {isMobile ? (
           isLoggedIn ? (
             <UserNav />
@@ -28,13 +31,15 @@ export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {
             <AuthNav handleClose={handleClose} />
           )
         ) : null}
-
+      </MobileContainUser>
+      <LinksWrapper>
         <LinkItem>
           <StyledLink to="/news" onClick={handleClose}>
             News
           </StyledLink>
         </LinkItem>
         <LinkItem>
+          {/* <CurrentLink to="/notices/sell" onClick={handleClose}> */}
           <StyledLink to="/notices/sell" onClick={handleClose}>
             Find pet
           </StyledLink>

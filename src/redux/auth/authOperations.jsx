@@ -3,66 +3,68 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { selectToken } from './authSelectors';
 
+axios.defaults.baseURL = 'http://localhost:3000/api';
 
-axios.defaults.baseURL = 'http://localhost:3000/api/users';
-
-
-const setAuthHeader = token=> {
+const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-const clearAuthHeader = ()=> {
+const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const signUp = createAsyncThunk
+export const signUp = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/register', credentials);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      if (error.response.data.message === 'Email in use') {
+        toast.error('This mail is already in use');
+      }
 
-('auth/register', async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post('/register', credentials);
-    setAuthHeader(data.token);
-    return data;
-  } catch (error) {
-    if (error.response.data.message === 'Email in use') {
-
-      toast.error('This mail is already in use')
-
+      return thunkAPI.rejectWithValue(error.message);
     }
-
-    return thunkAPI.rejectWithValue(error.message);
   }
-});
+);
 
-export const signIn = createAsyncThunk('auth/signIn', async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post('/login', credentials);
-    setAuthHeader(data.token);
-    return data;
-  } catch (error) {
-    if (error.response.status === 401 || error.response.status === 500) {
-      toast.error('incorrect data entered');
+export const signIn = createAsyncThunk(
+  'auth/signIn',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      setAuthHeader(data.token);
+
+      return data;
+    } catch (error) {
+      if (error.response.status === 401 || error.response.status === 500) {
+        toast.error('incorrect data entered');
+      }
+      return thunkAPI.rejectWithValue(error.message);
     }
-    return thunkAPI.rejectWithValue(error.message);
   }
-});
+);
 
-export const signInWhithToken = createAsyncThunk('auth/signInWhithToken', async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post('/login/with-token', credentials);
-    setAuthHeader(data.token);
-    return data;
-  } catch (error) {
-    if (error.response.status === 401 || error.response.status === 500) {
-
-      toast.error('incorrect data entered')
-
+export const signInWhithToken = createAsyncThunk(
+  'auth/signInWhithToken',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/login/with-token', credentials);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      if (error.response.status === 401 || error.response.status === 500) {
+        toast.error('incorrect data entered');
+      }
+      return thunkAPI.rejectWithValue(error.message);
     }
-    return thunkAPI.rejectWithValue(error.message);
   }
-});
+);
 
-export const logOut = createAsyncThunk('/logOut', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
-    await axios.post('/logout');
+    await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -79,7 +81,7 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       setAuthHeader(token);
-      const { data } = await axios.get('/current');
+      const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -87,11 +89,14 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const updateInfo = createAsyncThunk('/auth/update', async (updatedData, thunkAPI) => {
-  try {
-    const { data } = await axios.patch('/update', updatedData);
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const updateInfo = createAsyncThunk(
+  '/auth/update',
+  async (updatedData, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/users/update', updatedData);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
