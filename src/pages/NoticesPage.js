@@ -4,7 +4,7 @@ import { NoticesCategoriesList } from '../components/Notices/NoticesCategoriesLi
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { fetchNotices, getUsersNotices } from 'redux/notices/noticesOperations';
+import { fetchNotices, /*getUsersNotices*/ } from 'redux/notices/noticesOperations';
 // import { selectAuth, getUser } from 'redux/auth/authSelectors';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
@@ -83,7 +83,7 @@ export default function NoticesPage() {
     if (categoryName === 'my-pets') {
       if (query) searchQuery.query = query;
 
-      dispatch(getUsersNotices({ category: categoryName, ...searchQuery }));
+      dispatch(fetchNotices({ category: categoryName, ...searchQuery }));
 
       setSearchParams(searchQuery);
     }
@@ -106,8 +106,6 @@ export default function NoticesPage() {
 
   return (
     <>
-      <h1>Find your favorite pet</h1>
-
       <NoticesSearch onFormSubmit={onFormSubmit} />
       <NoticesCategoriesNav isUser={selectIsLoggedIn} />
       {/* {notices.length > 0 && (
