@@ -39,6 +39,7 @@ export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {
           </StyledLink>
         </LinkItem>
         <LinkItem>
+//           <CurrentLink to="/notices/sell" onClick={handleClose}>
           <StyledLink to="/notices/sell" onClick={handleClose}>
             Find pet
           </StyledLink>
