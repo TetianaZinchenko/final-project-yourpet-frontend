@@ -7,7 +7,7 @@ export const MobileBtn = styled.div`
 
   @media ((min-width: 320px) and (max-width: 767px)) {
     display: block;
-    top: 25px;
+    top: 20px;
     right: 25px;
     position: absolute;
     cursor: pointer;
@@ -19,7 +19,7 @@ export const MobileBtn = styled.div`
   @media ((min-width: 768px) and (max-width: 1279px)) {
     display: block;
     right: 16px;
-    top: 30px;
+    top: 29px;
     position: absolute;
     cursor: pointer;
     z-index: 100;
