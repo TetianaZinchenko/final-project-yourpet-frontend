@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {  Formik } from 'formik';
-import * as yup from 'yup';
+import { object, string, ref } from 'yup';
 import { FcGoogle } from 'react-icons/fc'
 
 import {signUp } from 'redux/auth/authOperations';
@@ -21,8 +21,8 @@ import icons from '../../icons/icons.svg';
 
 
 
-const RegisterSchema = yup.object().shape({
-  password: yup.string()
+const RegisterSchema = object().shape({
+  password: string()
     .min(6, 'Too short min 6 characters')
     .max(16, 'Too long max 16 characters')
     .matches(
@@ -31,9 +31,9 @@ const RegisterSchema = yup.object().shape({
     )
     .required('Password is required')
     .trim(),
-  confirmPassword: yup.string()
+  confirmPassword: string()
     .required('Please confirm your password')
-    .oneOf([yup.ref('password')], 'Passwords does not match'),
+    .oneOf([ref('password')], 'Passwords does not match'),
   email: yup.string()
     .email('Enter a valid Email')
     .required('Email is required')

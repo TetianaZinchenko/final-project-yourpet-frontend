@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import * as yup from 'yup';
+import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
 import { Formik} from 'formik';
 import icons from '../../icons/icons.svg'
@@ -21,14 +21,14 @@ import {
 
 
 const LoginSchema =
-  yup.object().shape({
-    email: yup
-      .string()
+  object().shape({
+    email:
+      string()
       .required('Email is required')
       .email('Enter a valid Email')
     .trim(),
-    password: yup
-      .string()
+    password:
+      string()
       .required('Password is required')
       .min(6, 'Too short min 6 characters')
       .max(16, 'Too long max 16 characters')
