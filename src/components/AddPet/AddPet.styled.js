@@ -39,7 +39,7 @@ export const Title = styled.h2`
 export const Forma = styled(Form)`
   position: relative;
   width: 280px;
-  display: flex;
+  // display: flex;
   // flex-direction: column;
   // justify-content: center;
   // align-items: center;
@@ -55,15 +55,35 @@ export const Forma = styled(Form)`
     margin: 82px auto;
   }
   @media (min-width: 1280px) {
-    width: 618px;
+    width: 458px;
+    min-height: 548px;
     padding: 20px 32px;
   }
   > div {
     position: relative;
+    margin-bottom: 30px;
   }
   :last-child {
     font-size: 12px;
   }
+`;
+
+export const Stepper = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+export const Step = styled.div`
+  width: calc(100% / 3);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+`;
+
+export const StepLine = styled.div`
+  background-color: #cce4fb;
+  height: 8px;
+  border-radius: 8px;
 `;
 
 export const ShowPassword = styled.span`
@@ -100,8 +120,15 @@ export const Input = styled(Field)`
     padding: 14px 0 13px 32px;
   }
   @media (min-width: 1280px) {
-    width: 458px;
+    width: 394px;
   }
+`;
+
+export const Option = styled.label`
+  border-radius: 40px;
+  background-color: #cce4fb;
+  padding: 8px 16px;
+  margin-bottom: 30px;
 `;
 
 export const Button = styled.button`
@@ -161,12 +188,38 @@ export const Button = styled.button`
 export const ErrBox = styled.div`
   position: absolute;
   white-space: nowrap;
-  bottom: 0;
+  bottom: -4px;
   left: 15px;
   color: red;
   font-size: 14px;
   @media (min-width: 768px) {
     left: 33px;
+  }
+`;
+
+export const AppBox = styled.div`
+  position: absolute;
+  white-space: nowrap;
+  bottom: 0;
+  left: 15px;
+  color: #00c3ad;
+  font-size: 14px;
+  @media (min-width: 768px) {
+    left: 33px;
+  }
+`;
+
+export const ClearInput = styled.span`
+  display: inline-block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 15px;
+  top: 13px;
+  cursor: pointer;
+  svg {
+    width: inherit;
+    height: inherit;
   }
 `;
 
