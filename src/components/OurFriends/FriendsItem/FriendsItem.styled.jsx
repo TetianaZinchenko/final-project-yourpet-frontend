@@ -1,5 +1,15 @@
 import styled from '@emotion/styled';
 
+
+export const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100vw;
+  height: 100%;
+`;
+
 export const PageTitle = styled.h2`
   font-weight: 700;
   font-size: 24px;
