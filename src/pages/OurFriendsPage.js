@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import OurFriends from '../components/OurFriends/OurFriends';
 import Loader from '../components/Loader/Loader';
-import { PageTitle, LoaderWrap, ErrorText } from '../components/OurFriends/FriendsItem/FriendsItem.styled';
+import { PageTitle, LoaderWrap, ErrorText, Wrapper } from '../components/OurFriends/FriendsItem/FriendsItem.styled';
 
 import { fetchFriends } from '../redux/friends/friendsOperations';
 import { getAllFriends, loading, error } from '../redux/friends/friendsSelectors';
@@ -23,9 +23,11 @@ const OurFriendsPage = () => {
   return (
     <>
       <PageTitle>Our Friends</PageTitle>
-      {isLoading && <LoaderWrap> <Loader /> </LoaderWrap>}
-      {!isLoading && !isError && <OurFriends friends={friends} />}
-      {isError && <ErrorText>{`${isError}, try again later`}</ErrorText>} 
+      <Wrapper>
+        {isLoading && <LoaderWrap> <Loader /> </LoaderWrap>}
+        {!isLoading && !isError && <OurFriends friends={friends} />}
+        {isError && <ErrorText>{`${isError}, try again later`}</ErrorText>}
+      </Wrapper>
     </>
   );
 };
