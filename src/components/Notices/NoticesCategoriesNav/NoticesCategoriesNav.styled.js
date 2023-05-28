@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { theme } from 'theme/theme';
 
 export const List = styled.ul`
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 
   @media screen and (min-width: ${theme.media.tablet}) {
+    margin-top: 43px;
     gap: 12px;
   }
 `;
