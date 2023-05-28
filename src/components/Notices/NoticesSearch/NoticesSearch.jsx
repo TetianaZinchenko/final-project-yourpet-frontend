@@ -2,36 +2,37 @@ import { ReactComponent as SearchIcon } from '../../../icons/search.svg';
 import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
+import { Title, Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
 
 export const NoticesSearch = ({ onFormSubmit }) => {
   const [query, setQuery] = useState('');
 
-  // useEffect(() => {
-  //   if (!query) onFormSubmit(query);
-  // }, [onFormSubmit, query]);
+  useEffect(() => {
+    if (!query) onFormSubmit(query);
+  }, [onFormSubmit, query]);
 
-  useEffect(() => {})
-
-  const submitHandler = event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     onFormSubmit(query);
+    setQuery('');
   };
 
-  const onInputChange = event => {
-    const searchQuery = event.target.value;
+  const onChangeInput = event => {
+    const searchQuery = event.target.value.toLowerCase();
 
     setQuery(searchQuery);
   };
 
   return (
-    <Form onSubmit={submitHandler}>
+    <>
+    <Title>Find your favorite pet</Title>
+    <Form onSubmit={handleSubmit}>
       <Input
         type="text"
         name="query"
         id="searchQuery"
-        onChange={onInputChange}
+        onChange={onChangeInput}
         value={query}
         placeholder="Search"
       />
@@ -42,6 +43,7 @@ export const NoticesSearch = ({ onFormSubmit }) => {
         <CrossIcon />
       </ClearUpBtn>
     </Form>
+    </>
   );
 };
 

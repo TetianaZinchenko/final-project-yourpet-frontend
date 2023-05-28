@@ -16,6 +16,11 @@ import { fetchNotices } from 'redux/notices/operationsNotices';
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 
+import { useParams,useSearchParams } from 'react-router-dom';
+import { getUser } from 'redux/auth/authSelectors';
+
+import {getUsersNotices} from 'redux/notices/operationsNotices';
+
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export default function NoticesPage() {
@@ -23,15 +28,37 @@ export default function NoticesPage() {
   // const { isLoggedIn } = useSelector(selectIsLoggedIn);
   const [showModal, setShowModal] = useState(false);
   const [pet, setPet] = useState({});
+  const [query, setQuery] = useState('');
 
   const dispatch = useDispatch();
   // const isLoading = useSelector(getIsLoading);
   const notices = useSelector(getNotices);
   // const error = useSelector(getError);
 
+  const { categoryName } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { selectIsLoggedIn } = useSelector(getUser);
+  const visibleNotices = notices.filter(
+    notice => notice.category === categoryName
+  );
+
+  const page = searchParams.get('page') || 1;
+
   useEffect(() => {
     dispatch(fetchNotices());
-  }, [dispatch]);
+    const searchQuery = {
+      page,
+    };
+    
+    if (categoryName === 'my-pets') {
+      if (query) searchQuery.query = query;
+
+      dispatch(getUsersNotices({ category: categoryName, ...searchQuery }));
+
+      setSearchParams(searchQuery);
+    }
+    
+  }, [categoryName, dispatch, page, query, setSearchParams]);
 
   const body = document.querySelector('body');
   showModal
@@ -45,14 +72,13 @@ export default function NoticesPage() {
   };
 
   const onFormSubmit = query => {
-    // setQuery(query);
+    setQuery(query);
   };
 
   return (
     <>
-      <h1>Find your favorite pet</h1>
       <NoticesSearch onFormSubmit={onFormSubmit} />
-      <NoticesCategoriesNav /*isUser={isLoggedIn}*/ />
+      <NoticesCategoriesNav isUser={selectIsLoggedIn} />
 
       {notices.length > 0 && (
         <NoticesCategoriesList onClose={toggleModal} pets={notices} />
