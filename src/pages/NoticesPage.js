@@ -5,8 +5,8 @@ import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { fetchNotices, getUsersNotices } from 'redux/notices/noticesOperations';
-import { selectAuth, getUser } from 'redux/auth/authSelectors';
-
+// import { selectAuth, getUser } from 'redux/auth/authSelectors';
+import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
   getNotices,
   getIsLoading,
@@ -64,7 +64,7 @@ export default function NoticesPage() {
 
   // const { categoryName } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { selectIsLoggedIn } = useSelector(getUser);
+  // const { selectIsLoggedIn } = useSelector(getUser);
   // const visibleNotices = notices.filter(
   //   notice => notice.category === categoryName
   // );
