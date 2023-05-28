@@ -14,12 +14,11 @@ import {
 
 
 export const SectionStyle = styled.section`
-    width: 100vw;
+    max-width: 100%;
     background-color: ${props => props.theme.colors.background};
 
-    ${props => props.$bg && `
-  width: 100vw;  
-  height: calc(100vh - 48px);
+    ${props => props.$bg && ` 
+  max-height: calc(100vh - 48px);
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center top;
@@ -58,6 +57,7 @@ export const SectionStyle = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
+    max-height: calc(100vh - 72px);
     background-image: url(${desc1x});
 
     @media screen and (min-device-pixel-ratio: 2),
@@ -85,13 +85,11 @@ export const Container = styled.div`
     width: 786px;
     padding-left: 32px;
     padding-right: 32px;
-    padding-top: 24px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 1280px;
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 20px;
   }
 `;
