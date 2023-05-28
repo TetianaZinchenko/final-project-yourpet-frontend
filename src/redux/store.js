@@ -11,16 +11,22 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authSlice } from './auth/authReducer';
+import { modalsReducer } from './modal/modalReducer';
+import { noticesReducer } from './notices/noticesSlice';
+import { friendsReducer } from './friends/friendsSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authSlice.reducer)
+    auth: persistReducer(authPersistConfig, authSlice.reducer),
+    modal: modalsReducer,
+    notices: noticesReducer,
+    friends: friendsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

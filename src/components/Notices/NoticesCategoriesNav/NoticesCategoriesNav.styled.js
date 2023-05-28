@@ -23,7 +23,7 @@ export const Button = styled(NavLink)`
   text-decoration: none;
 
   font-family: ${theme.fonts.main};
-  font-weight:  ${theme.fontWeights.medium};
+  font-weight: ${theme.fontWeights.medium};
   font-size: ${theme.fontSizes[1]}px;
 
   color: ${theme.colors.blue};

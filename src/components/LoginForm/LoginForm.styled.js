@@ -220,7 +220,7 @@ export const ErrBox = styled.div`
   white-space: nowrap;
   bottom: 0;
   left: 15px;
-  color:  #F43F5E;
+  color: #f43f5e;
   font-size: 14px;
   @media (min-width: 768px) {
     left: 33px;
@@ -231,7 +231,7 @@ export const AppBox = styled.div`
   white-space: nowrap;
   bottom: 0;
   left: 15px;
-  color: #00C3AD;
+  color: #00c3ad;
   font-size: 14px;
   @media (min-width: 768px) {
     left: 33px;

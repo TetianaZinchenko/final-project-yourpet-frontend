@@ -3,15 +3,14 @@ import {
   signUp,
   signIn,
   logOut,
-  refreshUser,
-  signInWhithToken,
+  currentUser,
+  updateUser,
 } from './authOperations';
 
 
 const initialState = {
   user: {
     email: null,
-    id: null,
     password: null
   },
   token: null,
@@ -25,60 +24,67 @@ export const authSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(signUp.pending, (state, _) => state)
+      .addCase(signUp.pending, state => { state.isLoading = true;
+      })
       .addCase(signUp.rejected, (state, _) => {
-        state.user = initialState.user;
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(signUp.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
-        state.user.id = payload.id;
-        state.token = payload.token;
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.user.email = action.payload.email;
+        state.user.password = action.payload.password;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(signIn.pending, (state, _) => state)
+      .addCase(signIn.pending, state=> {state.isLoading = true;})
       .addCase(signIn.rejected, (state, _) => {
-        state.user = initialState.user;
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(signIn.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
-        state.user.id = payload.id;
-        state.token = payload.token;
+      .addCase(signIn.fulfilled, (state, action) => {
+        state.user.email = action.payload.email;
+        state.user.password = action.payload.password;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(signInWhithToken.pending, (state, _) => state)
-      .addCase(signInWhithToken.rejected, (state, _) => {
-        state.user = initialState.user;
-        state.token = null;
-        state.isLoggedIn = false;
+
+      .addCase(logOut.pending, state => {
+        state.isLoading = true;
       })
-      .addCase(signInWhithToken.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
-        state.token = payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logOut.pending, (state, _) => state)
-      .addCase(logOut.fulfilled, (state, _) => {
-        state.user = initialState.user;
+      .addCase(logOut.fulfilled, (state, action) => {
+        state.user.email = null;
+        state.user.password = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.pending, (state, _) => {
+      .addCase(logOut.rejected, state => {
+        state.isLoading = false;
+      })
+      .addCase(currentUser.pending, (state, _) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.rejected, (state, _) => {
-        state.user = initialState.user;
+      .addCase(currentUser.rejected, (state, _) => {
         state.isLoggedIn = false;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
-        state.user.id = payload.id;
+      .addCase(currentUser.fulfilled, (state, action) => {
+        state.user.email = action.payload.email;
+        state.user.password = action.payload.password;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-      }),
+      })
+  .addCase(updateUser.pending, state => {
+    state.isLoading = true;
+  })
+    .addCase(updateUser.fulfilled, (state, action) => {
+      state.user.email = action.payload.email;
+      state.user.password = action.payload.password;
+      state.isLoggedIn = true;
+      state.isRefreshing = false;
+
+    })
+    .addCase(updateUser.rejected, state => {
+      state.isLoading = false;
+    }),
 });
