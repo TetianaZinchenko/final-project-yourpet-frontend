@@ -7,8 +7,7 @@ import { Logo } from 'components/Header/Logo/Logo';
 import {
   MobileBtn,
   MenuMobileHeader,
-  CurrentLink,
-  MobileContainUser,
+   MobileContainUser,
   NavContain,
   LinksWrapper,
   LinkItem,
@@ -40,9 +39,10 @@ export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {
           </StyledLink>
         </LinkItem>
         <LinkItem>
-          <CurrentLink to="/notices/sell" onClick={handleClose}>
+//           <CurrentLink to="/notices/sell" onClick={handleClose}>
+          <StyledLink to="/notices/sell" onClick={handleClose}>
             Find pet
-          </CurrentLink>
+          </StyledLink>
         </LinkItem>
         <LinkItem>
           <StyledLink to="/friends" onClick={handleClose}>

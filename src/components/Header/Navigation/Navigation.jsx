@@ -35,7 +35,9 @@ export const Navigation = ({ isLoggedIn }) => {
 
       {isDesktop && <NavBar />}
 
-      {!isMobile ? isLoggedIn ? <UserNav /> : <AuthNav /> : null}
+      {!isMobile && isLoggedIn ? <UserNav /> : null}
+      {!isMobile && !isLoggedIn ? <AuthNav /> : null}
+     
     </>
   );
  

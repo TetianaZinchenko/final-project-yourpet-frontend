@@ -82,11 +82,15 @@ export const StyledLink = styled(NavLink)`
   font-weight: inherit;
   font-family: inherit;
   color: inherit;
+   &:hover,
+  &:focus {
+      color: ${theme.colors.yellow};
+  }
+
+  &.active {
+    
+     color: ${theme.colors.yellow};
+  }
 
 `;
-export const CurrentLink = styled(NavLink)`
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  color: ${theme.colors.yellow};
-`;
+
