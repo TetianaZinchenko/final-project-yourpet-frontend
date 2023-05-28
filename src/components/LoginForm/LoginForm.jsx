@@ -20,18 +20,18 @@ import {
 
 
 
-const LoginSchema = () =>
+const LoginSchema =
   yup.object().shape({
     email: yup
       .string()
-      .required(`Email is required`)
-      .email(`Enter a valid Email`)
-      .trim(),
+      .required('Email is required')
+      .email('Enter a valid Email')
+    .trim(),
     password: yup
       .string()
-      .required(`Password is required`)
-      .min(6, `Too short min 6 characters`)
-      .max(16, `Too long max 16 characters`)
+      .required('Password is required')
+      .min(6, 'Too short min 6 characters')
+      .max(16, 'Too long max 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/,
         'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number'

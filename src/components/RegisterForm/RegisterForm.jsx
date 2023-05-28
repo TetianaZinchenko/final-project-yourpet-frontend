@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {  Formik } from 'formik';
 import * as yup from 'yup';
-import { ref } from 'yup';
-import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { FcGoogle } from 'react-icons/fc'
 
 import {signUp } from 'redux/auth/authOperations';
@@ -19,24 +17,23 @@ import {
   StyledLink,
   GoogleLink, ClearInput, AppBox,
 } from '../LoginForm/LoginForm.styled';
-import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 import icons from '../../icons/icons.svg';
 
 
 
-const RegisterSchema= () => yup.object().shape({
+const RegisterSchema = yup.object().shape({
   password: yup.string()
     .min(6, 'Too short min 6 characters')
     .max(16, 'Too long max 16 characters')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/,
-      'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number',
+      'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number'
     )
     .required('Password is required')
     .trim(),
   confirmPassword: yup.string()
     .required('Please confirm your password')
-    .oneOf([ref('password')], 'Passwords does not match'),
+    .oneOf([yup.ref('password')], 'Passwords does not match'),
   email: yup.string()
     .email('Enter a valid Email')
     .required('Email is required')
@@ -94,7 +91,7 @@ export const RegisterForm = () => {
               ) : (
                 <AppBox>Email is correct</AppBox>
               ))}
-              <ClearInput > {(!errors.email ? <svg style={{ fill: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
+              <ClearInput > {touched.email && (!errors.email ? <svg style={{ fill: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
                 :  <svg style={{ fill: '#F43F5E' }} onClick={clearInput}><use href={icons +'#icon-cross-small'}></use></svg>
                 )}</ClearInput>
             </div>
