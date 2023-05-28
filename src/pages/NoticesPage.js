@@ -12,6 +12,7 @@ import {
   // getError,
 } from 'redux/notices/noticesSelectors';
 import { useEffect } from 'react';
+import Loader from 'components/Loader/Loader';
 
 export default function NoticesPage() {
   const auth = useSelector(selectAuth);
@@ -59,11 +60,7 @@ export default function NoticesPage() {
       <h1>Find your favorite pet</h1>
       <NoticesSearch />
       <NoticesCategoriesNav />
-      {isLoading ? (
-        <>Loading...</>
-      ) : (
-        <NoticesCategoriesList pets={visibleNotices} />
-      )}
+      {isLoading ? <Loader /> : <NoticesCategoriesList pets={visibleNotices} />}
     </>
   );
 }

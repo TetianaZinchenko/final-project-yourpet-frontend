@@ -1,4 +1,8 @@
+import { toast } from 'react-hot-toast';
 import { VscHeart } from 'react-icons/vsc';
+import { useSelector } from 'react-redux';
+import { selectAuth } from 'redux/auth/authSelectors';
+import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
   Image,
   ImageContainer,
@@ -14,36 +18,69 @@ import {
 } from './ModalNotice.styled';
 
 export const ModalNoticeMore = ({
-  pet: { image, title, location, birthday, sex, name, breed, email, phone },
+  pet: {
+    avatar,
+    title,
+    location,
+    petBirthday,
+    sex,
+    name,
+    breed,
+    description,
+    owner,
+    category,
+  },
 }) => {
+  const auth = useSelector(selectAuth);
+
+  // const notify = () => toast.error('You need to sign in');
+
+  const onClickFavBtn = () => {
+    if (!auth.user.isLoggedIn) {
+      toast.error('You need to sign in');
+    }
+  };
+
   return (
     <>
       <ContainerInfo>
         <ImageContainer>
-          <Image src={image} alt="dog" />
-          <Type>in good hands</Type>
+          <Image src={avatar} alt="dog" />
+          <Type>{makeCategory(category)}</Type>
         </ImageContainer>
         <div style={{ width: '321px', padding: '0 12px' }}>
           <Title>{title}</Title>
-          <List>
-            <Item>Name: {name}</Item>
-            <Item>Birthday: {birthday}</Item>
-            <Item>Breed: {breed}</Item>
-            <Item>Place: {location}</Item>
-            <Item>The sex: {sex}</Item>
-            <Item>Email: {email}</Item>
-            <Item>Phone: {phone}</Item>
-          </List>
+          <div style={{ display: 'flex', gap: '50px' }}>
+            {' '}
+            <List>
+              <Item>Name: </Item>
+              <Item>Birthday: </Item>
+              <Item>Breed: </Item>
+              <Item>Place: </Item>
+              <Item>The sex: </Item>
+              <Item>Email: </Item>
+              <Item>Phone: </Item>
+            </List>
+            <List>
+              <Item>{name}</Item>
+              <Item>{petBirthday}</Item>
+              <Item>{breed}</Item>
+              <Item>{location}</Item>
+              <Item>{sex}</Item>
+              <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
+                {owner.email}
+              </Item>
+              <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
+                {owner.phone}
+              </Item>
+            </List>
+          </div>
         </div>
       </ContainerInfo>
-      <Comment>
-        Comments: Rich would be the perfect addition to an active family that
-        loves to play and go on walks. I bet he would love having a doggy
-        playmate too!{' '}
-      </Comment>
+      <Comment>{description}</Comment>
       <BtnContainer>
-        <ContactLink href="tel:+380971234567">Contact</ContactLink>
-        <AddToFav type="button">
+        <ContactLink href={`tel:${owner.phone}`}>Contact</ContactLink>
+        <AddToFav type="button" onClick={onClickFavBtn}>
           <span>Add to </span>
           <VscHeart size={20} />
         </AddToFav>

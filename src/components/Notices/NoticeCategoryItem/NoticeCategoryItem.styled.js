@@ -49,6 +49,7 @@ export const Title = styled.h2`
   font-size: ${fontSizes[5]}px;
   line-height: 1.37;
   margin: 0;
+  height: 66px;
 `;
 
 export const Info = styled.div`
@@ -88,6 +89,9 @@ export const BtnLaernMore = styled.button`
     color: ${colors.background};
     border: none;
     outline: none;
+    use {
+      fill: #fff;
+    }
   }
 `;
 
@@ -210,9 +214,12 @@ export const Span = styled.span`
 
   svg {
     color: ${colors.blue};
-    width: 22px;
-    height: 22px;
-    stroke-width: 1.5;
+    width: 24px;
+    height: 24px;
+
+    use {
+      fill: #54adff;
+    }
   }
 `;
 
@@ -222,4 +229,13 @@ export const SpanText = styled.span`
   font-weight: ${fontWeights.semibold};
   font-size: ${fontSizes[0]}px;
   line-height: 16px;
+`;
+
+export const SvgPaw = styled.svg`
+  width: 24px;
+  height: 24px;
+  use {
+    fill: #54adff;
+    transition: all 250ms ease-in-out;
+  }
 `;
