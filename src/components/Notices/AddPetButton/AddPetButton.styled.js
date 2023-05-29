@@ -8,7 +8,7 @@ export const Btn = styled(NavLink)`
   z-index: 999;
   top: 50%;
   translate: 0 -50%;
-  right: 20px;
+  /* right: 20px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@ export const Btn = styled(NavLink)`
   @media screen and (${media.tablet}) {
     position: static;
     margin-top: 20px;
-    margin-right: 32px;
+    /* margin-right: 32px; */
     margin-left: auto;
     gap: 8px;
     flex-direction: row;

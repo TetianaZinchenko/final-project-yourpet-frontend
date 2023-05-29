@@ -6,7 +6,7 @@ import {
   Container,
   ImageContainer,
   Info,
-  BtnLaernMore,
+  BtnLearnMore,
   BtnAddToFav,
   Type,
   SpanContainer,
@@ -52,7 +52,6 @@ export const makeCategory = category => {
       return 'in good hands';
     case 'lost-found':
       return 'lost/found';
-
     default:
       return category;
   }
@@ -151,12 +150,12 @@ export const NoticeCategoryItem = ({ pet }) => {
       </ImageContainer>
       <Info>
         <Title>{title}</Title>
-        <BtnLaernMore type="button" onClick={onSelectItemHandle}>
+        <BtnLearnMore type="button" onClick={onSelectItemHandle}>
           Learn more
           <SvgPaw>
             <use href={icons + '#icon-pawprint'}></use>
           </SvgPaw>
-        </BtnLaernMore>
+        </BtnLearnMore>
       </Info>
     </Container>
   );
