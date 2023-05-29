@@ -5,6 +5,8 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from '../theme/theme';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -22,10 +24,18 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route path="" element={<Navigate to="/main" replace />} />
           <Route path="main" element={<MainPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RestrictedRoute
+            redirectTo="/user"
+            component={<RegisterPage />}
+          />} />
+          <Route path="/login" element={ <RestrictedRoute redirectTo="/user" component={<LoginPage />} />}/>
           <Route path="/notices/:categoryName" element={<NoticesPage />} />
-          {/* Privat route */}
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
