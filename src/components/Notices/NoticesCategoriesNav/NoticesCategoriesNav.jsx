@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { List, Button } from './NoticesCategoriesNav.styled';
+import PropTypes from 'prop-types';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
@@ -31,3 +32,11 @@ export const NoticesCategoriesNav = () => {
 
   return <List>{items}</List>;
 };
+
+
+NoticesCategoriesNav.propTypes = {
+    isUser: PropTypes.bool.isRequired,
+  };
+
+
+
