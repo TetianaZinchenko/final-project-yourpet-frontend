@@ -49,6 +49,7 @@ export const Title = styled.h2`
   font-size: ${fontSizes[5]}px;
   line-height: 1.37;
   margin: 0;
+  height: 66px;
 `;
 
 export const Info = styled.div`
@@ -63,7 +64,7 @@ export const Info = styled.div`
   align-items: center;
 `;
 
-export const BtnLaernMore = styled.button`
+export const BtnLearnMore = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -88,6 +89,9 @@ export const BtnLaernMore = styled.button`
     color: ${colors.background};
     border: none;
     outline: none;
+    use {
+      fill: #fff;
+    }
   }
 `;
 
@@ -135,7 +139,42 @@ export const BtnAddToFav = styled.button`
     color: ${colors.blue};
     stroke-width: 1.5;
   }
+
   svg:hover {
+    fill: ${colors.blue};
+  }
+
+  svg.active {
+    fill: ${colors.blue};
+  }
+`;
+
+export const BtnRemoveMy = styled.button`
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 12px;
+  top: 64px;
+
+  background: #c5dff6;
+  border: none;
+  border-radius: 50px;
+
+  svg {
+    fill: ${changeColorInBtn()};
+    transition: all 200ms ease-in-out;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: ${colors.blue};
+    strokewidth: 1.5;
+  }
+
+  svg:hover {
+    fill: ${colors.blue};
+  }
+
+  svg.active {
     fill: ${colors.blue};
   }
 `;
@@ -175,9 +214,12 @@ export const Span = styled.span`
 
   svg {
     color: ${colors.blue};
-    width: 22px;
-    height: 22px;
-    stroke-width: 1.5;
+    width: 24px;
+    height: 24px;
+
+    use {
+      fill: #54adff;
+    }
   }
 `;
 
@@ -187,4 +229,13 @@ export const SpanText = styled.span`
   font-weight: ${fontWeights.semibold};
   font-size: ${fontSizes[0]}px;
   line-height: 16px;
+`;
+
+export const SvgPaw = styled.svg`
+  width: 24px;
+  height: 24px;
+  use {
+    fill: #54adff;
+    transition: all 250ms ease-in-out;
+  }
 `;

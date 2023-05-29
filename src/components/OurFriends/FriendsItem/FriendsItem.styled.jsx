@@ -1,5 +1,15 @@
 import styled from '@emotion/styled';
 
+
+export const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100vw;
+  height: 100%;
+`;
+
 export const PageTitle = styled.h2`
   font-weight: 700;
   font-size: 24px;
@@ -16,6 +26,30 @@ export const PageTitle = styled.h2`
   }
   @media screen and (min-width: 1280px) {
     margin-bottom: 60px;
+  }
+`;
+
+export const LoaderWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const ErrorText = styled.p`
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.375;
+
+  margin: 0;
+
+  padding: 10px 0 10px 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    padding: 20px 0 20px 0;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 26px;
+    padding: 30px 0 30px 0;
   }
 `;
 

@@ -1,6 +1,21 @@
 import styled from '@emotion/styled';
 import { theme } from 'theme/theme';
 
+export const Title = styled.h1`
+padding-top: 40px;
+font-family: ${theme.fonts.main};
+font-weight: ${theme.fontWeights.bold};
+font-size: ${theme.fontSizes[5]}px;
+line-height: 33px;
+text-align: center;
+
+@media screen and (${theme.media.tablet}) {
+  padding-top: 80px;
+  font-size: ${theme.fontSizes[9]}px;
+  line-height: 66px;
+  }
+`
+
 export const Form = styled.form`
   position: relative;
 
@@ -12,12 +27,12 @@ export const Form = styled.form`
 
   @media screen and (${theme.media.mobile}) {
     width: 280px;
-    margin-top: 20px;
+    margin-top: 24px;
   }
 
   @media screen and (${theme.media.tablet}) {
     width: 608px;
-    margin-top: 40px;
+    margin-top: 43px;
   }
 `;
 export const Input = styled.input`

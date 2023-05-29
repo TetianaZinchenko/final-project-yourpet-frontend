@@ -14,10 +14,6 @@ export const NavContain = styled.div`
   right: 0;
   bottom: 0;
   transition: all 0.3s;
-
-  &.active {
-    top: 0;
-  }
 `;
 
 export const MenuMobileHeader = styled.div`
@@ -35,6 +31,17 @@ export const MobileBtn = styled.div`
   cursor: pointer;
   position: absolute;
   right: 37px;
+  color:${theme.colors.yellow};
+`;
+export const MobileContainUser = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    top: 0;
+  }
 `;
 
 export const LinksWrapper = styled.ul`
@@ -44,36 +51,47 @@ export const LinksWrapper = styled.ul`
   align-items: center;
   width: 100;
   height: 100;
-
   margin: 0;
   padding: 0;
   gap: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    margin-top: 50px;
+    padding: 20px, 30px;
+    gap: 60px;
+  }
 `;
 
 export const LinkItem = styled.li`
   height: 100%;
-  font-size: ${theme.fontSizes[4]}px;
+  font-size: ${theme.fontSizes[7]}px;
   font-weight: ${theme.fontWeights.medium};
   font-family: ${theme.fonts.main};
   color: ${theme.colors.black};
   align-items: center;
   justify-content: center;
   letter-spacing: 0.04em;
+
+  @media (min-width: 768px) {
+    font-size: ${theme.fontSizes[9]}px;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
-  text-decoration: none;
   font-size: inherit;
   font-weight: inherit;
   font-family: inherit;
   color: inherit;
-
-  &:hover,
+   &:hover,
   &:focus {
-    color: ${theme.colors.yellow};
+      color: ${theme.colors.yellow};
   }
 
   &.active {
-    color: ${theme.colors.yellow};
+    
+     color: ${theme.colors.yellow};
   }
+
 `;
+
