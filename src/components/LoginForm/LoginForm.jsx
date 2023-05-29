@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import React from 'react';
 import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
@@ -29,7 +28,7 @@ const LoginSchema = object().shape({
     .min(6, 'Too short min 6 characters')
     .max(16, 'Too long max 16 characters')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
       'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number'
     )
     .trim(),
@@ -39,15 +38,8 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const [showPass, setShowPass] = useState(false);
   const formSubmit = ({ email, password }, { resetForm }) => {
-    try {
-      dispatch(signIn({ email, password }));
-      resetForm();
-      <Navigate to="/user" replace />;
-    } catch (error) {
-      // Обработка ошибок, если не удалось выполнить выход из системы
-      console.error('Error logging out:', error);
-      // Дополнительный код для отображения сообщения об ошибке или выполнения других действий
-    }
+    dispatch(signIn({ email, password }));
+    resetForm();
   };
 
   const showPassword = () => {
@@ -86,11 +78,14 @@ export const LoginForm = () => {
                 {' '}
                 {touched.email &&
                   (!errors.email ? (
-                    <svg style={{ fill: '#00C3AD' }}>
+                    <svg style={{ fill: 'white', stroke: '#00C3AD' }}>
                       <use href={icons + '#icon-check'}></use>
                     </svg>
                   ) : (
-                    <svg style={{ fill: '#F43F5E' }} onClick={clearInput}>
+                    <svg
+                      style={{ fill: 'white', stroke: '#F43F5E' }}
+                      onClick={clearInput}
+                    >
                       <use href={icons + '#icon-cross-small'}></use>
                     </svg>
                   ))}

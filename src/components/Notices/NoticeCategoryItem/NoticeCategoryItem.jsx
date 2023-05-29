@@ -97,7 +97,7 @@ export const NoticeCategoryItem = ({ pet }) => {
   };
 
   const favoriteClickHandle = () => {
-    if (!auth.user.isLoggedIn) {
+    if (!isLoggedIn) {
       toast.error('You need to sign in');
     }
     dispatch(
