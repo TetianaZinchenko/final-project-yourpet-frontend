@@ -3,6 +3,7 @@ import { theme } from 'theme/theme';
 const { fonts, fontSizes, fontWeights, colors, media } = theme;
 
 export const PetItem = styled.li`
+  width: 280px;
   padding: 16px 20px 40px;
   border-radius: 20px;
 
@@ -19,12 +20,14 @@ export const PetItem = styled.li`
   }
 
   @media screen and (${media.tablet}) {
+    width: 703px;
     min-height: 256px;
     padding: 20px;
     border-radius: 40px;
     flex-direction: row;
   }
   @media screen and (${media.desktop}) {
+    width: 821px;
     min-height: auto;
     gap: 32px;
   }
@@ -34,6 +37,7 @@ export const PetImage = styled.img`
   width: 240px;
   height: 240px;
   border-radius: 20px;
+  object-fit: cover;
 
   @media screen and (${media.tablet}) {
     width: 128px;
@@ -47,6 +51,7 @@ export const PetImage = styled.img`
 `;
 
 export const PetTextWrap = styled.div`
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -119,24 +124,5 @@ export const PetTextComment = styled(PetText)`
   @media screen and (${media.desktop}) {
     padding-top: 4px;
     line-height: 22px;
-  }
-`;
-
-export const TitleDelete = styled.h2`
-  margin-bottom: 24px;
-  text-align: center;
-
-  font-family: ${fonts.main};
-  font-weight: ${fontWeights.medium};
-  font-size: ${fontSizes[5]}px;
-  line-height: 33px;
-  letter-spacing: 0.04em;
-
-  color: ${colors.black};
-
-  @media screen and (${media.tablet}) {
-    margin-bottom: 52px;
-    font-size: 36px;
-    line-height: 49px;
   }
 `;
