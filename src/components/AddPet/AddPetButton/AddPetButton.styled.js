@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { NavLink } from 'react-router-dom';
 import { theme } from 'theme/theme';
 const { fonts, fontSizes, fontWeights, colors, shadows, media } = theme;
 
@@ -40,7 +39,7 @@ export const Btn = styled.button`
 
   @media screen and (${media.tablet}) {
     position: static;
-    /* margin-top: 20px; */
+    margin-top: 60px;
     /* margin-right: 32px; */
     margin-left: auto;
     gap: 8px;
