@@ -1,6 +1,6 @@
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
-// export const getUser = state => state.auth;
+export const getUser = state => state.auth;
 
 export const selectUser = state => state.auth;
 

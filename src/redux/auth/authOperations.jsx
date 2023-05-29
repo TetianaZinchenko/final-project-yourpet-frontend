@@ -54,7 +54,7 @@ export const signIn = createAsyncThunk(
       setAuthHeader(data.token);
       localStorage.setItem('refreshToken', data.refreshToken);
       // toast.success(`Welcome, ${data.user.name}!`);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       if (error.response.status === 401 || error.response.status === 500) {
@@ -134,3 +134,15 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const getUser = createAsyncThunk(
+  'auth/getUser',
+  async (userId, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/users/${userId}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

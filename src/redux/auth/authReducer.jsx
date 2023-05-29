@@ -6,6 +6,7 @@ import {
   logOut,
   currentUser,
   updateUser,
+  getUser,
 } from './authOperations';
 
 const initialState = {
@@ -48,7 +49,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload.data;
+        state.user = action.payload.data.authentificationUser;
         // state.user.token = action.payload.data.token;
         state.user.isLoggedIn = true;
         state.isLoading = false;
@@ -92,6 +93,18 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(updateUser.rejected, state => {
+        state.isLoading = false;
+      })
+
+      .addCase(getUser.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.user = action.payload.data.posts;
         state.isLoading = false;
       }),
 });

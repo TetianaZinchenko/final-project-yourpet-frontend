@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
@@ -37,10 +38,14 @@ const LoginSchema = object().shape({
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
-  const formSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(signIn({ email, password }));
+
+  const formSubmit = async ({ email, password }, { resetForm }) => {
+    await dispatch(signIn({ email, password }));
     resetForm();
+    // Redirect to '/user' upon successful login
+    navigate('/user');
   };
 
   const showPassword = () => {

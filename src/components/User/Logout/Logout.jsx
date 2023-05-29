@@ -1,8 +1,8 @@
-import React, { useState, Link } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
-import { Navigate } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import Modal from '../../Modal';
 import logOutIcon from '../../../icons/logout.svg';
 import logOutIconWhite from '../../../icons/logoutWithe.svg';
@@ -11,8 +11,7 @@ import styles from './Logout.module.css';
 export const Logout = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
-
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setModalVisible(true);
@@ -25,9 +24,9 @@ export const Logout = () => {
   const handleConfirmLogout = async () => {
     try {
       await dispatch(logOut());
-      console.log('qqqqqqqqq');
+
+      navigate('/main');
       // Redirect to the main page after logout
-      return <Link to="/main">Go to User Page</Link>;
     } catch (error) {
       // Handle error if logout fails
       console.error('Error logging out:', error);

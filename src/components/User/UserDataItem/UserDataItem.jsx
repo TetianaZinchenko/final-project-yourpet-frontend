@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getUser } from '../../../redux/auth/authOperations';
-import { selectUser } from '../../../redux/auth/authSelectors';
+import { getUser } from '../../../redux/auth/authOperations';
+import { selectUser, selectAuth } from '../../../redux/auth/authSelectors';
 import chekIcon from '../../../icons/check.svg';
 import editIcon from '../../../icons/edit-2.svg';
 import styles from './UserDataItem.module.css';
@@ -50,12 +50,16 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
 
 export const UserDataItem = () => {
   const [activeField, setActiveField] = useState(null);
+  const auth = useSelector(selectAuth);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  // useEffect(() => {
-  //   dispatch(getUser()); // Запрос данных пользователя при первой загрузке компонента
-  // }, [dispatch]);
+  console.log(auth._id);
+  console.log(user.user);
+
+  useEffect(() => {
+    dispatch(getUser(auth._id)); // Запрос данных пользователя при первой загрузке компонента
+  }, [dispatch, auth._id]);
 
   const handleSetActiveField = field => {
     setActiveField(activeField === field ? null : field);
@@ -67,7 +71,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Name:</p>
         <EditableField
           label="Name"
-          initialValue={user.name}
+          initialValue={user.user.name}
           isActive={activeField === 'name'}
           setActiveField={() => handleSetActiveField('name')}
         />
@@ -76,7 +80,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Email:</p>
         <EditableField
           label="Email"
-          initialValue={user.email}
+          initialValue={user.user.email}
           isActive={activeField === 'email'}
           setActiveField={() => handleSetActiveField('email')}
         />
@@ -85,7 +89,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Birthday:</p>
         <EditableField
           label="Birthday"
-          initialValue={user.birthday}
+          initialValue={user.user.birthday}
           isActive={activeField === 'birthday'}
           setActiveField={() => handleSetActiveField('birthday')}
         />
@@ -94,7 +98,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Phone:</p>
         <EditableField
           label="Phone"
-          initialValue={user.phone}
+          initialValue={user.user.phone}
           isActive={activeField === 'phone'}
           setActiveField={() => handleSetActiveField('phone')}
         />
@@ -103,7 +107,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>City:</p>
         <EditableField
           label="City"
-          initialValue={user.location}
+          initialValue={user.user.location}
           isActive={activeField === 'city'}
           setActiveField={() => handleSetActiveField('city')}
         />

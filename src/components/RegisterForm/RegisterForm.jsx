@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { object, string, ref } from 'yup';
 import { FcGoogle } from 'react-icons/fc';
 
-import { signIn, signUp } from 'redux/auth/authOperations';
+import { signUp, signIn } from 'redux/auth/authOperations';
 
 import {
   Forma,
@@ -44,16 +45,17 @@ export const RegisterForm = () => {
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const formSubmit = ({ email, password }, { resetForm }) => {
+  const formSubmit = async ({ email, password }, { resetForm }) => {
     try {
-      dispatch(signUp({ email, password }));
-      // dispatch(signIn({ email, password }));
+      await dispatch(signUp({ email, password }));
+      await dispatch(signIn({ email, password }));
       resetForm();
+      // Redirect to '/user' upon successful login
+      navigate('/user');
     } catch (error) {
-      // Handle error if logout fails
       console.error('Error logging out:', error);
-      // Add code to display an error message or perform other actions
     }
   };
 
