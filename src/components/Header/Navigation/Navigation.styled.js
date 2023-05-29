@@ -23,7 +23,7 @@ export const MobileBtn = styled.div`
     position: absolute;
     cursor: pointer;
     z-index: 100;
-   
+    
     color:${theme.colors.yellow}  
     }
 `;

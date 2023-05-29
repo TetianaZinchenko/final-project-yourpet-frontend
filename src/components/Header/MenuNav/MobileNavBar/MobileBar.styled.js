@@ -31,6 +31,7 @@ export const MobileBtn = styled.div`
   cursor: pointer;
   position: absolute;
   right: 37px;
+  color:${theme.colors.yellow};
 `;
 export const MobileContainUser = styled.div`
   display: flex;
