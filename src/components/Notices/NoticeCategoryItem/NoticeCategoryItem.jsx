@@ -115,11 +115,11 @@ export const NoticeCategoryItem = ({ pet }) => {
       <ImageContainer>
         <Image src={avatar} alt={title} />
         <Type>{makeCategory(category)}</Type>
+        <BtnAddToFav type="button" onClick={favoriteClickHandle}>
+          <FiHeart size={20} className={isFavorite ? 'active' : null} />
+        </BtnAddToFav>
         {isLoggedIn && (
           <>
-            <BtnAddToFav type="button" onClick={favoriteClickHandle}>
-              <FiHeart size={20} className={isFavorite ? 'active' : null} />
-            </BtnAddToFav>
             {isOwner && (
               <BtnRemoveMy type="button" onClick={removeClickHandle}>
                 <FiTrash2 size={20} />
