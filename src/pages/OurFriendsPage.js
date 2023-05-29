@@ -5,12 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import OurFriends from '../components/OurFriends/OurFriends';
 import Loader from '../components/Loader/Loader';
-import friends from '../components/OurFriends/sponsors.json';
 import {
   PageTitle,
   LoaderWrap,
   ErrorText,
+  Wrapper,
 } from '../components/OurFriends/FriendsItem/FriendsItem.styled';
+
+import friends from '../components/OurFriends/sponsors.json';
 
 import { fetchFriends } from '../redux/friends/friendsOperations';
 import { loading, error } from '../redux/friends/friendsSelectors';
@@ -21,6 +23,7 @@ import { loading, error } from '../redux/friends/friendsSelectors';
 // } from '../redux/friends/friendsSelectors';
 
 const OurFriendsPage = () => {
+  // const friends = useSelector(getAllFriends);
   const isLoading = useSelector(loading);
   const isError = useSelector(error);
   const dispatch = useDispatch();
@@ -32,14 +35,16 @@ const OurFriendsPage = () => {
   return (
     <>
       <PageTitle>Our Friends</PageTitle>
-      {isLoading && (
-        <LoaderWrap>
-          {' '}
-          <Loader />{' '}
-        </LoaderWrap>
-      )}
-      {!isLoading && !isError && <OurFriends friends={friends} />}
-      {isError && <ErrorText>{`${isError}, try again later`}</ErrorText>}
+      <Wrapper>
+        {isLoading && (
+          <LoaderWrap>
+            {' '}
+            <Loader />{' '}
+          </LoaderWrap>
+        )}
+        {!isLoading && !isError && <OurFriends friends={friends} />}
+        {isError && <ErrorText>{`${isError}, try again later`}</ErrorText>}
+      </Wrapper>
     </>
   );
 };

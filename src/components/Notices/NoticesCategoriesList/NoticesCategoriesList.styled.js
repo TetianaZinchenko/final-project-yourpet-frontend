@@ -12,7 +12,8 @@ export const List = styled.ul`
   display: flex;
   gap: 24px;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: center;
 
   @media screen and (${media.tablet}) {

@@ -1,5 +1,5 @@
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { useAuth } from 'hooks/useAuth';
 import { AuthNav } from 'components/Header/AuthNav/AuthNav';
 import { UserNav } from 'components/Header/UserNav/UserNav';
 import { Logo } from 'components/Header/Logo/Logo';
@@ -7,20 +7,21 @@ import { Logo } from 'components/Header/Logo/Logo';
 import {
   MobileBtn,
   MenuMobileHeader,
-   MobileContainUser,
+  MobileContainUser,
   NavContain,
   LinksWrapper,
   LinkItem,
   StyledLink,
 } from './MobileBar.styled';
 
-export const MobileNavBar = ({ handleClose, isMobile, isLoggedIn }) => {
+export const MobileNavBar = ({ handleClose, isMobile }) => {
+  const { isLoggedIn } = useAuth();
   return (
     <NavContain>
       <MenuMobileHeader>
         <Logo handleClose={handleClose} />
         <MobileBtn>
-          <AiOutlineClose size={24} color="#FFC107" onClick={handleClose} />
+          <AiOutlineClose size={24} onClick={handleClose} />
         </MobileBtn>
       </MenuMobileHeader>
       <MobileContainUser>

@@ -1,9 +1,12 @@
 .wheelAndHamster {
   --dur: 1s;
-  position: relative;
+  position: absolute;
   width: 12em;
   height: 12em;
   font-size: 14px;
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .wheel,

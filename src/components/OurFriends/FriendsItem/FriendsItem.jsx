@@ -13,7 +13,7 @@ import {
   WorkTime,
 } from './FriendsItem.styled';
 
-import defaultFriendImage from '../../../images/friends/03_mobile.png';
+import defaultFriendImage from '../../../images/friends/placeholder.jpg';
 import WorkTimePopup from './WorkTimePopup';
 
 const dayNow = new Date();

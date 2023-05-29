@@ -10,7 +10,7 @@ export const MoreInfo = () => {
     fileInputRef.current.click();
   };
     return (
-        <>
+        <div>
             <div style={{display: 'flex', alignItems: 'center', gap: '16px'}}>
                 <Title style={{ display: 'inline', fontSize: '20px', marginBottom: '0px', width: '114px' }}>Load the pet's image:</Title>
                 <div className="file-input-container">
@@ -29,12 +29,15 @@ export const MoreInfo = () => {
             </div>
             <Title style={{ display: 'inline', fontSize: '20px', marginBottom: '0px', width: '114px' }}>Comment</Title>
             <Input
+                as='textarea'
+                arrows='2'
                 type='text'
                 name='comment'
                 placeholder="Type a comment"
                 autoComplete="off"
+                style={{ borderRadius: '20px', maxWidth: '100%'}}
             >
             </Input>
-        </>
+        </div>
     )
 }

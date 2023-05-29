@@ -1,20 +1,19 @@
 import { FiHeart, FiTrash2 } from 'react-icons/fi';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
-// import { AiOutlineClockCircle } from 'react-icons/ai';
-// import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
+import { toast } from 'react-hot-toast';
 import {
   Image,
   Title,
   Container,
   ImageContainer,
   Info,
-  BtnLaernMore,
+  BtnLearnMore,
   BtnAddToFav,
   Type,
   SpanContainer,
   Span,
   SpanText,
   BtnRemoveMy,
+  SvgPaw,
 } from './NoticeCategoryItem.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,10 +21,7 @@ import { showModal } from 'redux/modal/modalReducer';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { favoriteNotice } from 'redux/notices/noticesOperations';
 
-import pawprint from '../../../icons/pawprint.svg';
-import clock from '../../../icons/clock.svg';
-import female from '../../../icons/female.svg';
-import male from '../../../icons/male.svg';
+import icons from '../../../icons/icons.svg';
 
 const getCurrentAge = date => {
   const dateArr = date.split('.');
@@ -47,12 +43,32 @@ const makeCityName = cityName => {
 };
 
 const choseSexIcon = sex => {
-  return sex.toLowerCase() === 'female' ? female : male;
+  return sex.toLowerCase() === 'female' ? '#icon-female-1' : '#icon-male-1';
+};
+
+export const makeCategory = category => {
+  switch (category) {
+    case 'for-free':
+      return 'in good hands';
+    case 'lost-found':
+      return 'lost/found';
+    default:
+      return category;
+  }
 };
 
 export const NoticeCategoryItem = ({ pet }) => {
-  const { _id, title, location, petBirthday, sex, image, favorite, owner } =
-    pet;
+  const {
+    _id,
+    title,
+    location,
+    petBirthday,
+    sex,
+    avatar,
+    favorite,
+    owner,
+    category,
+  } = pet;
 
   const auth = useSelector(selectAuth);
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -81,6 +97,9 @@ export const NoticeCategoryItem = ({ pet }) => {
   };
 
   const favoriteClickHandle = () => {
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
+    }
     dispatch(
       favoriteNotice({
         id: _id,
@@ -94,13 +113,13 @@ export const NoticeCategoryItem = ({ pet }) => {
   return (
     <Container>
       <ImageContainer>
-        <Image src={image} alt={title} />
-        <Type>in good hands</Type>
+        <Image src={avatar} alt={title} />
+        <Type>{makeCategory(category)}</Type>
+        <BtnAddToFav type="button" onClick={favoriteClickHandle}>
+          <FiHeart size={20} className={isFavorite ? 'active' : null} />
+        </BtnAddToFav>
         {isLoggedIn && (
           <>
-            <BtnAddToFav type="button" onClick={favoriteClickHandle}>
-              <FiHeart size={20} className={isFavorite ? 'active' : null} />
-            </BtnAddToFav>
             {isOwner && (
               <BtnRemoveMy type="button" onClick={removeClickHandle}>
                 <FiTrash2 size={20} />
@@ -110,32 +129,33 @@ export const NoticeCategoryItem = ({ pet }) => {
         )}
         <SpanContainer>
           <Span>
-            <HiOutlineLocationMarker />
+            <svg>
+              <use href={icons + '#icon-location'}></use>
+            </svg>
             <SpanText>{makeCityName(location)}</SpanText>
           </Span>
           <Span>
-            {/* <AiOutlineClockCircle /> */}
-            <img src={clock} alt="" />
+            <svg>
+              <use href={icons + '#icon-clock-1'}></use>
+            </svg>
             <SpanText>{getCurrentAge(petBirthday)}</SpanText>
           </Span>
           <Span>
-            <img src={choseSexIcon(sex)} alt="" />
+            <svg>
+              <use href={icons + choseSexIcon(sex)}></use>
+            </svg>
             <SpanText>{sex}</SpanText>
           </Span>
         </SpanContainer>
       </ImageContainer>
       <Info>
         <Title>{title}</Title>
-        <BtnLaernMore type="button" onClick={onSelectItemHandle}>
+        <BtnLearnMore type="button" onClick={onSelectItemHandle}>
           Learn more
-          <img
-            src={pawprint}
-            alt=""
-            width={24}
-            height={24}
-            fill={'currentColor'}
-          />
-        </BtnLaernMore>
+          <SvgPaw>
+            <use href={icons + '#icon-pawprint'}></use>
+          </SvgPaw>
+        </BtnLearnMore>
       </Info>
     </Container>
   );
