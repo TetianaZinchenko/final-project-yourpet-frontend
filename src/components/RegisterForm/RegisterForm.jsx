@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { object, string, ref } from 'yup';
 import { FcGoogle } from 'react-icons/fc';
 
-import { signUp } from 'redux/auth/authOperations';
+import { signIn, signUp } from 'redux/auth/authOperations';
 
 import {
   Forma,
@@ -46,8 +46,15 @@ export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const formSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(signUp({ email, password }));
-    resetForm();
+    try {
+      dispatch(signUp({ email, password }));
+      // dispatch(signIn({ email, password }));
+      resetForm();
+    } catch (error) {
+      // Handle error if logout fails
+      console.error('Error logging out:', error);
+      // Add code to display an error message or perform other actions
+    }
   };
 
   const showPassword = () => {

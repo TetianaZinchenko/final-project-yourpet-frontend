@@ -33,7 +33,7 @@ export const signUp = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/register', credentials);
-      setAuthHeader(data.token);
+      // setAuthHeader(data.token);
       toast.success('registration success');
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
@@ -53,7 +53,8 @@ export const signIn = createAsyncThunk(
       const { data } = await axios.post('/users/login', credentials);
       setAuthHeader(data.token);
       localStorage.setItem('refreshToken', data.refreshToken);
-      toast.success(`Welcome, ${data.user.name}!`);
+      // toast.success(`Welcome, ${data.user.name}!`);
+      console.log(data);
       return data;
     } catch (error) {
       if (error.response.status === 401 || error.response.status === 500) {

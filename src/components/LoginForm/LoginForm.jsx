@@ -4,7 +4,8 @@ import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import icons from '../../icons/icons.svg';
-import { signIn } from 'redux/auth/authOperations';
+import { signIn } from '../../redux/auth/authOperations';
+
 import {
   Forma,
   FormContainer,
