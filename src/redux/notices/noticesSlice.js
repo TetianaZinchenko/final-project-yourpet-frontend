@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  // getNotices,
+  // getUsersNotices,
   favoriteNotice,
   fetchNotices,
   removeNotice,
@@ -11,6 +13,7 @@ export const noticesSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    filter: '',
   },
 
   extraReducers: {
@@ -64,6 +67,12 @@ export const noticesSlice = createSlice({
       state.error = action.payload;
     },
   },
+  reducers: {
+    setFilter(state, action) {
+      state.filter = action.payload;
+    },
+  }
 });
 
+export const { setFilter } = noticesSlice.actions;
 export const noticesReducer = noticesSlice.reducer;

@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { Formik, ErrorMessage, Field } from 'formik';
 // import { MoreInfo } from './MoreInfo/MoreInfo';
 // import {ReactComponent as PlusFile} from '../../icons/plus.svg';
+import { ReactComponent as Pawprint } from '../../icons/pawprint.svg';
+import {ReactComponent as ArrowLeft} from '../../icons/arrow-left.svg';
 
 import {
   Forma,
@@ -17,7 +19,11 @@ import {
   Option, 
   Stepper,
   Step,
-  StepLine
+  StepLine,
+  CancelButton,
+  PrevStepButton,
+  NextStepButton,
+  ButtonText
   // ShowPassword,
   // StyledLink,
   // ClearInput,
@@ -107,10 +113,7 @@ export const AddPet = () => {
     }
     else if (step === 2 && values.name !== '' && values.date !== '' && values.breed !== '' && !errors.name && !errors.date && !errors.breed) {
       setStep(step + 1);
-    }
-    // else if (step === 3 && photo !== null) {
-    //     alert('Новий був доданий!');
-    //   } 
+    } 
       else {
         alert('Будь ласка, заповніть всі поля');
       }
@@ -119,6 +122,9 @@ export const AddPet = () => {
 
   const formSubmit = values => {
     console.log(values);
+    alert('Нову замітку було додано!');
+    setStep(1);
+    setSelectedOption('');
   };
   
   const handlePreviousStep = () => {
@@ -145,8 +151,9 @@ export const AddPet = () => {
         >
           {({ errors, touched, values }) => (
             <Forma>
+              <div>
               <Title>Add Pet</Title>
-              <Stepper style={{ marginBottom: '35px'}}>
+              <Stepper style={{ marginBottom: '30px'}}>
                 <Step>
                   <p style={{ color: step === 1 ? '#54adff' : (values.category !== '' && !errors.category) ? '#00C3AD' : '' }}>Choose option</p>
                   <StepLine style={{ backgroundColor: step === 1 ? '#54adff' : (values.category !== '' && !errors.category) ? '#00C3AD' : ''}}/>
@@ -162,11 +169,11 @@ export const AddPet = () => {
               </Stepper>
               {step === 1 && (
                 <>
-                <div>
+                    <div>
                   <Option
                     htmlFor="option1"
                     style={{ backgroundColor: selectedOption === 'your pet' ? '#54adff' : '', color: selectedOption === 'your pet' ? '#fff' : '' }}
-                      onClick={() => handleOptionSelect('your pet')}>
+                    onClick={() => handleOptionSelect('your pet')}>
                     <Field
                       style={{ appearance: 'none' }}
                         id='option1'
@@ -227,8 +234,8 @@ export const AddPet = () => {
               )}
               {step === 2 && (
                 <>
-                  <div style={{marginBottom: '7px'}}>
-                    <Title style={{ fontSize: '20px', marginBottom: '5px'}}>Pet's name</Title>
+                  <div style={{marginBottom: '7px', position: 'relative'}}>
+                    <Title style={{ fontSize: '20px', marginBottom: '0px'}}>Pet's name</Title>
                     <Input
                       name="name"
                       type="text"
@@ -240,8 +247,8 @@ export const AddPet = () => {
                     />
                     <ErrorMessage component={ErrBox} name='name' />
                   </div>
-                  <div style={{marginBottom: '7px'}}>
-                    <Title style={{ fontSize: '20px', marginBottom: '5px'}}>Date of birth</Title>
+                  <div style={{marginBottom: '7px', position: 'relative'}}>
+                    <Title style={{ fontSize: '20px', marginBottom: '0px'}}>Date of birth</Title>
                     <Input
                       name="date"
                       type="text"
@@ -253,8 +260,8 @@ export const AddPet = () => {
                     />
                     <ErrorMessage component={ErrBox} name='date' />
                   </div>
-                  <div style={{marginBottom: '7px'}}>
-                    <Title style={{ fontSize: '20px', marginBottom: '5px'}}>Breed</Title>
+                  <div style={{marginBottom: '7px', position: 'relative'}}>
+                    <Title style={{ fontSize: '20px', marginBottom: '0px'}}>Breed</Title>
                     <Input
                       name="breed"
                       type="text"
@@ -268,25 +275,40 @@ export const AddPet = () => {
                   </div>
                   
                 </>
-              )}
-              {step === 3 && <MoreInfo/>}
-              <div style={{ marginBottom: '0px'}}>
+                )}
+              
+                {step === 3 && <MoreInfo />}
+                </div>
+              <div style={{ display: 'flex', justifyContent: 'right', gap: '24px', marginBottom: '0px' }}>
+                {step === 1 && (
+                  <CancelButton
+                    type='button'
+                    to="/notices">
+                    <ArrowLeft style={{ marginRight: '16px' }}/>
+                    <ButtonText style={{ color: '#54ADFF' }}>Cancel</ButtonText>
+                  </CancelButton>
+                )}
                 {step > 1 && (
-                  <button
+                  <PrevStepButton
                     type='button'
                     onClick={handlePreviousStep}>
-                    Back
-                  </button>
+                    <ArrowLeft style={{ marginRight: '16px' }}/>
+                    <ButtonText style={{ color: '#54ADFF' }}>Back</ButtonText>
+                  </PrevStepButton>
                 )}
                 {step < 3 && (
-                  <button
+                  <NextStepButton
                     type='button'
                     onClick={() => handleNextStep(errors, values)}>
-                    Next
-                  </button>
+                    <ButtonText>Next</ButtonText>
+                    <Pawprint/>
+                  </NextStepButton>
                 )}
                 {step === 3 && (
-                  <button type='submit'>Done</button>
+                  <NextStepButton type='submit'>
+                    <ButtonText>Done</ButtonText>
+                    <Pawprint/>
+                  </NextStepButton>
                 )}
               </div>
             </Forma>
