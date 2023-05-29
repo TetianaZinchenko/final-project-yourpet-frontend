@@ -2,7 +2,7 @@ import { ReactComponent as SearchIcon } from '../../../icons/search.svg';
 import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   Title,
   Form,
@@ -11,17 +11,17 @@ import {
   SubmitBtn,
 } from './NoticesSearch.styled';
 
-export const NoticesSearch = () => {
+export const NoticesSearch = ({ onFormSubmit }) => {
   const [query, setQuery] = useState('');
 
-  // useEffect(() => {
-  //   if (!query) onFormSubmit(query);
-  // }, [onFormSubmit, query]);
+  useEffect(() => {
+    if (!query) onFormSubmit(query);
+  }, [onFormSubmit, query]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    // onFormSubmit(query);
+    onFormSubmit(query);
     setQuery('');
   };
 

@@ -8,23 +8,6 @@ const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const createSearchParams = params => new URLSearchParams(params).toString();
-
-export const getUsersNotices = createAsyncThunk(
-  'notices/getUsersNotices',
-  async (params, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get(
-        `/api/notices?${createSearchParams(params)}`
-      );
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 export const fetchNotices = createAsyncThunk(
   'notices/fetchAll',
   async (_, thunkAPI) => {
