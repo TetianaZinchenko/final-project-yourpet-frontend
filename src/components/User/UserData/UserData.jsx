@@ -43,15 +43,13 @@ export const UserData = () => {
   return (
     <>
       <p>My information:</p>
-      <div>
-        <div
-          style={{ maxWidth: '182px', maxHeight: '182px', overflow: 'hidden' }}
-        >
+      <div className={styles.div}>
+        <div className={styles.imgWraper}>
           <img
             src={previewUrl}
             alt="Preview"
             onClick={handleDefaultImageClick}
-            style={{ cursor: 'pointer', width: '100%', height: 'auto' }}
+            className={styles.preview}
           />
         </div>
         {!isPreviewConfirmed && (

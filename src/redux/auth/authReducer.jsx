@@ -6,14 +6,19 @@ import {
   refreshUser,
   signInWhithToken,
   updateInfo,
+  getUser,
 } from './authOperations';
-
-
 
 const initialState = {
   user: {
-    email: null,
     id: null,
+    email: null,
+    name: '',
+    password: '',
+    birthday: '',
+    phone: '',
+    location: '',
+    avatarURL: '',
   },
   token: null,
   isLoggedIn: false,
@@ -24,7 +29,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: builder =>
+  extraReducers: builder => {
     builder
       .addCase(signUp.pending, (state, _) => state)
       .addCase(signUp.rejected, (state, _) => {
@@ -34,7 +39,7 @@ export const authSlice = createSlice({
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
+        state.user.password = payload.dataUser.password;
         state.token = payload.dataUser.token;
         state.isLoggedIn = true;
       })
@@ -46,7 +51,7 @@ export const authSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
+        state.user.password = payload.dataUser.password;
         state.token = payload.dataUser.token;
         state.isLoggedIn = true;
       })
@@ -68,7 +73,7 @@ export const authSlice = createSlice({
       })
       .addCase(updateInfo.fulfilled, (state, { payload }) => {
         state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
+        state.user.password = payload.dataUser.password;
         state.token = payload.dataUser.token;
         state.isLoggedIn = true;
       })
@@ -89,8 +94,21 @@ export const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user.email = payload.dataUser.email;
-        state.user.id = payload.dataUser._id;
+        state.token = payload.dataUser.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-      }),
+      })
+      .addCase(getUser.pending, (state, _) => state)
+      .addCase(getUser.rejected, (state, _) => {
+        state.user = initialState.user;
+        state.isLoggedIn = false;
+      })
+      .addCase(getUser.fulfilled, (state, { payload }) => {
+        state.user.name = payload.dataUser.name;
+        state.user.birthday = payload.dataUser.birthday;
+        state.user.phone = payload.dataUser.phone;
+        state.user.location = payload.dataUser.location;
+        state.user.avatarURL = payload.dataUser.avatarURL;
+      });
+  },
 });
