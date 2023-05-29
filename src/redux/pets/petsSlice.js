@@ -28,7 +28,7 @@ export const petsSlice = createSlice({
     [deletePet.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      let newPets = state.items.filter(pet => pet.id !== action.payload.id);
+      let newPets = state.items.filter(pet => pet._id !== action.payload._id);
       state.items = newPets;
     },
     [deletePet.rejected](state, action) {

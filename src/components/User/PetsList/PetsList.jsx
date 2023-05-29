@@ -30,7 +30,6 @@ import { getPets } from 'redux/pets/petsSelectors';
 
 export const PetsList = () => {
     const pets = useSelector(getPets);
-    console.log(pets);
     return (
         <List>
             {pets.map(pet =><PetsItem key={pet._id} info={pet} />)}

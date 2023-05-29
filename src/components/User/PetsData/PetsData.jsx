@@ -1,12 +1,16 @@
 import { PetsList } from "../PetsList/PetsList"
 import { PetsDataWrapper, PetsDataHeadWrap, PetsDataTitle, AddPetBtn } from "./PetsData.styled"
 import sprite from "../../../icons/icons.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPets } from "redux/pets/petsOperations";
 import { useEffect } from "react";
+import Loader from "components/Loader/Loader";
+import { getIsLoading } from "redux/pets/petsSelectors";
+
 
 export const PetsData = () => {
     const dispatch = useDispatch();
+    const isLoading = useSelector(getIsLoading);
 
     useEffect(() => {
         dispatch(fetchPets());
@@ -24,6 +28,7 @@ export const PetsData = () => {
                 </AddPetBtn>
             </PetsDataHeadWrap>
             <PetsList />
+            {isLoading && <Loader/>}
         </PetsDataWrapper>
     )
 }
