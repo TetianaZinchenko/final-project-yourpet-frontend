@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  // getNotices,
-  // getUsersNotices,
   favoriteNotice,
   fetchNotices,
   removeNotice,
@@ -13,7 +11,6 @@ export const noticesSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    filter: '',
   },
 
   extraReducers: {
