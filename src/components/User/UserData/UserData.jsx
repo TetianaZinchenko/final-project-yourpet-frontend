@@ -4,7 +4,7 @@ import styles from './UserData.module.css';
 import { UserDataItem } from '../UserDataItem/UserDataItem';
 import defaultImage from '../../../images/desktop/photo_default_desktop.png';
 import chekIcon from '../../../icons/check.svg';
-import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader';
 
 export const UserData = () => {
   // const [selectedFile, setSelectedFile] = useState(null);
