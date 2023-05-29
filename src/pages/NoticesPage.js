@@ -79,6 +79,7 @@ export default function NoticesPage() {
     const searchQuery = {
       page,
     };
+    
 
     if (categoryName === 'my-pets') {
       if (query) searchQuery.query = query;
@@ -106,7 +107,7 @@ export default function NoticesPage() {
 
   return (
     <>
-      <NoticesSearch onFormSubmit={onFormSubmit} />
+      <NoticesSearch onFormSubmit={onFormSubmit} pets={visibleNotices}/>
       <NoticesCategoriesNav isUser={selectIsLoggedIn} />
       {/* {notices.length > 0 && (
         <NoticesCategoriesList onClose={toggleModal} pets={notices} /> */}
