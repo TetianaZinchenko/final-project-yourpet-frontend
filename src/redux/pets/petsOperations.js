@@ -4,9 +4,6 @@ import { selectToken } from 'redux/auth/authSelectors';
 
 axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrender.com';
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmY3ZWQzMDk3YTYxMGVhMWM5MWU3YiIsImlhdCI6MTY4NTM2ODk0MSwiZXhwIjoxNjg1MzcyNTQxfQ.LyiFTN4uTa3aCZKQCF9NaYw9F0CVvv5EHOGUMG_22js';
-
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -14,11 +11,11 @@ const setAuthHeader = token => {
 export const fetchPets = createAsyncThunk(
   'pets/fetchPets',
   async (_, thunkAPI) => {
-    // const token = selectToken(thunkAPI.getState());
+    const token = selectToken(thunkAPI.getState());
 
-    // if (!token) {
-    //   return thunkAPI.rejectWithValue('Unable to fetch user');
-    // }
+    if (!token) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
 
     try {
       setAuthHeader(token);
@@ -33,11 +30,11 @@ export const fetchPets = createAsyncThunk(
 export const deletePet = createAsyncThunk(
   'pets/deletePet',
   async (petId, thunkAPI) => {
-    // const token = selectToken(thunkAPI.getState());
+    const token = selectToken(thunkAPI.getState());
 
-    // if (!token) {
-    //   return thunkAPI.rejectWithValue('Unable to fetch user');
-    // }
+    if (!token) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
 
     try {
       setAuthHeader(token);
