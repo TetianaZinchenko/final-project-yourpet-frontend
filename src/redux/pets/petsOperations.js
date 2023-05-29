@@ -5,7 +5,7 @@ import { selectToken } from 'redux/auth/authSelectors';
 axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrender.com';
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmY3ZWQzMDk3YTYxMGVhMWM5MWU3YiIsImlhdCI6MTY4NTM2MjkwOSwiZXhwIjoxNjg1MzY2NTA5fQ.18iE3MAaw0gvLF42gA7oRrjqqEJsSpyIjUphG-1nUOM';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmY3ZWQzMDk3YTYxMGVhMWM5MWU3YiIsImlhdCI6MTY4NTM2NzExMiwiZXhwIjoxNjg1MzcwNzEyfQ.BlY0BYptomP_JcP8XUIIw0W4QWqLrPOeqYC48dp_jBE';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

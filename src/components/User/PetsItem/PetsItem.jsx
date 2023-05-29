@@ -1,27 +1,27 @@
-import { PetItem, PetImage, PetTextWrap, DeletePetBtn, PetText, PetTextHead, PetTextComment, TitleDelete } from "./PetsItem.styled"
-// import { useState } from "react";
-// import { ModalApproveAction } from "../ModalApproveAction/ModalApproveAction";
+import { PetItem, PetImage, PetTextWrap, DeletePetBtn, PetText, PetTextHead, PetTextComment } from "./PetsItem.styled"
+import { useState } from "react";
+import { ModalApproveAction } from "../ModalApproveAction/ModalApproveAction";
 import sprite from "../../../icons/icons.svg";
 import { useDispatch } from "react-redux";
 import { deletePet } from "redux/pets/petsOperations";
 
 export const PetsItem = ({ info: { _id, avatar, name, petBirthday, breed, comments } }) => {
-    // const [isApprovalModalOpen, setIsApprovalModalOpen] = useState(false);
+    const [isApprovalModalOpen, setIsApprovalModalOpen] = useState(false);
     const dispatch = useDispatch();
 
     const onDelete = () => {
-        // setIsApprovalModalOpen(true);
-        dispatch(deletePet(_id));
+        setIsApprovalModalOpen(true);
+        
     };
 
-    // const onClose = () => {
-    //     setIsApprovalModalOpen(false);
-    // }
+    const onClose = () => {
+        setIsApprovalModalOpen(false);
+    }
 
-    // const onApprove = () => {
-    //     //запит на бекенд delete(id)
-    //     setIsApprovalModalOpen(false);
-    // }
+    const onApprove = () => {
+        dispatch(deletePet(_id));
+        setIsApprovalModalOpen(false);
+    }
 
     return (
         <>
@@ -39,9 +39,9 @@ export const PetsItem = ({ info: { _id, avatar, name, petBirthday, breed, commen
                     <PetTextComment><PetTextHead>Comments: </PetTextHead>{comments}</PetTextComment>
                 </PetTextWrap>
             </PetItem>
-            {/* {isApprovalModalOpen && <ModalApproveAction onApprove={onApprove} onClose={onClose}>
-                <TitleDelete>Delete pets?</TitleDelete>
-            </ModalApproveAction>} */}
+            {isApprovalModalOpen && <ModalApproveAction onApprove={onApprove} onClose={onClose}>
+                Delete pet {name}?
+            </ModalApproveAction>}
         </>
     )
 }

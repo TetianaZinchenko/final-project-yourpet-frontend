@@ -126,22 +126,3 @@ export const PetTextComment = styled(PetText)`
     line-height: 22px;
   }
 `;
-
-export const TitleDelete = styled.h2`
-  margin-bottom: 24px;
-  text-align: center;
-
-  font-family: ${fonts.main};
-  font-weight: ${fontWeights.medium};
-  font-size: ${fontSizes[5]}px;
-  line-height: 33px;
-  letter-spacing: 0.04em;
-
-  color: ${colors.black};
-
-  @media screen and (${media.tablet}) {
-    margin-bottom: 52px;
-    font-size: 36px;
-    line-height: 49px;
-  }
-`;
