@@ -1,11 +1,13 @@
 import UserIcon from '../../../icons/user-1.svg';
-import { UserContainNav,UserImage,UserName } from "./UserNav.styled";
+import { UserContainNav, UserImage, UserName } from "./UserNav.styled";
+import { useAuth } from 'hooks/useAuth';
 
-export const UserNav = ({email}) => {
+export const UserNav = () => {
+  const {user} = useAuth()
   return (
     <UserContainNav to="/user">
       <UserImage src={UserIcon} alt="userlogo" />
-      <UserName>{email} Anna</UserName>
+      <UserName>{user.name} Anna</UserName>
     </UserContainNav>
   );
 };

@@ -64,7 +64,7 @@ export const Info = styled.div`
   align-items: center;
 `;
 
-export const BtnLaernMore = styled.button`
+export const BtnLearnMore = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
