@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast';
 import { VscHeart } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
-import { selectAuth } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
   Image,
@@ -26,17 +26,16 @@ export const ModalNoticeMore = ({
     sex,
     name,
     breed,
+    price,
     description,
     owner,
     category,
   },
 }) => {
-  const auth = useSelector(selectAuth);
-
-  // const notify = () => toast.error('You need to sign in');
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const onClickFavBtn = () => {
-    if (!auth.user.isLoggedIn) {
+    if (!isLoggedIn) {
       toast.error('You need to sign in');
     }
   };
@@ -56,6 +55,7 @@ export const ModalNoticeMore = ({
               <Item>Name: </Item>
               <Item>Birthday: </Item>
               <Item>Breed: </Item>
+              {price !== '0' && <Item>Price: </Item>}
               <Item>Place: </Item>
               <Item>The sex: </Item>
               <Item>Email: </Item>
@@ -65,13 +65,24 @@ export const ModalNoticeMore = ({
               <Item>{name}</Item>
               <Item>{petBirthday}</Item>
               <Item>{breed}</Item>
+              {price !== '0' && <Item>{price}</Item>}
               <Item>{location}</Item>
               <Item>{sex}</Item>
-              <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
-                {owner.email}
+              <Item>
+                <a
+                  style={{ color: '#FFC107', textDecoration: 'underline' }}
+                  href={`mailto:${owner.email}`}
+                >
+                  {owner.email}
+                </a>
               </Item>
               <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
-                {owner.phone}
+                <a
+                  style={{ color: '#FFC107', textDecoration: 'underline' }}
+                  href={`tel:${owner.phone}`}
+                >
+                  {owner.phone}
+                </a>
               </Item>
             </List>
           </div>
