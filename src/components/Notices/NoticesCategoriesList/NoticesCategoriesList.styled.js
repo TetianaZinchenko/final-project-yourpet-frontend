@@ -12,17 +12,18 @@ export const List = styled.ul`
   display: flex;
   gap: 24px;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: center;
 
-  @media screen and ${media.tablet} {
+  @media screen and (${media.tablet}) {
     gap: 32px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 704px;
   }
 
-  @media screen and ${media.desktop} {
+  @media screen and (${media.desktop}) {
     width: 1248px;
   }
 `;

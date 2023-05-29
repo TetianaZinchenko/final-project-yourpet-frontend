@@ -13,7 +13,7 @@ import {
   WorkTime,
 } from './FriendsItem.styled';
 
-import defaultFriendImage from '../../../images/friends/02_mobile.png';
+import defaultFriendImage from '../../../images/friends/placeholder.jpg';
 import WorkTimePopup from './WorkTimePopup';
 
 const dayNow = new Date();
@@ -27,7 +27,8 @@ export const FriendsItem = ({
     address,
     workDays,
     phone,
-    email
+    email,
+    imageUrl,
 }) => {
 
     const [isVisible, setIsVisible] = useState(true);
@@ -52,7 +53,7 @@ export const FriendsItem = ({
             
             <FriendBox>
                 <FriendImgBox src={
-                    // imageUrl ||
+                    imageUrl ||
                     defaultFriendImage
                 } alt={title} />
         

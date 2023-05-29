@@ -1,135 +1,70 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
 import { theme } from '../../../theme/theme';
 
 export const BtnContain = styled.div`
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 40px;
-    align-items: center;
-  }
-@media  (max-width: 1279px) {
-display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-  
+  display: flex;
+  gap: 20px;
 
-  @media (min-width: 1280px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+  @media (max-width: 767px) {
+    display: block;
+    margin-top: 40px;
   }
+   @media ((min-width: 768px) and (max-width: 1279px)){
+    margin-right:40px;
+   }
+ 
 `;
 
-export const RegisterLink = styled(NavLink)`
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  width: 165px;
-  height: 40px;
-  padding: 8px, 20px, 8px, 20px;
+export const RegisterBtn = styled.button`
+  font-weight: ${theme.fontWeights.semibold};
   font-size: ${theme.fontSizes[2]}px;
   font-family: ${theme.fonts.main};
   font-style: normal;
-  font-weight: ${theme.fontWeights.bold};
+  width: 165px;
+  height: 40px;
+  padding: 8px, 20px, 8px, 20px;
+  line-height: 22px;
   color: ${theme.colors.yellow};
   background-color: ${theme.colors.white};
   border: 2px solid ${theme.colors.yellow};
   border-radius: 40px;
+  box-shadow: ${theme.shadows.defaultShadow};
   cursor: pointer;
-
-  &:hover,
-  &:focus {
-    /* background-color: ${theme.colors.yellow}; */
-  }
-
-  &.active {
-    /* color: ${theme.colors.white}; */
-  }
-
-  @media screen and(${theme.media.desktop}) {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    width: 142px;
-    height: 38px;
-    padding: 8px, 20px, 8px, 20px;
-    font-size: ${theme.fontSizes[2]}px;
-    font-family: ${theme.fonts.main};
-    font-style: normal;
-    font-weight: ${theme.fontWeights.semibold};
-    color: ${theme.colors.yellow};
-    background-color: ${theme.colors.white};
-    border: 2px solid ${theme.colors.yellow};
-    border-radius: 40px;
-    cursor: pointer;
+  &:hover {
+    color: ${theme.colors.background};
+    background: none;
+    background-color: ${theme.colors.yellow};
+    box-shadow: ${theme.shadows.hoverShadow};
   }
 `;
 
-export const LoginLink = styled(NavLink)`
-  position: relative;
-  z-index: 10;
+export const LoginBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  font-family: ${theme.fonts.main};
+  font-weight: ${theme.fontWeights.bold};
+  font-size: ${theme.fontSizes[2]}px;
+  font-style: normal;
   width: 165px;
   height: 40px;
   padding: 8px, 20px, 8px, 20px;
-  font-size: ${theme.fontSizes[2]}px;
-  font-family: ${theme.fonts.main};
-  font-style: normal;
-  font-weight: ${theme.fontWeights.bold};
   color: ${theme.colors.white};
   background-color: ${theme.colors.yellow};
   border: 2px solid ${theme.colors.yellow};
   border-radius: 40px;
   cursor: pointer;
-  &:hover,
-  &:focus {
-  }
+  box-shadow: ${theme.shadows.defaultShadow};
 
-  &.active {
-  }
-
-  @media screen and(${theme.media.desktop}) {
-    position: relative;
-    z-index: 10;
-    margin-top: 82px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    width: 165px;
-    height: 40px;
-    font-size: ${theme.fontSizes[2]}px;
+  &:hover {
     color: ${theme.colors.white};
+    background: none;
     background-color: ${theme.colors.yellow};
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: ${theme.fontWeights.bold};
-    font-family: ${theme.fonts.main};
-
-    &:hover,
-    &:focus {
-      border: ${theme.colors.white};
-      color: ${theme.colors.yellow};
-    }
-
-    &.active {
-      color: ${theme.colors.yellow};
-    }
+    box-shadow: ${theme.shadows.hoverShadow};
+  }
+    @media (max-width: 767px) {
+    margin: 0 0 10px;
+    height: 40px;
   }
 `;
 export const SVG = styled.img`
