@@ -6,13 +6,15 @@ export const UserContainNav = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin-right:42px;
+  gap:10px;
+    margin-right: 35px ;
+  
 `;
 
 export const UserImage = styled.img`
   width: 28px;
   height: 28px;
-  margin-right: 12px ;
+ 
 `;
 
 export const UserName = styled.span`
@@ -20,5 +22,6 @@ export const UserName = styled.span`
   font-family:${theme.fonts.main};
   font-size:${theme.fontSizes[2]}px;
   font-weight:${theme.fontWeights.medium};
+ 
   
 `;
