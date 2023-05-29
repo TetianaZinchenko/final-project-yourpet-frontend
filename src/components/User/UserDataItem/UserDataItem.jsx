@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../../redux/auth/authOperations';
+import { selectUser, selectAuth } from '../../../redux/auth/authSelectors';
 import chekIcon from '../../../icons/check.svg';
 import editIcon from '../../../icons/edit-2.svg';
 import styles from './UserDataItem.module.css';
 
 const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
   const [value, setValue] = useState(initialValue);
-  // const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    // setIsEditing(true);
     setActiveField();
   };
 
   const handleSave = () => {
-    // setIsEditing(false);
-    setActiveField(false); // Закрываем форму после сохранения
-    // Здесь вы можете выполнить дополнительные действия с сохраненными данными,
-    // например, отправить их на сервер или вызвать колбэк-функцию для обработки данных.
+    // Определите обновление данных пользователя
+    setActiveField(false);
   };
 
   const handleChange = e => {
@@ -25,7 +24,6 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
 
   return (
     <div>
-      <label>{label}</label>
       {isActive ? (
         <div style={{ position: 'relative' }}>
           <input
@@ -52,6 +50,16 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
 
 export const UserDataItem = () => {
   const [activeField, setActiveField] = useState(null);
+  const auth = useSelector(selectAuth);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  console.log(auth._id);
+  console.log(user.user);
+
+  useEffect(() => {
+    dispatch(getUser(auth._id)); // Запрос данных пользователя при первой загрузке компонента
+  }, [dispatch, auth._id]);
 
   const handleSetActiveField = field => {
     setActiveField(activeField === field ? null : field);
@@ -59,36 +67,51 @@ export const UserDataItem = () => {
 
   return (
     <div className={styles.div}>
-      <EditableField
-        label="Name:"
-        initialValue="Anna"
-        isActive={activeField === 'name'}
-        setActiveField={() => handleSetActiveField('name')}
-      />
-      <EditableField
-        label="Email:"
-        initialValue="anna00@gmail.com"
-        isActive={activeField === 'email'}
-        setActiveField={() => handleSetActiveField('email')}
-      />
-      <EditableField
-        label="Birthday:"
-        initialValue="00.00.0000"
-        isActive={activeField === 'birthday'}
-        setActiveField={() => handleSetActiveField('birthday')}
-      />
-      <EditableField
-        label="Phone:"
-        initialValue="+38000000000"
-        isActive={activeField === 'phone'}
-        setActiveField={() => handleSetActiveField('phone')}
-      />
-      <EditableField
-        label="City:"
-        initialValue="Kiev"
-        isActive={activeField === 'city'}
-        setActiveField={() => handleSetActiveField('city')}
-      />
+      <div className={styles.containerInfo}>
+        <p className={styles.label}>Name:</p>
+        <EditableField
+          label="Name"
+          initialValue={user.user.name}
+          isActive={activeField === 'name'}
+          setActiveField={() => handleSetActiveField('name')}
+        />
+      </div>
+      <div className={styles.containerInfo}>
+        <p className={styles.label}>Email:</p>
+        <EditableField
+          label="Email"
+          initialValue={user.user.email}
+          isActive={activeField === 'email'}
+          setActiveField={() => handleSetActiveField('email')}
+        />
+      </div>
+      <div className={styles.containerInfo}>
+        <p className={styles.label}>Birthday:</p>
+        <EditableField
+          label="Birthday"
+          initialValue={user.user.birthday}
+          isActive={activeField === 'birthday'}
+          setActiveField={() => handleSetActiveField('birthday')}
+        />
+      </div>
+      <div className={styles.containerInfo}>
+        <p className={styles.label}>Phone:</p>
+        <EditableField
+          label="Phone"
+          initialValue={user.user.phone}
+          isActive={activeField === 'phone'}
+          setActiveField={() => handleSetActiveField('phone')}
+        />
+      </div>
+      <div className={styles.containerInfo}>
+        <p className={styles.label}>City:</p>
+        <EditableField
+          label="City"
+          initialValue={user.user.location}
+          isActive={activeField === 'city'}
+          setActiveField={() => handleSetActiveField('city')}
+        />
+      </div>
     </div>
   );
 };

@@ -8,8 +8,26 @@
   justify-content: space-between;
 }
 
+.containerInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
 .div {
-  width: 255px;
+  margin-top: 63px;
+  display: flex;
+  width: 345px;
+  flex-direction: column;
+  margin-left: 16px;
+}
+.input p {
+  margin-right: 10px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .buttonChek {

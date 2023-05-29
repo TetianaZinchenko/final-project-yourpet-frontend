@@ -1,11 +1,14 @@
 import { UserData } from '../UserData/UserData';
 import { Logout } from '../Logout/Logout';
+import styles from './UserContainer.module.css';
 
 export const UserContainer = () => {
   return (
     <>
-      <UserData></UserData>
-      <Logout></Logout>
+      <div className={styles.container}>
+        <UserData></UserData>
+        <Logout></Logout>
+      </div>
     </>
   );
 };

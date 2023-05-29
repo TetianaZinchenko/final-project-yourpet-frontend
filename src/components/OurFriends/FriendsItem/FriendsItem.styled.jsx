@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-
 export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
@@ -75,6 +74,7 @@ export const FriendItem = styled.li`
 
 export const FriendLinkTitle = styled.a`
   display: block;
+  height: 54px;
   margin-bottom: 16px;
   font-weight: 700;
   font-size: 20px;
