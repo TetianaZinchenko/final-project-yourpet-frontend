@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000/api/users';
+axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrened.com/';
 
 const setAuthHeader = token => {
 
@@ -31,7 +31,7 @@ axios.interceptors.response.use(
 
 
 export const signUp = createAsyncThunk(
-  'auth/register',
+  'auth/signUp',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/register', credentials);
@@ -119,7 +119,7 @@ export const updateUser = createAsyncThunk(
   '/auth/updateUser',
   async (updatedData, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/users/update', updatedData);
+      const { data } = await axios.put('/users/update', updatedData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
