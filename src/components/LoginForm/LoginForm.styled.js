@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import { Form, Field } from 'formik';
 import {
   desc1x,
@@ -118,7 +119,8 @@ export const ShowPassword = styled.span`
   height: 25px;
   right: 15px;
   top: 13px;
-  fill: ${props =>
+  fill:white;
+  stroke: ${props =>
     props.error
       ? props.theme.colors.red
       : props.valid
@@ -251,11 +253,9 @@ export const ClearInput = styled.span`
     width: inherit;
     height: inherit;
   }
-  //&.isValid{
-  //  display: none;
-  //}
+
 `;
-export const StyledLink = styled.a`
+export const StyledLink = styled(NavLink)`
   color: #54adff;
   text-decoration: none;
   :hover,

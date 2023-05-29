@@ -33,7 +33,7 @@ const LoginSchema =
       .min(6, 'Too short min 6 characters')
       .max(16, 'Too long max 16 characters')
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
         'Password should be min 6 characters, 1 uppercase, 1 lowercase, 1 number'
       )
       .trim(),
@@ -84,8 +84,8 @@ export const LoginForm = () => {
                 <ClearInput>
                   {' '}
                   {touched.email &&
-                    (!errors.email ? <svg style={{ fill: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
-                     :  <svg style={{ fill: '#F43F5E' }} onClick={clearInput}><use href={icons +'#icon-cross-small'}></use></svg>
+                    (!errors.email ? <svg style={{ fill: 'white', stroke: '#00C3AD' }}><use href={icons +'#icon-check'}></use></svg>
+                     :  <svg style={{ fill: 'white', stroke: '#F43F5E' }} onClick={clearInput}><use href={icons +'#icon-cross-small'}></use></svg>
                     )}
                 </ClearInput>
               </div>
