@@ -1,5 +1,5 @@
 import { NoticeCategoryItem } from 'components/Notices/NoticeCategoryItem/NoticeCategoryItem';
-import { AddPetButton } from 'components/Notices/AddPetButton/AddPetButton';
+// import { AddPetButton } from 'components/AddPet/AddPetButton/AddPetButton';
 import { Container, List } from './NoticesCategoriesList.styled';
 import { useSelector } from 'react-redux';
 import { selectModal } from 'redux/modal/modalSelectors';
@@ -41,7 +41,7 @@ export const NoticesCategoriesList = ({ pets }) => {
 
   return (
     <Container>
-      <AddPetButton />
+      {/* <AddPetButton /> */}
       <List>
         {pets.map(pet => (
           <li key={pet._id}>

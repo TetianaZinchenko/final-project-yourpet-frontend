@@ -4,14 +4,16 @@ import { NoticesCategoriesList } from '../components/Notices/NoticesCategoriesLi
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { fetchNotices, /*getUsersNotices*/ } from 'redux/notices/noticesOperations';
-// import { selectAuth, getUser } from 'redux/auth/authSelectors';
+import {
+  fetchNotices /*getUsersNotices*/,
+} from 'redux/notices/noticesOperations';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
   getNotices,
   getIsLoading,
   // getError,
 } from 'redux/notices/noticesSelectors';
+import { AddPetButton } from 'components/AddPet/AddPetButton/AddPetButton';
 
 // import { fetchNotices } from 'redux/notices/operationsNotices';
 
@@ -108,6 +110,7 @@ export default function NoticesPage() {
     <>
       <NoticesSearch onFormSubmit={onFormSubmit} />
       <NoticesCategoriesNav isUser={selectIsLoggedIn} />
+      <AddPetButton />
       {/* {notices.length > 0 && (
         <NoticesCategoriesList onClose={toggleModal} pets={notices} /> */}
       {/* <NoticesSearch /> */}
