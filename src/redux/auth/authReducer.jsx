@@ -11,8 +11,9 @@ const initialState = {
   user: {
     email: null,
     password: null,
+    token: null,
   },
-  token: null,
+
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
@@ -31,10 +32,11 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(signUp.fulfilled, (state, action) => {
-        state.user.email = action.payload.email;
-        state.user.password = action.payload.password;
-        state.token = action.payload.token;
+        state.user = action.payload.data.newUser;
+        state.token = action.payload.data.newUser.token;
         state.isLoggedIn = true;
+
+        console.log('signUp.fulfilled payload:', action.payload);
       })
       .addCase(signIn.pending, state => {
         state.isLoading = true;
@@ -63,6 +65,20 @@ export const authSlice = createSlice({
       .addCase(logOut.rejected, state => {
         state.isLoading = false;
       })
+
+      // .addCase(logOut.pending, state => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(logOut.fulfilled, (state, action) => {
+      //   state.user.email = null;
+      //   state.user.password = null;
+      //   state.token = null;
+      //   state.isLoggedIn = false;
+      //   state.isRefreshing = false;
+      // })
+      // .addCase(logOut.rejected, state => {
+      //   state.isLoading = false;
+      // })
       .addCase(currentUser.pending, (state, _) => {
         state.isRefreshing = true;
       })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../redux/auth/authOperations';
+// import { getUser } from '../../../redux/auth/authOperations';
 import { selectUser } from '../../../redux/auth/authSelectors';
 import chekIcon from '../../../icons/check.svg';
 import editIcon from '../../../icons/edit-2.svg';
@@ -53,9 +53,9 @@ export const UserDataItem = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  useEffect(() => {
-    dispatch(getUser()); // Запрос данных пользователя при первой загрузке компонента
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUser()); // Запрос данных пользователя при первой загрузке компонента
+  // }, [dispatch]);
 
   const handleSetActiveField = field => {
     setActiveField(activeField === field ? null : field);

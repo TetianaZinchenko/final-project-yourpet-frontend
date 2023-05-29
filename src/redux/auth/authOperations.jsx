@@ -3,8 +3,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'http://localhost:3000/api/users';
-axios.defaults.baseURL =
-  'https://final-project-yourpe-backend.onrender.com/users';
+axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrender.com';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -81,16 +80,16 @@ export const signIn = createAsyncThunk(
 //   }
 // );
 
-export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-    localStorage.removeItem('refreshToken');
-    toast.success('Logout successful');
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+// export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+//   try {
+//     await axios.post('/users/logout');
+//     clearAuthHeader();
+//     localStorage.removeItem('refreshToken');
+//     toast.success('Logout successful');
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// });
 
 export const currentUser = createAsyncThunk(
   'auth/currentUser',
@@ -123,3 +122,14 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+  try {
+    await axios.post('/users/logout');
+    clearAuthHeader();
+    localStorage.removeItem('refreshToken');
+    toast.success('Logout successful');
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

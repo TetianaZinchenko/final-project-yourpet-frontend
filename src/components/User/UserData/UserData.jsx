@@ -76,7 +76,7 @@ export const UserData = () => {
         )}
       </div>
       <UserDataItem />
-      <Loader />
+      {/* <Loader /> */}
     </>
   );
 };
