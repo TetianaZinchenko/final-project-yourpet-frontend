@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ModalApproveAction } from "../ModalApproveAction/ModalApproveAction";
 import sprite from "../../../icons/icons.svg";
 
-export const PetsItem = ({ info: { id, img_path, name, birth, breed, comments } }) => {
+export const PetsItem = ({ info: { _id, avatar, name, petBirthday, breed, comments } }) => {
     const [isApprovalModalOpen, setIsApprovalModalOpen] = useState(false);
 
     const onDelete = () => {
@@ -22,7 +22,7 @@ export const PetsItem = ({ info: { id, img_path, name, birth, breed, comments } 
     return (
         <>
             <PetItem>
-                <PetImage src={img_path} alt="" />
+                <PetImage src={avatar} alt="" />
                 <PetTextWrap>
                     <DeletePetBtn type="button" title="Delete" onClick={()=>onDelete()}>
                         <svg width="24" height="24">
@@ -30,7 +30,7 @@ export const PetsItem = ({ info: { id, img_path, name, birth, breed, comments } 
                         </svg>
                     </DeletePetBtn>
                     <PetText><PetTextHead>Name: </PetTextHead>{name}</PetText>
-                    <PetText><PetTextHead>Date of birth: </PetTextHead>{birth}</PetText>
+                    <PetText><PetTextHead>Date of birth: </PetTextHead>{petBirthday}</PetText>
                     <PetText><PetTextHead>Breed: </PetTextHead>{breed}</PetText>
                     <PetTextComment><PetTextHead>Comments: </PetTextHead>{comments}</PetTextComment>
                 </PetTextWrap>
