@@ -15,11 +15,16 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
     setActiveField();
   };
 
-  const handleSave = () => {
-    dispatch(updateUser({ [label]: value }));
-    // Определите обновление данных пользователя
-    dispatch(getUser(auth._id));
-    setActiveField(false);
+  const handleSave = async () => {
+    try {
+      await dispatch(updateUser({ [label]: value }));
+      // Определите обновление данных пользователя
+      await dispatch(getUser(auth._id));
+      setActiveField(false);
+    } catch (error) {
+      // Обработка ошибок, если получение данных пользователя завершилось неудачей
+      console.error('Ошибка при получении данных пользователя:', error);
+    }
   };
 
   const handleChange = e => {
@@ -107,7 +112,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>City:</p>
         <EditableField
-          label="city"
+          label="location"
           initialValue={user.location}
           isActive={activeField === 'city'}
           setActiveField={() => handleSetActiveField('city')}
