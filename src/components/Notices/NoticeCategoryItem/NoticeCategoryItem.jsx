@@ -103,9 +103,6 @@ export const NoticeCategoryItem = ({ pet }) => {
     dispatch(
       favoriteNotice({
         id: _id,
-        data: {
-          favorite: !isFavorite,
-        },
       })
     );
   };

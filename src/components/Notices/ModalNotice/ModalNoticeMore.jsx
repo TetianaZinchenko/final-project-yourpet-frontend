@@ -1,7 +1,9 @@
 import { toast } from 'react-hot-toast';
 import { VscHeart } from 'react-icons/vsc';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { closeModal } from 'redux/modal/modalReducer';
+import { favoriteNotice } from 'redux/notices/noticesOperations';
 import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
   Image,
@@ -19,6 +21,7 @@ import {
 
 export const ModalNoticeMore = ({
   pet: {
+    _id,
     avatar,
     title,
     location,
@@ -27,16 +30,28 @@ export const ModalNoticeMore = ({
     name,
     breed,
     price,
+    favorite,
     description,
     owner,
     category,
   },
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+  const auth = useSelector(selectAuth);
+
+  let isFavorite = favorite.includes(auth?._id);
 
   const onClickFavBtn = () => {
     if (!isLoggedIn) {
       toast.error('You need to sign in');
+    } else {
+      dispatch(
+        favoriteNotice({
+          id: _id,
+        })
+      );
+      dispatch(closeModal());
     }
   };
 
@@ -50,7 +65,6 @@ export const ModalNoticeMore = ({
         <div style={{ width: '321px', padding: '0 12px' }}>
           <Title>{title}</Title>
           <div style={{ display: 'flex', gap: '50px' }}>
-            {' '}
             <List>
               <Item>Name: </Item>
               <Item>Birthday: </Item>
@@ -91,7 +105,7 @@ export const ModalNoticeMore = ({
       <Comment>{description}</Comment>
       <BtnContainer>
         <AddToFav type="button" onClick={onClickFavBtn}>
-          <span>Add to </span>
+          <span>{isFavorite ? 'Remove' : 'Add'}</span>
           <VscHeart size={20} />
         </AddToFav>
         <ContactLink href={`tel:${owner.phone}`}>Contact</ContactLink>
