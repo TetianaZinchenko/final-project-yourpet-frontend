@@ -71,3 +71,8 @@ export const AddPetBtn = styled(Link)`
 
   stroke: ${colors.white};
 `;
+
+export const EmptyPetsText = styled.p`
+  margin: 0 auto;
+  width: 200px;
+`;
