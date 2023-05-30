@@ -44,17 +44,17 @@ export const Notices = () => {
   let visibleNotices = [];
   switch (categoryName) {
     case 'favorite':
-      if (!!auth.user.id) {
+      if (!!auth._id) {
         visibleNotices = notices.filter(notice => {
-          return notice.favorite.includes(auth.user.id);
+          return notice.favorite.includes(auth._id);
         });
       }
       break;
 
     case 'my-pets':
-      if (!!auth.user.id) {
+      if (!!auth._id) {
         visibleNotices = notices.filter(notice => {
-          return notice.owner === auth.user.id;
+          return notice.owner === auth._id;
         });
       }
       break;

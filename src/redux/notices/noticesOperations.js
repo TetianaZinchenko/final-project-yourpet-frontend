@@ -31,11 +31,11 @@ export const favoriteNotice = createAsyncThunk(
 
     try {
       setAuthHeader(token);
-      const { data } = await axios.patch(
+      const { data } = await axios.put(
         '/posts/favorite/' + update.id,
         update.data
       );
-      return data.data.contact;
+      return data.data.post;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
