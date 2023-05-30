@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../redux/auth/authOperations';
+import { getUser, updateUser } from '../../../redux/auth/authOperations';
 import { selectUser, selectAuth } from '../../../redux/auth/authSelectors';
 import chekIcon from '../../../icons/check.svg';
 import editIcon from '../../../icons/edit-2.svg';
@@ -8,12 +8,14 @@ import styles from './UserDataItem.module.css';
 
 const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
   const [value, setValue] = useState(initialValue);
+  const dispatch = useDispatch();
 
   const handleEdit = () => {
     setActiveField();
   };
 
   const handleSave = () => {
+    dispatch(updateUser({ [label]: value }));
     // Определите обновление данных пользователя
     setActiveField(false);
   };
@@ -54,9 +56,6 @@ export const UserDataItem = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  console.log(auth._id);
-  console.log(user.user);
-
   useEffect(() => {
     dispatch(getUser(auth._id)); // Запрос данных пользователя при первой загрузке компонента
   }, [dispatch, auth._id]);
@@ -70,7 +69,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>Name:</p>
         <EditableField
-          label="Name"
+          label="name"
           initialValue={user.user.name}
           isActive={activeField === 'name'}
           setActiveField={() => handleSetActiveField('name')}
@@ -79,7 +78,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>Email:</p>
         <EditableField
-          label="Email"
+          label="email"
           initialValue={user.user.email}
           isActive={activeField === 'email'}
           setActiveField={() => handleSetActiveField('email')}
@@ -88,7 +87,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>Birthday:</p>
         <EditableField
-          label="Birthday"
+          label="birthday"
           initialValue={user.user.birthday}
           isActive={activeField === 'birthday'}
           setActiveField={() => handleSetActiveField('birthday')}
@@ -97,7 +96,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>Phone:</p>
         <EditableField
-          label="Phone"
+          label="phone"
           initialValue={user.user.phone}
           isActive={activeField === 'phone'}
           setActiveField={() => handleSetActiveField('phone')}
@@ -106,7 +105,7 @@ export const UserDataItem = () => {
       <div className={styles.containerInfo}>
         <p className={styles.label}>City:</p>
         <EditableField
-          label="City"
+          label="city"
           initialValue={user.user.location}
           isActive={activeField === 'city'}
           setActiveField={() => handleSetActiveField('city')}

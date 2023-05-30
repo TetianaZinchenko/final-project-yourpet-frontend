@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
+import { selectUser } from '../../../redux/auth/authSelectors';
 import { useNavigate } from 'react-router-dom';
 
 import Modal from '../../Modal';
@@ -12,6 +13,7 @@ export const Logout = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector(selectUser);
 
   const handleLogout = () => {
     setModalVisible(true);
@@ -23,7 +25,7 @@ export const Logout = () => {
 
   const handleConfirmLogout = async () => {
     try {
-      await dispatch(logOut());
+      await dispatch(logOut(user.token));
 
       navigate('/main');
       // Redirect to the main page after logout
