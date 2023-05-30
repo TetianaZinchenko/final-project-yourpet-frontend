@@ -1,10 +1,46 @@
+import { ModalNotice } from 'components/Notices/ModalNotice/ModalNotice';
+import { ModalNoticeMore } from 'components/Notices/ModalNotice/ModalNoticeMore';
+import { ModalNoticeRemove } from 'components/Notices/ModalNotice/ModalNoticeRemove';
 import { Notices } from 'components/Notices/Notices';
 import { Section } from 'components/Section/Section';
+import { useSelector } from 'react-redux';
+import { selectModal } from 'redux/modal/modalSelectors';
 
 export default function NoticesPage() {
+  const modal = useSelector(selectModal);
+
+  const body = document.querySelector('body');
+  modal.type === 0
+    ? body.classList.add('modal-open')
+    : body.classList.remove('modal-open');
+
+  let modalContent = null;
+
+  switch (modal.type) {
+    case 1:
+      modalContent = (
+        <ModalNotice>
+          <ModalNoticeMore pet={modal.params}></ModalNoticeMore>
+        </ModalNotice>
+      );
+      break;
+
+    case 2:
+      modalContent = (
+        <ModalNotice>
+          <ModalNoticeRemove pet={modal.params} />
+        </ModalNotice>
+      );
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <Section>
       <Notices />
+      {modalContent}
     </Section>
 
     // // const [query, setQuery] = useState('');

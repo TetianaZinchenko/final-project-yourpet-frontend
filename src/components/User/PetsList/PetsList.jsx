@@ -1,6 +1,6 @@
-import { PetsItem } from "../PetsItem/PetsItem"
-import { List } from "./PetsList.styled"
-import { useSelector } from "react-redux"
+import { PetsItem } from '../PetsItem/PetsItem';
+import { List } from './PetsList.styled';
+import { useSelector } from 'react-redux';
 import { getPets } from 'redux/pets/petsSelectors';
 
 //===================temp back-end data
@@ -29,10 +29,12 @@ import { getPets } from 'redux/pets/petsSelectors';
 //================end temp data
 
 export const PetsList = () => {
-    const pets = useSelector(getPets);
-    return (
-        <List>
-            {pets.map(pet =><PetsItem key={pet._id} info={pet} />)}
-        </List>
-    )
-}
+  const pets = useSelector(getPets);
+  return (
+    <List>
+      {pets?.map(pet => (
+        <PetsItem key={pet._id} info={pet} />
+      ))}
+    </List>
+  );
+};
