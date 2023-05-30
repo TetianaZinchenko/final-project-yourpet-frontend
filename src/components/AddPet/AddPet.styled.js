@@ -57,7 +57,7 @@ export const Forma = styled(Form)`
   }
   @media (min-width: 1280px) {
     width: 458px;
-    min-height: 548px;
+    min-height: 542px;
     padding: 20px 32px;
   }
   > div {
@@ -71,11 +71,13 @@ export const Forma = styled(Form)`
 
 export const Stepper = styled.div`
   display: flex;
+  justify-content: center;
   gap: 16px;
 `;
 
 export const Step = styled.div`
   width: calc(100% / 3);
+  max-width: 120px;
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
@@ -85,21 +87,7 @@ export const StepLine = styled.div`
   background-color: #cce4fb;
   height: 8px;
   border-radius: 8px;
-`;
-
-export const ShowPassword = styled.span`
-  display: inline-block;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: 15px;
-  top: 13px;
-  color: #54adff;
-  cursor: pointer;
-  svg {
-    width: inherit;
-    height: inherit;
-  }
+  max-width: 120px;
 `;
 
 export const Input = styled(Field)`
@@ -170,60 +158,6 @@ export const ButtonText = styled.span`
   line-height: 22px;
 `;
 
-export const Button = styled.button`
-  width: 100%;
-  padding: 11px 0 12px 14px;
-  text-align: center;
-  color: #fff;
-  background: #54adff;
-  border: 1px solid #54adff;
-  border-radius: 50px;
-  margin: 24px 0 40px 0;
-  transform: scale(1);
-  transition: transform 0.5s;
-  cursor: pointer;
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  :hover,
-  :focus {
-    transform: scale(1.05);
-    transition: transform 0.5s;
-  }
-  :hover:before {
-    left: 100%;
-  }
-  :before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255, 255, 255, 0.6),
-      transparent
-    );
-    transition: all 650ms;
-  }
-  :disabled {
-    opacity: 0.5;
-    cursor: auto;
-    transform: none;
-    transition: none;
-  }
-  :disabled:before {
-    transform: none;
-    transition: none;
-  }
-  @media (min-width: 768px) {
-    width: 458px;
-    font-size: 20px;
-  }
-`;
-
 export const ErrBox = styled.div`
   position: absolute;
   white-space: nowrap;
@@ -233,40 +167,5 @@ export const ErrBox = styled.div`
   font-size: 14px;
   @media (min-width: 768px) {
     left: 33px;
-  }
-`;
-
-export const AppBox = styled.div`
-  position: absolute;
-  white-space: nowrap;
-  bottom: 0;
-  left: 15px;
-  color: #00c3ad;
-  font-size: 14px;
-  @media (min-width: 768px) {
-    left: 33px;
-  }
-`;
-
-export const ClearInput = styled.span`
-  display: inline-block;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: 15px;
-  top: 13px;
-  cursor: pointer;
-  svg {
-    width: inherit;
-    height: inherit;
-  }
-`;
-
-export const StyledLink = styled.a`
-  color: #54adff;
-  text-decoration: none;
-  :hover,
-  :focus {
-    color: blue;
   }
 `;
