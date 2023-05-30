@@ -65,7 +65,7 @@ export const Notices = () => {
     case 'my-pets':
       if (!!auth._id) {
         visibleNotices = notices.filter(notice => {
-          return notice.owner === auth._id;
+          return notice.owner.id === auth._id;
         });
       }
       break;

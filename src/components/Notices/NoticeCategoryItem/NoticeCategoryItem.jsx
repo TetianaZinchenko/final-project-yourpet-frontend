@@ -74,8 +74,7 @@ export const NoticeCategoryItem = ({ pet }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   let isFavorite = favorite.includes(auth?._id);
-  // let isOwner = auth?._id === owner;
-
+  let isOwner = auth?._id === owner.id;
   const dispatch = useDispatch();
 
   const onSelectItemHandle = () => {
@@ -115,7 +114,7 @@ export const NoticeCategoryItem = ({ pet }) => {
         <BtnAddToFav type="button" onClick={favoriteClickHandle}>
           <FiHeart size={20} className={isFavorite ? 'active' : null} />
         </BtnAddToFav>
-        {isLoggedIn && (
+        {isLoggedIn && isOwner && (
           <>
             {auth._id === owner.id && (
               <BtnRemoveMy type="button" onClick={removeClickHandle}>
