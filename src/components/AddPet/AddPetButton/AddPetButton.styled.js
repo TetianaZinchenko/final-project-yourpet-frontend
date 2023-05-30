@@ -28,6 +28,8 @@ export const Btn = styled.button`
 
   color: ${colors.white};
 
+  cursor: pointer;
+
   svg {
     width: 24px;
     height: 24px;
