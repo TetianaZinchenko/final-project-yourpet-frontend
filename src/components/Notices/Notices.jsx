@@ -66,6 +66,35 @@ export const Notices = () => {
       break;
   }
 
+  const getNoticesBySearch = query => {
+    const noticesBySearch = [];
+
+    visibleNotices.forEach(notice => {
+      const noticeForSearch = {
+        ...notice,
+        avatar: '',
+        favorite: [],
+        owner: {},
+        _id: '',
+        createdAt: '',
+        updatedAt: '',
+      };
+
+      const values = Object.values(noticeForSearch);
+
+      for (const value of values) {
+        if (
+          value.toString().toLowerCase().includes(query.toLowerCase()) &&
+          !noticesBySearch.includes(notice)
+        ) {
+          noticesBySearch.push(notice);
+        }
+      }
+    });
+
+    return noticesBySearch;
+  };
+
   // todo: useSelector(Filter)
   // filtered visibleNotices by filter
 
@@ -80,17 +109,17 @@ export const Notices = () => {
 
   useEffect(() => {
     dispatch(fetchNotices());
-    const searchQuery = {
-      page,
-    };
+    // const searchQuery = {
+    //   page,
+    // };
 
-    if (categoryName === 'my-pets') {
-      if (query) searchQuery.query = query;
+    // if (categoryName === 'my-pets') {
+    //   if (query) searchQuery.query = query;
 
-      dispatch(fetchNotices({ category: categoryName, ...searchQuery }));
+    //   dispatch(fetchNotices({ category: categoryName, ...searchQuery }));
 
-      setSearchParams(searchQuery);
-    }
+    //   setSearchParams(searchQuery);
+    // }
   }, [categoryName, dispatch, page, query, setSearchParams]);
 
   const body = document.querySelector('body');
@@ -105,7 +134,10 @@ export const Notices = () => {
   };
 
   const onFormSubmit = query => {
-    setQuery(query);
+    if (query !== '') {
+      setQuery(query);
+      return;
+    }
   };
 
   return (
@@ -129,7 +161,10 @@ export const Notices = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <NoticesCategoriesList onClose={toggleModal} pets={visibleNotices} />
+        <NoticesCategoriesList
+          onClose={toggleModal}
+          pets={getNoticesBySearch(query)}
+        />
       )}
     </>
   );
