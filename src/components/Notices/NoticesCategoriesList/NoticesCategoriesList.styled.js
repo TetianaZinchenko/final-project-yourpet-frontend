@@ -33,4 +33,6 @@ export const Notification = styled.div`
   color: black;
   margin: 0 auto;
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
 `;

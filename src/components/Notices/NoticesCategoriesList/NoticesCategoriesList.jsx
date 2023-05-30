@@ -6,7 +6,9 @@ export const NoticesCategoriesList = ({ pets }) => {
     <Container>
       {/* <AddPetButton /> */}
       {pets.length === 0 ? (
-        <Notification>Ooops, there is no post for your query</Notification>
+        <Notification>
+          <p>Ooops, there is no post for your query</p>
+        </Notification>
       ) : (
         <List>
           {pets.map(pet => (
