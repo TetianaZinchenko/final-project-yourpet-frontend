@@ -90,11 +90,11 @@ export const ModalNoticeMore = ({
       </ContainerInfo>
       <Comment>{description}</Comment>
       <BtnContainer>
-        <ContactLink href={`tel:${owner.phone}`}>Contact</ContactLink>
         <AddToFav type="button" onClick={onClickFavBtn}>
           <span>Add to </span>
           <VscHeart size={20} />
         </AddToFav>
+        <ContactLink href={`tel:${owner.phone}`}>Contact</ContactLink>
       </BtnContainer>
     </>
   );
