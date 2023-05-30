@@ -14,8 +14,8 @@ const initialState = {
     email: null,
     password: null,
     token: null,
-    isLoggedIn: false,
   },
+  isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
   error: null,
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.user = action.payload.data.newUser;
         // state.token = action.payload.data.newUser.token;
-        state.user.isLoggedIn = true;
+        state.isLoggedIn = true;
 
         console.log('signUp.fulfilled payload:', action.payload);
       })
@@ -51,7 +51,7 @@ export const authSlice = createSlice({
       .addCase(signIn.fulfilled, (state, action) => {
         state.user = action.payload.data.authentificationUser;
         // state.user.token = action.payload.data.token;
-        state.user.isLoggedIn = true;
+        state.isLoggedIn = true;
         state.isLoading = false;
         console.log('signIn.fulfilled payload:', action.payload);
       })
@@ -60,6 +60,11 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logOut.fulfilled, (state, action) => {
+        state.user.name = null;
+        state.user.avatarURL = null;
+        state.user.location = null;
+        state.user.birthday = null;
+        state.user.phone = null;
         state.user.email = null;
         state.user.password = null;
         state.user.token = null;

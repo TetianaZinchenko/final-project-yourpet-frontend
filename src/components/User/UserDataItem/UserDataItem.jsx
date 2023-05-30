@@ -70,7 +70,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Name:</p>
         <EditableField
           label="name"
-          initialValue={user.user.name}
+          initialValue={user.name}
           isActive={activeField === 'name'}
           setActiveField={() => handleSetActiveField('name')}
         />
@@ -79,7 +79,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Email:</p>
         <EditableField
           label="email"
-          initialValue={user.user.email}
+          initialValue={user.email}
           isActive={activeField === 'email'}
           setActiveField={() => handleSetActiveField('email')}
         />
@@ -88,7 +88,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Birthday:</p>
         <EditableField
           label="birthday"
-          initialValue={user.user.birthday}
+          initialValue={user.birthday}
           isActive={activeField === 'birthday'}
           setActiveField={() => handleSetActiveField('birthday')}
         />
@@ -97,7 +97,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>Phone:</p>
         <EditableField
           label="phone"
-          initialValue={user.user.phone}
+          initialValue={user.phone}
           isActive={activeField === 'phone'}
           setActiveField={() => handleSetActiveField('phone')}
         />
@@ -106,7 +106,7 @@ export const UserDataItem = () => {
         <p className={styles.label}>City:</p>
         <EditableField
           label="city"
-          initialValue={user.user.location}
+          initialValue={user.location}
           isActive={activeField === 'city'}
           setActiveField={() => handleSetActiveField('city')}
         />
