@@ -189,9 +189,9 @@ export const AddPet = () => {
         <Formik
           validationSchema={addPetFormSchema}
           initialValues={{
-            name: 'Test',
-            petBirthday: '11.11.1111',
-            breed: '123',
+            name: '',
+            petBirthday: '',
+            breed: '',
             file: '',
             comments: '',
             title: '',
