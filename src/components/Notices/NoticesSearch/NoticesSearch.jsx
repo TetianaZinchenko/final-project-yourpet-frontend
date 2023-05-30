@@ -22,7 +22,6 @@ export const NoticesSearch = ({ onFormSubmit }) => {
     event.preventDefault();
 
     onFormSubmit(query);
-    setQuery('');
   };
 
   const onChangeInput = event => {

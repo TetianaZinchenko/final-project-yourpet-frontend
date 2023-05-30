@@ -25,6 +25,7 @@ import { Container } from './Notices.styled';
 
 // import { useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
+import { Pagination } from 'components/Pagination/Pagination';
 
 export const Notices = () => {
   // const [query, setQuery] = useState('');
@@ -40,6 +41,16 @@ export const Notices = () => {
   const isLoading = useSelector(selectNoticeIsLoading);
 
   const { categoryName } = useParams();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [noticesPerPage] = useState(8);
+
+  const lastNoticeIndex = currentPage * noticesPerPage;
+  const firstNoticeIndex = lastNoticeIndex - noticesPerPage;
+
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
 
   let visibleNotices = [];
   switch (categoryName) {
@@ -66,10 +77,12 @@ export const Notices = () => {
       break;
   }
 
+  const currentNotice = visibleNotices.slice(firstNoticeIndex, lastNoticeIndex);
+
   const getNoticesBySearch = query => {
     const noticesBySearch = [];
 
-    visibleNotices.forEach(notice => {
+    currentNotice.forEach(notice => {
       const noticeForSearch = {
         ...notice,
         avatar: '',
@@ -134,11 +147,13 @@ export const Notices = () => {
   };
 
   const onFormSubmit = query => {
-    if (query !== '') {
-      setQuery(query);
-      return;
-    }
+    // if (query !== '') {
+    setQuery(query);
+    //   return;
+    // }
   };
+
+  // console.log(getNoticesBySearch(query));
 
   return (
     <>
@@ -161,10 +176,18 @@ export const Notices = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <NoticesCategoriesList
-          onClose={toggleModal}
-          pets={getNoticesBySearch(query)}
-        />
+        <>
+          <NoticesCategoriesList
+            onClose={toggleModal}
+            pets={getNoticesBySearch(query)}
+          />
+          <Pagination
+            noticesPerPage={noticesPerPage}
+            totalNotices={visibleNotices.length}
+            paginate={paginate}
+            page={currentPage}
+          />
+        </>
       )}
     </>
   );
