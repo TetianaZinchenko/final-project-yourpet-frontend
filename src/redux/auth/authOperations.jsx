@@ -7,6 +7,7 @@ axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrened.com';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
+
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
@@ -19,10 +20,15 @@ axios.interceptors.response.use(
       if (!refreshToken) {
         return Promise.reject(error);
       }
-      const { data } = await axios.post('/users/refresh', { refreshToken });
-      setAuthHeader(data.token);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      return axios(error.config);
+      try {
+        const { data } = await axios.post('/users/refresh', { refreshToken });
+        setAuthHeader(data.token);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        return axios(error.config);
+      } catch (error) {
+        toast.error('An error occurred during authentication');
+        return Promise.reject(error);
+      }
     }
     return Promise.reject(error);
   }
@@ -33,13 +39,14 @@ export const signUp = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/register', credentials);
-      // setAuthHeader(data.token);
-      toast.success('registration success');
+      toast.success('Registration successful');
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
       if (error.response.data.message === 'Email in use') {
-        toast.error('This mail is already in use');
+        toast.error('This email is already in use');
+      } else {
+        toast.error('An error occurred during registration');
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -53,12 +60,13 @@ export const signIn = createAsyncThunk(
       const { data } = await axios.post('/users/login', credentials);
       setAuthHeader(data.data.authentificationUser.token);
       localStorage.setItem('refreshToken', data.refreshToken);
-      toast.success(`Welcome, !`);
-      // console.log(data);
+      toast.success('Welcome!');
       return data;
     } catch (error) {
       if (error.response.status === 401 || error.response.status === 500) {
-        toast.error('incorrect data entered');
+        toast.error('Wrong login or password');
+      } else {
+        toast.error('An error occurred during login');
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -70,17 +78,9 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
     localStorage.removeItem('refreshToken');
-    // toast.success('🦄 Wow so easy!', {
-    //   position: 'top-right',
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: 'colored',
-    // });
+    toast.success('Logged out successfully');
   } catch (error) {
+    toast.error('An error occurred during logout');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -93,6 +93,7 @@ export const currentUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     if (!persistedToken) {
+      toast.error('Unable to fetch user');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
@@ -100,6 +101,7 @@ export const currentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
+      toast.error('An error occurred while fetching user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -110,8 +112,10 @@ export const updateUser = createAsyncThunk(
   async (updatedData, thunkAPI) => {
     try {
       const { data } = await axios.put('/users/update', updatedData, {});
+      toast.success('User updated successfully');
       return data;
     } catch (error) {
+      toast.error('An error occurred during user update');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -124,6 +128,7 @@ export const getUser = createAsyncThunk(
       const { data } = await axios.get(`/users/?_id=${userId}`);
       return data;
     } catch (error) {
+      toast.error('An error occurred while fetching user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

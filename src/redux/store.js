@@ -19,7 +19,7 @@ import { petsReducer } from './pets/petsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'user', 'isLoggedIn'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 
 export const store = configureStore({
