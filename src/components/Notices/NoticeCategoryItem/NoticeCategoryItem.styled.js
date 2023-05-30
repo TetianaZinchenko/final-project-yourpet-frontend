@@ -167,7 +167,7 @@ export const BtnRemoveMy = styled.button`
     left: 10px;
     top: 10px;
     color: ${colors.blue};
-    strokewidth: 1.5;
+    stroke-width: 1.5;
   }
 
   svg:hover {

@@ -51,7 +51,7 @@ export const signIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
-      setAuthHeader(data.token);
+      setAuthHeader(data.data.authentificationUser.token);
       localStorage.setItem('refreshToken', data.refreshToken);
       // toast.success(`Welcome, ${data.user.name}!`);
       // console.log(data);
@@ -81,16 +81,16 @@ export const signIn = createAsyncThunk(
 //   }
 // );
 
-// export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
-//   try {
-//     await axios.post('/users/logout');
-//     clearAuthHeader();
-//     localStorage.removeItem('refreshToken');
-//     toast.success('Logout successful');
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+  try {
+    await axios.post('/users/logout');
+    clearAuthHeader();
+    localStorage.removeItem('refreshToken');
+    toast.success('Logout successful');
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 export const currentUser = createAsyncThunk(
   'auth/currentUser',
@@ -116,7 +116,7 @@ export const updateUser = createAsyncThunk(
   '/auth/updateUser',
   async (updatedData, thunkAPI) => {
     try {
-      const { data } = await axios.put('/users/update', updatedData);
+      const { data } = await axios.put('/users/update', updatedData, {});
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -124,16 +124,16 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-    localStorage.removeItem('refreshToken');
-    toast.success('Logout successful');
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+// export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+//   try {
+//     await axios.post('/users/logout');
+//     clearAuthHeader();
+//     localStorage.removeItem('refreshToken');
+//     toast.success('Logout successful');
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// });
 
 export const getUser = createAsyncThunk(
   'auth/getUser',
