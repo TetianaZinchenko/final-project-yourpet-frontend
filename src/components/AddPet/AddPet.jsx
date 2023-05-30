@@ -3,8 +3,6 @@ import { useState } from 'react';
 import * as yup from 'yup';
 // import { useDispatch } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
-// import { MoreInfo } from './MoreInfo/MoreInfo';
-// import {ReactComponent as PlusFile} from '../../icons/plus.svg';
 import { ReactComponent as Pawprint } from '../../icons/pawprint.svg';
 import {ReactComponent as ArrowLeft} from '../../icons/arrow-left.svg';
 
@@ -12,10 +10,8 @@ import {
   Forma,
   FormContainer,
   Input,
-  // Button,
   Title,
   ErrBox,
-  // AppBox,
   Option, 
   Stepper,
   Step,
@@ -24,26 +20,25 @@ import {
   PrevStepButton,
   NextStepButton,
   ButtonText
-  // ShowPassword,
-  // StyledLink,
-  // ClearInput,
 } from './AddPet.styled';
 import { MoreInfo } from './MoreInfo/MoreInfo';
 
 const addPetFormSchema = yup.object().shape({
-  // title: yup.string().when('category', {
+  title: yup
+    // .string()
+  //   .when('category', {
   //   is: value => value !== 'your pet',
   //   then: yup
-  //     .string()
-  //     .min(2, 'Minimum 2 characters')
-  //     .max(16, 'Maximum 16 characters')
-  //     .required('Title is required (min 2, max 16 characters)'),
+      .string()
+      .min(2, 'Minimum 2 characters')
+      .max(16, 'Maximum 16 characters')
+      .required('Title is required (min 2, max 16 characters)'),
   //   otherwise: yup.string(),
-  // }),
-  // category: yup
-  //   .string()
-  //   .oneOf(['your pet', 'sell', 'lost/found', 'in good hands'])
-  //   .required('Category is required'),
+  //   }),
+  category: yup
+    .string()
+    .oneOf(['your pet', 'sell', 'lost/found', 'in good hands'])
+    .required('Category is required'),
   name: yup
     .string()
     .min(2, 'Minimum 2 characters')
@@ -58,8 +53,8 @@ const addPetFormSchema = yup.object().shape({
     .min(2, 'Minimum 2 characters')
     .max(16, 'Maximum 16 characters')
     .required('Breed is required (min 2, max 16 characters)'),
-  // file: yup
-  //   .mixed()
+  file: yup
+    .mixed()
   //   .test('fileSize', 'File size is too large', value => value?.size <= 3145728)
   //   .test(
   //     'fileType',
@@ -67,33 +62,37 @@ const addPetFormSchema = yup.object().shape({
   //     value =>
   //       !value || ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type)
   //   )
-  //   .required('Photo is required'),
-  // sex: yup.string().when('category', {
+    .required('Photo is required'),
+  sex: yup
+  //   .string().when('category', {
   //   is: value =>
   //     value === 'sell' || value === 'lost/found' || value === 'in good hands',
-  //   then: yup.string().oneOf(['Female', 'Male']).required('Sex is required'),
+  //   then: yup
+    .string().oneOf(['Female', 'Male']).required('Sex is required'),
   //   otherwise: yup.string(),
   // }),
-  // location: yup.string().when('category', {
-  //   is: value => value !== 'your pet',
-  //   then: yup
-  //     .string()
-  //     .matches(/^[A-Z][a-zA-Z]*$/, 'City begins with capitalize character')
-  //     .required('City is required'),
-  //   otherwise: yup.string(),
+  location: yup
+    // .string().when('category', {
+    // is: value => value !== 'your pet',
+    // then: yup
+      .string()
+      .matches(/^[A-Z][a-zA-Z]*$/, 'City begins with capitalize character')
+      .required('City is required'),
+    // otherwise: yup.string(),
   // }),
-  // price: yup.number().when('category', {
-  //   is: value => value === 'sell',
-  //   then: yup
-  //     .number()
-  //     .moreThan(0, 'Price must be greater than 0')
-  //     .required('Price is required'),
+  price: yup
+    // .number().when('category', {
+    // is: value => value === 'sell',
+    // then: yup
+      .number()
+      .moreThan(0, 'Price must be greater than 0')
+      .required('Price is required'),
   //   otherwise: yup.number(),
   // }),
-  // comments: yup
-  //   .string()
-  //   .min(8, 'Minimum 8 characters')
-  //   .max(120, 'Maximum 120 characters'),
+  comment: yup
+    .string()
+    .min(8, 'Minimum 8 characters')
+    .max(120, 'Maximum 120 characters'),
 });
 
 
@@ -107,7 +106,6 @@ export const AddPet = () => {
   }
 
   const handleNextStep = (errors, values) => {
-    // console.log(values);
     if (step === 1 && values.category !== '' && !errors.category) {
       setStep(step + 1);
     }
@@ -129,8 +127,9 @@ export const AddPet = () => {
   
   const handlePreviousStep = () => {
     setStep(step - 1);
-    // console.log(values);
   };
+
+  const screenWidth = window.innerWidth;
 
   return (
   <>
@@ -142,7 +141,11 @@ export const AddPet = () => {
             date: '',
             breed: '',
             category: '',
+            file: '',
             comment: '',
+            title: '',
+            location: '',
+            price: ''
           }}
           onSubmit={(values, { resetForm }) => {
             formSubmit(values);
@@ -150,9 +153,14 @@ export const AddPet = () => {
           }}
         >
           {({ errors, touched, values }) => (
-            <Forma>
+            <Forma style={{
+              width: (step === 3 && selectedOption !== 'your pet' && screenWidth > 1279) ? '822px' : '',
+              padding: (step === 3 && selectedOption !== 'your pet' && screenWidth > 1279) ? '20px 75px' : ''
+            }}>
               <div>
-              <Title>Add Pet</Title>
+              <Title style={{ textAlign: (step === 3 && selectedOption !== 'your pet' && screenWidth > 1279) ? 'center' : '' }}>
+                Add Pet
+              </Title>
               <Stepper style={{ marginBottom: '30px'}}>
                 <Step>
                   <p style={{ color: step === 1 ? '#54adff' : (values.category !== '' && !errors.category) ? '#00C3AD' : '' }}>Choose option</p>
@@ -208,7 +216,7 @@ export const AddPet = () => {
                       style={{ appearance: 'none' }}
                         id='option3'
                         name='category'
-                        value='last found'
+                        value='lost/found'
                         type='radio'
                       />
                     lost/found
@@ -234,6 +242,20 @@ export const AddPet = () => {
               )}
               {step === 2 && (
                 <>
+                    {selectedOption !== 'your pet' &&
+                      (<div style={{ marginBottom: '7px', position: 'relative' }}>
+                        <Title style={{ fontSize: '20px', marginBottom: '0px' }}>Title of add</Title>
+                        <Input
+                          name="title"
+                          type="text"
+                          autoComplete="off"
+                          placeholder="Type title"
+                          style={{
+                            border: touched.title && (errors.title ? '1px solid #F43F5E' : '1px solid #00C3AD'),
+                          }}
+                        />
+                        <ErrorMessage component={ErrBox} name='title' />
+                      </div>)}  
                   <div style={{marginBottom: '7px', position: 'relative'}}>
                     <Title style={{ fontSize: '20px', marginBottom: '0px'}}>Pet's name</Title>
                     <Input
@@ -277,13 +299,13 @@ export const AddPet = () => {
                 </>
                 )}
               
-                {step === 3 && <MoreInfo />}
+                {step === 3 && <MoreInfo selectedOption={selectedOption} errors={errors} touched={touched} />}
                 </div>
-              <div style={{ display: 'flex', justifyContent: 'right', gap: '24px', marginBottom: '0px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginBottom: '0px' }}>
                 {step === 1 && (
                   <CancelButton
                     type='button'
-                    to="/notices">
+                    to="/notices/:categoryName">
                     <ArrowLeft style={{ marginRight: '16px' }}/>
                     <ButtonText style={{ color: '#54ADFF' }}>Cancel</ButtonText>
                   </CancelButton>
@@ -317,4 +339,4 @@ export const AddPet = () => {
     </FormContainer>
   </>
   );
-};
+}; 
