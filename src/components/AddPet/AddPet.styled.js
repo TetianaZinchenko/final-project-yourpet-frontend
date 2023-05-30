@@ -119,6 +119,8 @@ export const Option = styled.label`
   background-color: #cce4fb;
   padding: 8px 16px;
   margin-bottom: 20px;
+
+  cursor: pointer;
 `;
 
 export const CancelButton = styled(NavLink)`
