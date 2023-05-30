@@ -73,8 +73,8 @@ export const NoticeCategoryItem = ({ pet }) => {
   const auth = useSelector(selectAuth);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  let isFavorite = favorite.includes(auth.user?.id);
-  let isOwner = auth.user?.id === owner;
+  let isFavorite = favorite.includes(auth?._id);
+  let isOwner = auth?._id === owner;
 
   const dispatch = useDispatch();
 
