@@ -8,22 +8,34 @@ import { Input, Title, ErrBox, Option } from '../AddPet.styled';
 import { PlusFileButton, Image } from './MoreInfo.styled';
 
 export const MoreInfo = ({ selectedOption }) => {
-  const { errors, touched } = useFormikContext();
+  const { errors, touched, setFieldValue } = useFormikContext();
+  console.log(errors);
+
   const [selectedSex, setSelectedSex] = useState('');
   const handleSexSelect = sex => {
     setSelectedSex(sex);
   };
+
   const fileInputRef = useRef(null);
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
   };
+
   const [petImage, SetPetImage] = useState(null);
-  const { setFieldValue } = useFormikContext();
+
   const handleUploadImage = event => {
     const uploadImage = event.currentTarget.files[0];
     setFieldValue('file', uploadImage);
     const image = uploadImage ? URL.createObjectURL(uploadImage) : null;
     SetPetImage(image);
+
+    // todo: upload server
+    console.error('todo: upload server');
+    var reader = new FileReader();
+    reader.onload = function () {
+      setFieldValue('avatar', reader.result);
+    };
+    reader.readAsDataURL(uploadImage);
   };
 
   const screenWidth = window.innerWidth;
@@ -225,7 +237,7 @@ export const MoreInfo = ({ selectedOption }) => {
                   : '2'
               }
               type="text"
-              name="comment"
+              name="comments"
               placeholder="Type a comment"
               autoComplete="off"
               style={{
@@ -234,7 +246,7 @@ export const MoreInfo = ({ selectedOption }) => {
                 marginBottom: '0px',
               }}
             ></Input>
-            <ErrorMessage component={ErrBox} name="comment" />
+            <ErrorMessage component={ErrBox} name="comments" />
           </div>
         </div>
       </div>

@@ -32,6 +32,7 @@ import {
 import { useEffect } from 'react';
 import { resetStatus } from 'redux/notices/noticesSlice';
 import toast from 'react-hot-toast';
+import { addPet } from 'redux/pets/petsOperations';
 
 const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -50,11 +51,12 @@ const addPetFormSchema = yup.object().shape({
     .string()
     .min(2, 'Minimum 2 characters')
     .max(16, 'Maximum 16 characters')
+    .matches(/^[a-zA-Z. ']+$/, 'not match the required pattern')
     .required('Name is required (min 2, max 16 characters)'),
-  date: yup
+  petBirthday: yup
     .string()
     .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'DD.MM.YYYY format needed')
-    .required('Date is required (DD.MM.YYYY format)'),
+    .required('Pet Birthday is required (DD.MM.YYYY format)'),
   breed: yup
     .string('Must be a string')
     .min(2, 'Minimum 2 characters')
@@ -92,10 +94,11 @@ const addPetFormSchema = yup.object().shape({
         .moreThan(0, 'Price must be greater than 0')
         .required('Price is required'),
   }),
-  comment: yup
+  comments: yup
     .string()
     .min(8, 'Minimum 8 characters')
-    .max(120, 'Maximum 120 characters'),
+    .max(120, 'Maximum 120 characters')
+    .required('comments is required'),
 });
 
 export const AddPet = () => {
@@ -118,9 +121,10 @@ export const AddPet = () => {
       break;
 
     case 2:
-      alert('Нову замітку було додано!');
+      toast.success('Нову замітку було додано!');
       setStep(1);
       resetFormik();
+      dispatch(resetStatus());
       break;
 
     case 3:
@@ -138,10 +142,10 @@ export const AddPet = () => {
     } else if (
       step === 2 &&
       values.name !== '' &&
-      values.date !== '' &&
+      values.petBirthday !== '' &&
       values.breed !== '' &&
       !errors.name &&
-      !errors.date &&
+      !errors.petBirthday &&
       !errors.breed
     ) {
       setStep(step + 1);
@@ -150,7 +154,23 @@ export const AddPet = () => {
     }
   };
 
-  const formSubmit = values => dispatch(createNotice(values));
+  const formSubmit = values => {
+    switch (values.category) {
+      case 'your pet':
+        const { name, petBirthday, breed, comments, avatar } = values;
+        dispatch(addPet({ name, petBirthday, breed, comments, avatar }));
+        break;
+
+      default:
+        const postInfo = { ...values };
+        postInfo.price += '$';
+        postInfo.description = postInfo.comments;
+        delete postInfo.comments;
+        delete postInfo.file;
+        dispatch(createNotice(postInfo));
+        break;
+    }
+  };
   const handlePreviousStep = () => setStep(step - 1);
 
   const screenWidth = window.innerWidth;
@@ -160,15 +180,14 @@ export const AddPet = () => {
         <Formik
           validationSchema={addPetFormSchema}
           initialValues={{
-            name: '',
-            date: '',
-            breed: '',
-            category: '',
+            name: 'Test',
+            petBirthday: '11.11.1111',
+            breed: '123',
             file: '',
-            comment: '',
+            comments: '',
             title: '',
-            location: '',
-            price: '',
+            sex: 'Female',
+            avatar: '',
           }}
           onSubmit={(values, { resetForm }) => {
             resetFormik = resetForm;
@@ -237,10 +256,10 @@ export const AddPet = () => {
                           step === 2
                             ? '#54adff'
                             : values.name !== '' &&
-                              values.date !== '' &&
+                              values.petBirthday !== '' &&
                               values.breed !== '' &&
                               !errors.name &&
-                              !errors.date &&
+                              !errors.petBirthday &&
                               !errors.breed
                             ? '#00C3AD'
                             : '',
@@ -254,10 +273,10 @@ export const AddPet = () => {
                           step === 2
                             ? '#54adff'
                             : values.name !== '' &&
-                              values.date !== '' &&
+                              values.petBirthday !== '' &&
                               values.breed !== '' &&
                               !errors.name &&
-                              !errors.date &&
+                              !errors.petBirthday &&
                               !errors.breed
                             ? '#00C3AD'
                             : '',
@@ -270,7 +289,7 @@ export const AddPet = () => {
                         color:
                           step === 3
                             ? '#54adff'
-                            : values.comment !== '' && !errors.comment
+                            : values.comments !== '' && !errors.comments
                             ? '#00C3AD'
                             : '',
                       }}
@@ -283,9 +302,9 @@ export const AddPet = () => {
                           step === 3
                             ? '#54adff'
                             : values.file !== '' &&
-                              values.comment !== '' &&
+                              values.comments !== '' &&
                               !errors.file &&
-                              !errors.comment
+                              !errors.comments
                             ? '#00C3AD'
                             : '',
                       }}
@@ -428,19 +447,19 @@ export const AddPet = () => {
                         Date of birth
                       </Title>
                       <Input
-                        name="date"
+                        name="petBirthday"
                         type="text"
                         autoComplete="off"
                         placeholder="Type date of birth"
                         style={{
                           border:
-                            touched.date &&
-                            (errors.date
+                            touched.petBirthday &&
+                            (errors.petBirthday
                               ? '1px solid #F43F5E'
                               : '1px solid #00C3AD'),
                         }}
                       />
-                      <ErrorMessage component={ErrBox} name="date" />
+                      <ErrorMessage component={ErrBox} name="petBirthday" />
                     </div>
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
                       <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
