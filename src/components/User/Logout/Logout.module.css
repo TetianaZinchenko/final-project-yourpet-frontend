@@ -1,4 +1,4 @@
-.button {
+.buttonLogOut {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -9,4 +9,128 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+.h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.buttonYes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 149px;
+  height: 40px;
+  padding: 11px 0 12px 14px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  background: #54adff;
+  border: 1px solid #54adff;
+  border-radius: 40px;
+  margin: 24px 0 40px 0;
+  transform: scale(1);
+  transition: transform 0.5s;
+  cursor: pointer;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.buttonYes:hover,
+.button:focus {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+.buttonYes:hover:before {
+  left: 100%;
+}
+.buttonYes:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: all 650ms;
+}
+.buttonYes:disabled {
+  opacity: 0.5;
+  cursor: auto;
+  transform: none;
+  transition: none;
+}
+.buttonYes:disabled:before {
+  transform: none;
+  transition: none;
+}
+
+.buttonCancel {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 149px;
+  height: 40px;
+  padding: 11px 0 14px;
+  text-align: center;
+  color: #54adff;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid #54adff;
+  border-radius: 40px;
+  margin: 24px 0 40px 0;
+  transform: scale(1);
+  transition: transform 0.5s;
+  cursor: pointer;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.buttonCancel:hover,
+.button:focus {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+  background: #54adff;
+  color: #fff;
+}
+.buttonCancel:hover:before {
+  left: 100%;
+}
+.buttonCancel:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: all 650ms;
+}
+.buttonCancel:disabled {
+  opacity: 0.5;
+  cursor: auto;
+  transform: none;
+  transition: none;
+}
+.buttonCancel:disabled:before {
+  transform: none;
+  transition: none;
 }

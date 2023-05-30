@@ -4,7 +4,7 @@ import styles from './UserData.module.css';
 import { UserDataItem } from '../UserDataItem/UserDataItem';
 import defaultImage from '../../../images/desktop/photo_default_desktop.png';
 import chekIcon from '../../../icons/check.svg';
-import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader';
 
 export const UserData = () => {
   // const [selectedFile, setSelectedFile] = useState(null);
@@ -43,15 +43,13 @@ export const UserData = () => {
   return (
     <>
       <p>My information:</p>
-      <div>
-        <div
-          style={{ maxWidth: '182px', maxHeight: '182px', overflow: 'hidden' }}
-        >
+      <div className={styles.div}>
+        <div className={styles.imgWraper}>
           <img
             src={previewUrl}
             alt="Preview"
             onClick={handleDefaultImageClick}
-            style={{ cursor: 'pointer', width: '100%', height: 'auto' }}
+            className={styles.preview}
           />
         </div>
         {!isPreviewConfirmed && (
@@ -78,7 +76,7 @@ export const UserData = () => {
         )}
       </div>
       <UserDataItem />
-      <Loader />
+      {/* <Loader /> */}
     </>
   );
 };

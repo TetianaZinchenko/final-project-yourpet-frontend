@@ -70,6 +70,8 @@ export const Button = styled(NavLink)`
   &:focus {
     color: ${theme.colors.white};
 
-    background-color: transparent;
+    background-color: ${theme.colors.blue};
+
+    /* background-color: transparent; */
   }
 `;

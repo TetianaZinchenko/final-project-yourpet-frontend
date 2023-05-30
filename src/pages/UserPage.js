@@ -1,5 +1,6 @@
 import { Section } from 'components/Section/Section';
 import { User } from 'components/User/User';
+// import { PetsData } from 'components/User/PetsData/PetsData';
 
 const UserPage = () => {
   return (
