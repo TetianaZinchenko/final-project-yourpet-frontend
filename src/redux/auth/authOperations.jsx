@@ -53,7 +53,7 @@ export const signIn = createAsyncThunk(
       const { data } = await axios.post('/users/login', credentials);
       setAuthHeader(data.data.authentificationUser.token);
       localStorage.setItem('refreshToken', data.refreshToken);
-      // toast.success(`Welcome, ${data.user.name}!`);
+      toast.success(`Welcome, !`);
       // console.log(data);
       return data;
     } catch (error) {
@@ -64,22 +64,6 @@ export const signIn = createAsyncThunk(
     }
   }
 );
-
-// export const signInWhithToken = createAsyncThunk(
-//   'auth/signInWhithToken',
-//   async (credentials, thunkAPI) => {
-//     try {
-//       const { data } = await axios.post('/users/login/with-token', credentials);
-//       setAuthHeader(data.token);
-//       return data;
-//     } catch (error) {
-//       if (error.response.status === 401 || error.response.status === 500) {
-//         toast.error('incorrect data entered');
-//       }
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
@@ -123,17 +107,6 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
-
-// export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
-//   try {
-//     await axios.post('/users/logout');
-//     clearAuthHeader();
-//     localStorage.removeItem('refreshToken');
-//     toast.success('Logout successful');
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
 
 export const getUser = createAsyncThunk(
   'auth/getUser',
