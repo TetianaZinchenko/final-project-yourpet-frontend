@@ -9,6 +9,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const ModalNotice = ({ children }) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {

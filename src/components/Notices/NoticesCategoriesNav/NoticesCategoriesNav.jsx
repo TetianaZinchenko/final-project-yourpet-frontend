@@ -1,23 +1,21 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { List, Button } from './NoticesCategoriesNav.styled';
-import PropTypes from 'prop-types';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
   { filter: 'lost/found', path: 'lost-found' },
   { filter: 'in good hands', path: 'for-free' },
+  { filter: 'favorite ads', path: 'favorite' },
+  { filter: 'my ads', path: 'my-pets' },
 ];
 
 export const NoticesCategoriesNav = () => {
   const isUser = useSelector(selectIsLoggedIn);
-
   const items = filters.map(({ filter, path }, item) => {
-    if (!isUser && filter === 'favorite ads') {
-      return null;
-    }
+    const isAuthPage = path === 'favorite' || path === 'my-pets';
 
-    if (!isUser && filter === 'my ads') {
+    if (!isUser && isAuthPage) {
       return null;
     }
 
@@ -30,11 +28,3 @@ export const NoticesCategoriesNav = () => {
 
   return <List>{items}</List>;
 };
-
-
-NoticesCategoriesNav.propTypes = {
-    isUser: PropTypes.bool.isRequired,
-  };
-
-
-

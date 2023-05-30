@@ -9,8 +9,8 @@ import {
 } from 'redux/notices/noticesOperations';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
-  getNotices,
-  getIsLoading,
+  selectNotices,
+  selectNoticeIsLoading,
   // getError,
 } from 'redux/notices/noticesSelectors';
 import { AddPetButton } from 'components/AddPet/AddPetButton/AddPetButton';
@@ -25,6 +25,7 @@ import { Container } from './Notices.styled';
 
 // import { useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
+import { Pagination } from 'components/Pagination/Pagination';
 
 export const Notices = () => {
   // const [query, setQuery] = useState('');
@@ -36,25 +37,35 @@ export const Notices = () => {
   const auth = useSelector(selectAuth);
 
   const dispatch = useDispatch();
-  const notices = useSelector(getNotices);
-  const isLoading = useSelector(getIsLoading);
+  const notices = useSelector(selectNotices);
+  const isLoading = useSelector(selectNoticeIsLoading);
 
   const { categoryName } = useParams();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [noticesPerPage] = useState(8);
+
+  const lastNoticeIndex = currentPage * noticesPerPage;
+  const firstNoticeIndex = lastNoticeIndex - noticesPerPage;
+
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
 
   let visibleNotices = [];
   switch (categoryName) {
     case 'favorite':
-      if (!!auth.user.id) {
+      if (!!auth._id) {
         visibleNotices = notices.filter(notice => {
-          return notice.favorite.includes(auth.user.id);
+          return notice.favorite.includes(auth._id);
         });
       }
       break;
 
     case 'my-pets':
-      if (!!auth.user.id) {
+      if (!!auth._id) {
         visibleNotices = notices.filter(notice => {
-          return notice.owner === auth.user.id;
+          return notice.owner.id === auth._id;
         });
       }
       break;
@@ -65,6 +76,37 @@ export const Notices = () => {
       );
       break;
   }
+
+  const currentNotice = visibleNotices.slice(firstNoticeIndex, lastNoticeIndex);
+
+  const getNoticesBySearch = query => {
+    const noticesBySearch = [];
+
+    currentNotice.forEach(notice => {
+      const noticeForSearch = {
+        ...notice,
+        avatar: '',
+        favorite: [],
+        owner: {},
+        _id: '',
+        createdAt: '',
+        updatedAt: '',
+      };
+
+      const values = Object.values(noticeForSearch);
+
+      for (const value of values) {
+        if (
+          value.toString().toLowerCase().includes(query.toLowerCase()) &&
+          !noticesBySearch.includes(notice)
+        ) {
+          noticesBySearch.push(notice);
+        }
+      }
+    });
+
+    return noticesBySearch;
+  };
 
   // todo: useSelector(Filter)
   // filtered visibleNotices by filter
@@ -80,17 +122,17 @@ export const Notices = () => {
 
   useEffect(() => {
     dispatch(fetchNotices());
-    const searchQuery = {
-      page,
-    };
+    // const searchQuery = {
+    //   page,
+    // };
 
-    if (categoryName === 'my-pets') {
-      if (query) searchQuery.query = query;
+    // if (categoryName === 'my-pets') {
+    //   if (query) searchQuery.query = query;
 
-      dispatch(fetchNotices({ category: categoryName, ...searchQuery }));
+    //   dispatch(fetchNotices({ category: categoryName, ...searchQuery }));
 
-      setSearchParams(searchQuery);
-    }
+    //   setSearchParams(searchQuery);
+    // }
   }, [categoryName, dispatch, page, query, setSearchParams]);
 
   const body = document.querySelector('body');
@@ -105,8 +147,13 @@ export const Notices = () => {
   };
 
   const onFormSubmit = query => {
+    // if (query !== '') {
     setQuery(query);
+    //   return;
+    // }
   };
+
+  // console.log(getNoticesBySearch(query));
 
   return (
     <>
@@ -129,7 +176,18 @@ export const Notices = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <NoticesCategoriesList onClose={toggleModal} pets={visibleNotices} />
+        <>
+          <NoticesCategoriesList
+            onClose={toggleModal}
+            pets={getNoticesBySearch(query)}
+          />
+          <Pagination
+            noticesPerPage={noticesPerPage}
+            totalNotices={visibleNotices.length}
+            paginate={paginate}
+            page={currentPage}
+          />
+        </>
       )}
     </>
   );
