@@ -1,6 +1,6 @@
 import { NoticeCategoryItem } from 'components/Notices/NoticeCategoryItem/NoticeCategoryItem';
 // import { AddPetButton } from 'components/AddPet/AddPetButton/AddPetButton';
-import { Container, List } from './NoticesCategoriesList.styled';
+import { Container, List, Notification } from './NoticesCategoriesList.styled';
 import { useSelector } from 'react-redux';
 import { selectModal } from 'redux/modal/modalSelectors';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
@@ -42,13 +42,18 @@ export const NoticesCategoriesList = ({ pets }) => {
   return (
     <Container>
       {/* <AddPetButton /> */}
-      <List>
-        {pets.map(pet => (
-          <li key={pet._id}>
-            <NoticeCategoryItem pet={pet} />
-          </li>
-        ))}
-      </List>
+      {pets.length === 0 ? (
+        <Notification>Ooops, there is no post for your query</Notification>
+      ) : (
+        <List>
+          {pets.map(pet => (
+            <li key={pet._id}>
+              <NoticeCategoryItem pet={pet} />
+            </li>
+          ))}
+        </List>
+      )}
+
       {modalContent}
     </Container>
   );

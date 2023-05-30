@@ -27,3 +27,10 @@ export const List = styled.ul`
     width: 1248px;
   }
 `;
+
+export const Notification = styled.div`
+  font-size: 24px;
+  color: black;
+  margin: 0 auto;
+  padding: 20px 0;
+`;
