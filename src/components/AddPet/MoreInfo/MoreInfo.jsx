@@ -9,8 +9,6 @@ import { PlusFileButton, Image } from './MoreInfo.styled';
 
 export const MoreInfo = ({ selectedOption }) => {
   const { errors, touched, setFieldValue } = useFormikContext();
-  console.log(errors);
-
   const [selectedSex, setSelectedSex] = useState('');
   const handleSexSelect = sex => {
     setSelectedSex(sex);

@@ -33,6 +33,8 @@ import { useEffect } from 'react';
 import { resetStatus } from 'redux/notices/noticesSlice';
 import toast from 'react-hot-toast';
 import { addPet } from 'redux/pets/petsOperations';
+import { selectPetError, selectPetStatus } from 'redux/pets/petsSelectors';
+import { resetPetStatus } from 'redux/pets/petsSlice';
 
 const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -113,23 +115,30 @@ export const AddPet = () => {
 
   let resetFormik = () => {};
   const postStatus = useSelector(selectNoticePostStatus);
+  const petStatus = useSelector(selectPetStatus);
   const postError = useSelector(selectNoticeError);
+  const petError = useSelector(selectPetError);
 
-  switch (postStatus) {
-    case 1:
-      // loading
-      break;
+  const status = selectedOption === 'your pet' ? petStatus : postStatus;
 
+  switch (status) {
     case 2:
-      toast.success('Нову замітку було додано!');
       setStep(1);
       resetFormik();
-      dispatch(resetStatus());
+      selectedOption === 'your pet'
+        ? dispatch(resetPetStatus())
+        : dispatch(resetStatus());
+      toast.success('Нову замітку було додано!');
       break;
 
     case 3:
-      toast.error(postError);
-      dispatch(resetStatus());
+      if (selectedOption === 'your pet') {
+        toast.error(petError);
+        dispatch(resetPetStatus());
+      } else {
+        toast.error(postError);
+        dispatch(resetStatus());
+      }
       break;
 
     default:
@@ -515,9 +524,7 @@ export const AddPet = () => {
                 )}
                 {step === 3 && (
                   <NextStepButton type="submit">
-                    <ButtonText>
-                      {postStatus !== 1 ? 'Done' : 'Loading'}
-                    </ButtonText>
+                    <ButtonText>{status !== 1 ? 'Done' : 'Loading'}</ButtonText>
                     <Pawprint />
                   </NextStepButton>
                 )}
