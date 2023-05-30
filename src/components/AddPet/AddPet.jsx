@@ -120,12 +120,12 @@ export const AddPet = () => {
     case 2:
       alert('Нову замітку було додано!');
       setStep(1);
-      setSelectedOption('');
       resetFormik();
       break;
 
     case 3:
       toast.error(postError);
+      dispatch(resetStatus());
       break;
 
     default:
@@ -160,15 +160,15 @@ export const AddPet = () => {
         <Formik
           validationSchema={addPetFormSchema}
           initialValues={{
-            name: 'test',
-            date: '10.10.2010',
-            breed: 'test',
+            name: '',
+            date: '',
+            breed: '',
             category: '',
             file: '',
-            comment: 'test',
-            title: 'test',
-            location: 'Test',
-            price: '22',
+            comment: '',
+            title: '',
+            location: '',
+            price: '',
           }}
           onSubmit={(values, { resetForm }) => {
             resetFormik = resetForm;
