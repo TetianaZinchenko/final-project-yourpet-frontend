@@ -9,6 +9,7 @@ import styles from './UserDataItem.module.css';
 const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
   const [value, setValue] = useState(initialValue);
   const dispatch = useDispatch();
+  const auth = useSelector(selectAuth);
 
   const handleEdit = () => {
     setActiveField();
@@ -17,6 +18,7 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
   const handleSave = () => {
     dispatch(updateUser({ [label]: value }));
     // Определите обновление данных пользователя
+    dispatch(getUser(auth._id));
     setActiveField(false);
   };
 

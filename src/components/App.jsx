@@ -1,4 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
+// import { ToastContainer } from 'react-toastify';
 import { lazy } from 'react';
 
 import { ThemeProvider } from '@emotion/react';
@@ -24,11 +25,21 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route path="" element={<Navigate to="/main" replace />} />
           <Route path="main" element={<MainPage />} />
-          <Route path="/register" element={<RestrictedRoute
-            redirectTo="/user"
-            component={<RegisterPage />}
-          />} />
-          <Route path="/login" element={ <RestrictedRoute redirectTo="/user" component={<LoginPage />} />}/>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+            }
+          />
           <Route path="/notices/:categoryName" element={<NoticesPage />} />
           <Route
             path="/contacts"
@@ -46,6 +57,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      {/* <ToastContainer /> */}
     </ThemeProvider>
   );
 };
