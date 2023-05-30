@@ -70,7 +70,16 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
     localStorage.removeItem('refreshToken');
-    toast.success('Logout successful');
+    // toast.success('🦄 Wow so easy!', {
+    //   position: 'top-right',
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: 'colored',
+    // });
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
