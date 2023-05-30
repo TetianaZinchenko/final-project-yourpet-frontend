@@ -1,5 +1,7 @@
 export const getPets = state => state.pets.items;
 
-export const getIsLoading = state => state.pets.isLoading;
+export const selectPetIsLoading = state => state.pets.isLoading;
 
-export const getError = state => state.pets.error;
+export const selectPetError = state => state.pets.error;
+
+export const selectPetStatus = state => state.pets.status;
