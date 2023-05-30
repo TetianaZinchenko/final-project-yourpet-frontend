@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  createNotice,
   favoriteNotice,
   fetchNotices,
   removeNotice,
@@ -11,6 +12,7 @@ export const noticesSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    status: 0,
   },
 
   extraReducers: {
@@ -63,13 +65,32 @@ export const noticesSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    // create
+    [createNotice.pending](state, action) {
+      state.isLoading = true;
+      state.status = 1;
+    },
+    [createNotice.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+      state.status = 2;
+    },
+    [createNotice.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+      state.status = 3;
+    },
   },
   reducers: {
     setFilter(state, action) {
       state.filter = action.payload;
     },
-  }
+    resetStatus(state, action) {
+      state.status = 0;
+    },
+  },
 });
 
-export const { setFilter } = noticesSlice.actions;
+export const { setFilter, resetStatus } = noticesSlice.actions;
 export const noticesReducer = noticesSlice.reducer;
