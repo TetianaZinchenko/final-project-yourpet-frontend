@@ -9,8 +9,8 @@ import {
 } from 'redux/notices/noticesOperations';
 import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
-  getNotices,
-  getIsLoading,
+  selectNotices,
+  selectNoticeIsLoading,
   // getError,
 } from 'redux/notices/noticesSelectors';
 import { AddPetButton } from 'components/AddPet/AddPetButton/AddPetButton';
@@ -36,8 +36,8 @@ export const Notices = () => {
   const auth = useSelector(selectAuth);
 
   const dispatch = useDispatch();
-  const notices = useSelector(getNotices);
-  const isLoading = useSelector(getIsLoading);
+  const notices = useSelector(selectNotices);
+  const isLoading = useSelector(selectNoticeIsLoading);
 
   const { categoryName } = useParams();
 
