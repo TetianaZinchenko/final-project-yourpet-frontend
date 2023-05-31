@@ -16,15 +16,24 @@ export const Number = styled.a`
     cursor: pointer;
   }
 
+  svg {
+    width: 16px;
+  }
+
   background-color: ${props => (props.isActive ? '#54ADFF' : 'transparent')};
   color: ${props => (props.isActive ? '#ffffff' : '#cce4fb')};
 `;
 
 export const List = styled.div`
-  display: flex;
+  display: inline-flex;
+
   gap: 7px;
   justify-content: center;
   align-items: center;
   padding: 10px;
   margin-top: 60px;
+  box-sizing: border-box;
+  border-radius: 45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fef9f9;
 `;
