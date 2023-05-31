@@ -43,8 +43,8 @@ const addPetFormSchema = yup.object().shape({
     then: schema =>
       schema
         .min(2, 'Minimum 2 characters')
-        .max(16, 'Maximum 16 characters')
-        .required('Title is required (min 2, max 16 characters)'),
+        .max(50, 'Maximum 50 characters')
+        .required('Title is required (min 2, max 50 characters)'),
   }),
   category: yup
     .string()

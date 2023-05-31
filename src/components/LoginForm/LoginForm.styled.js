@@ -13,7 +13,6 @@ import {
   mobile3x,
 } from '../../images/bg_page/index';
 
-
 export const FormContainer = styled.div`
   width: 100vw;
   min-height: calc(100vh - 48px);
@@ -25,13 +24,13 @@ export const FormContainer = styled.div`
   background-position: center top;
 
   @media screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
     background-image: url(${mobile2x});
   }
   @media screen and (min-device-pixel-ratio: 3),
-  screen and (min-resolution: 288dpi),
-  screen and (min-resolution: 3dppx) {
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
     background-image: url(${mobile3x});
   }
   @media (min-width: 768px) {
@@ -40,35 +39,34 @@ export const FormContainer = styled.div`
     min-height: calc(100vh - 64px);
     background-image: url(${tablet1x});
 
-  @media screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
-    background-image: url(${tablet2x});
-  }
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${tablet2x});
+    }
 
-  @media screen and (min-device-pixel-ratio: 3),
-  screen and (min-resolution: 288dpi),
-  screen and (min-resolution: 3dppx) {
-    background-image: url(${tablet3x});
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(${tablet3x});
+    }
   }
-}
   @media (min-width: 1280px) {
     padding-top: 82px;
     padding-bottom: 147px;
     background-image: url(${desc1x});
     @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
       background-image: url(${desc2x});
     }
 
     @media screen and (min-device-pixel-ratio: 3),
-    screen and (min-resolution: 288dpi),
-    screen and (min-resolution: 3dppx) {
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
       background-image: url(${desc3x});
     }
   }
-
 `;
 export const Title = styled.h2`
   font-size: 24px;
@@ -92,12 +90,10 @@ export const Forma = styled(Form)`
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
 
-
   @media (min-width: 768px) {
     width: 608px;
     padding: 60px 0 40px 0;
     margin-left: 80px;
-
   }
   @media (min-width: 1280px) {
     width: 618px;
@@ -119,18 +115,17 @@ export const ShowPassword = styled.span`
   height: 25px;
   right: 15px;
   top: 13px;
-  fill:white;
+  fill: white;
   stroke: ${props =>
     props.error
       ? props.theme.colors.red
       : props.valid
-        ? props.theme.colors.green
-        : props.theme.colors.blue};
+      ? props.theme.colors.green
+      : props.theme.colors.blue};
 
   svg {
     width: inherit;
     height: inherit;
-
   }
 `;
 
@@ -141,10 +136,10 @@ export const Input = styled(Field)`
   padding: 11px 0 12px 14px;
   background: white;
   border: 1px solid;
-    border-color: ${props =>
-  props.error
-    ? props.theme.colors.red
-    : props.valid
+  border-color: ${props =>
+    props.error
+      ? props.theme.colors.red
+      : props.valid
       ? props.theme.colors.green
       : props.theme.colors.blue};
   border-radius: 50px;
@@ -253,7 +248,6 @@ export const ClearInput = styled.span`
     width: inherit;
     height: inherit;
   }
-
 `;
 export const StyledLink = styled(NavLink)`
   color: #54adff;
@@ -264,13 +258,13 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
-export const GoogleLink = styled.a`
-  display: flex;
-  align-items: center;
-  color: #54adff;
-  text-decoration: none;
-  :hover,
-  :focus {
-    color: blue;
-  }
-`;
+// export const GoogleLink = styled.a`
+//   display: flex;
+//   align-items: center;
+//   color: #54adff;
+//   text-decoration: none;
+//   :hover,
+//   :focus {
+//     color: blue;
+//   }
+// `;

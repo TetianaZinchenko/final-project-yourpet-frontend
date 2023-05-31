@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { object, string, ref } from 'yup';
-import { FcGoogle } from 'react-icons/fc';
+// import { FcGoogle } from 'react-icons/fc';
 
 import { signUp, signIn } from 'redux/auth/authOperations';
 
@@ -16,7 +16,7 @@ import {
   ErrBox,
   ShowPassword,
   StyledLink,
-  GoogleLink,
+  // GoogleLink,
   ClearInput,
   AppBox,
 } from '../LoginForm/LoginForm.styled';
@@ -200,13 +200,13 @@ export const RegisterForm = () => {
                   ))}
               </div>
               <Button type="submit">Registration</Button>
-              <div>
+              {/* <div>
                 <GoogleLink href="https://google">
                   {' '}
                   <FcGoogle style={{ width: '2em', height: '2em' }} /> Register
                   with a Google account
                 </GoogleLink>
-              </div>
+              </div> */}
               <div>
                 <span>Already have an account?</span>{' '}
                 <StyledLink to="/login">Login</StyledLink>

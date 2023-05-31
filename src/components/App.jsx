@@ -42,12 +42,12 @@ export const App = () => {
             }
           />
           <Route path="/notices/:categoryName" element={<NoticesPage />} />
-          <Route
+          {/* <Route
             path="/contacts"
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
-          />
+          /> */}
           <Route
             path="/user"
             element={
