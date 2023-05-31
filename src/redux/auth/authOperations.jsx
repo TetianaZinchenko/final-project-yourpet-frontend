@@ -78,6 +78,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
     localStorage.removeItem('refreshToken');
+    localStorage.clear();
     toast.success('Logged out successfully');
   } catch (error) {
     toast.error('An error occurred during logout');
