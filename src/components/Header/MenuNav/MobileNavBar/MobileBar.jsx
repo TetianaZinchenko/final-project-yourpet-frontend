@@ -34,11 +34,11 @@ export const MobileNavBar = ({ handleClose, isMobile }) => {
         ) : null}
       </MobileContainUser>
       <LinksWrapper>
-        {/* <LinkItem>
+        <LinkItem>
           <StyledLink to="/news" onClick={handleClose}>
             News
           </StyledLink>
-        </LinkItem> */}
+        </LinkItem>
         <LinkItem>
           <StyledLink to="/notices/sell" onClick={handleClose}>
             Find pet

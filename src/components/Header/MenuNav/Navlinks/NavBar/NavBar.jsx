@@ -1,13 +1,17 @@
-
-import { NavContain, LinksWrapper,LinkItem,StyledLink } from './NavBar.styled';
+import {
+  NavContain,
+  LinksWrapper,
+  LinkItem,
+  StyledLink,
+} from './NavBar.styled';
 
 export const NavBar = () => {
   return (
     <NavContain>
       <LinksWrapper>
-        {/* <LinkItem>
+        <LinkItem>
           <StyledLink to="/news">News</StyledLink>
-        </LinkItem> */}
+        </LinkItem>
         <LinkItem>
           <StyledLink to="/notices/sell">Find pet</StyledLink>
         </LinkItem>
