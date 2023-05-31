@@ -14,6 +14,10 @@ export const List = styled.ul`
   }
 `;
 
+export const ListItem = styled.ul`
+  display: flex;
+`;
+
 export const Button = styled(NavLink)`
   position: relative;
 
