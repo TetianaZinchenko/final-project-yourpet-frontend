@@ -4,7 +4,7 @@ const { fonts, fontSizes, fontWeights, colors, shadows, media } = theme;
 
 export const Btn = styled.button`
   position: fixed;
-  z-index: 999;
+  z-index: 99;
   top: 50%;
   translate: 0 -50%;
   right: 20px;

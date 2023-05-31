@@ -59,14 +59,14 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
 
 export const UserDataItem = () => {
   const [activeField, setActiveField] = useState(null);
-  const auth = useSelector(selectAuth);
-  const dispatch = useDispatch();
+  // const auth = useSelector(selectAuth);
+  // const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   // Запрос данных пользователя при первой загрузке компонента
-  useEffect(() => {
-    dispatch(getUser(auth._id));
-  }, [dispatch, auth._id]);
+  // useEffect(() => {
+  //   dispatch(getUser(auth._id));
+  // }, [dispatch, auth._id]);
 
   const handleSetActiveField = field => {
     setActiveField(activeField === field ? null : field);
