@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, updateUser } from '../../../redux/auth/authOperations';
 import { selectUser, selectAuth } from '../../../redux/auth/authSelectors';
@@ -59,14 +60,14 @@ const EditableField = ({ label, initialValue, isActive, setActiveField }) => {
 
 export const UserDataItem = () => {
   const [activeField, setActiveField] = useState(null);
-  const auth = useSelector(selectAuth);
-  const dispatch = useDispatch();
+  // const auth = useSelector(selectAuth);
+  // const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   // Запрос данных пользователя при первой загрузке компонента
-  useEffect(() => {
-    dispatch(getUser(auth._id));
-  }, [dispatch, auth._id]);
+  // useEffect(() => {
+  //   dispatch(getUser(auth._id));
+  // }, [dispatch, auth._id]);
 
   const handleSetActiveField = field => {
     setActiveField(activeField === field ? null : field);

@@ -405,6 +405,7 @@ export const AddPet = () => {
                     </div>
                   </>
                 )}
+                defaultImage
                 {step === 2 && (
                   <>
                     {selectedOption !== 'your pet' && (

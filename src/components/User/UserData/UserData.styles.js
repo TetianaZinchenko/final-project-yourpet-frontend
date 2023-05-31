@@ -40,3 +40,8 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
 `;
+
+export const BushowButtonstton = styled.div`
+  position: absolute;
+  bottom: 340px;
+`;
