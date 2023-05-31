@@ -49,13 +49,20 @@ export const RegisterForm = () => {
 
   const formSubmit = async ({ email, password }, { resetForm }) => {
     try {
-      await dispatch(signUp({ email, password }));
+      const signUpResponse = await dispatch(signUp({ email, password }));
+
+      if (signUpResponse.error) {
+        // Handle the case when the user is already registered
+        // console.error('User already registered:', signUpResponse.error);
+        return; // Stop the login process
+      }
+
       await dispatch(signIn({ email, password }));
       resetForm();
       // Redirect to '/user' upon successful login
       navigate('/user');
     } catch (error) {
-      console.error('Error logging out:', error);
+      // console.error('Error logging in:', error);
     }
   };
 

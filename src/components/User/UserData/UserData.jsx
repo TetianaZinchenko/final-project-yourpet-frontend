@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import styles from './UserData.module.css';
+import {
+  UserDataContainer,
+  Div,
+  ImgWrapper,
+  PreviewImage,
+  FileInput,
+  Button,
+} from './UserData.styles';
 import { UserDataItem } from '../UserDataItem/UserDataItem';
 import defaultImage from '../../../images/desktop/photo_default_desktop.png';
 import chekIcon from '../../../icons/check.svg';
-// import Loader from 'components/Loader/Loader';
 
 export const UserData = () => {
-  // const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(defaultImage);
   const [isPreviewConfirmed, setIsPreviewConfirmed] = useState(false);
 
   const handleFileInputChange = event => {
     const file = event.target.files[0];
-    // setSelectedFile(file);
     setIsPreviewConfirmed(false);
     if (file) {
       const reader = new FileReader();
@@ -25,13 +29,10 @@ export const UserData = () => {
   };
 
   const handleConfirmPreview = () => {
-    // Вы можете выполнить здесь необходимые действия после подтверждения превью
     setIsPreviewConfirmed(true);
   };
 
   const handleRejectPreview = () => {
-    // Вы можете выполнить здесь необходимые действия после отклонения превью
-    // setSelectedFile(null);
     setPreviewUrl(defaultImage);
     setIsPreviewConfirmed(false);
   };
@@ -41,23 +42,17 @@ export const UserData = () => {
   };
 
   return (
-    <>
+    <UserDataContainer>
       <p>My information:</p>
-      <div className={styles.div}>
-        <div className={styles.imgWraper}>
-          <img
-            src={previewUrl}
-            alt="Preview"
-            onClick={handleDefaultImageClick}
-            className={styles.preview}
-          />
-        </div>
+      <Div>
+        <ImgWrapper onClick={handleDefaultImageClick}>
+          <PreviewImage src={previewUrl} alt="Preview" />
+        </ImgWrapper>
         {!isPreviewConfirmed && (
           <div>
-            <input
+            <FileInput
               id="fileInput"
               type="file"
-              style={{ display: 'none' }}
               onChange={handleFileInputChange}
             />
           </div>
@@ -65,18 +60,17 @@ export const UserData = () => {
         {previewUrl !== defaultImage && (
           <div>
             {!isPreviewConfirmed && (
-              <button className={styles.button} onClick={handleRejectPreview}>
+              <Button onClick={handleRejectPreview}>
                 <IoMdClose color="red" size={24} />
-              </button>
+              </Button>
             )}
-            <button className={styles.button} onClick={handleConfirmPreview}>
+            <Button onClick={handleConfirmPreview}>
               <img src={chekIcon} alt="" />
-            </button>
+            </Button>
           </div>
         )}
-      </div>
+      </Div>
       <UserDataItem />
-      {/* <Loader /> */}
-    </>
+    </UserDataContainer>
   );
 };

@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-// import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { lazy } from 'react';
 
 import { ThemeProvider } from '@emotion/react';
@@ -47,7 +48,12 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
-          <Route path="/user" element={<UserPage />} />
+          <Route
+            path="/user"
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           {/* <Route
@@ -57,7 +63,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </ThemeProvider>
   );
 };
