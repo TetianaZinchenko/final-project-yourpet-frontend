@@ -1,3 +1,4 @@
+import icons from '../../icons/icons.svg';
 import { Number, List } from './Pagination.styled';
 
 export const Pagination = ({
@@ -6,7 +7,7 @@ export const Pagination = ({
   paginate,
   page,
 }) => {
-  const pageNumbers = Math.ceil(totalNotices / noticesPerPage);
+  const pageNumbers = Math.ceil(totalNotices.length / noticesPerPage);
 
   const renderPageButtons = () => {
     const buttons = [];
@@ -20,5 +21,19 @@ export const Pagination = ({
     return buttons;
   };
 
-  return <List>{renderPageButtons()}</List>;
+  return (
+    <List>
+      <Number onClick={() => paginate(page - 1)}>
+        <svg>
+          <use href={icons + '#icon-Vector'}></use>
+        </svg>
+      </Number>
+      {renderPageButtons()}
+      <Number onClick={() => paginate(page + 1)}>
+        <svg>
+          <use href={icons + '#icon-Vectorright'}></use>
+        </svg>
+      </Number>
+    </List>
+  );
 };
