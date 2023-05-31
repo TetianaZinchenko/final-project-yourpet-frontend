@@ -128,7 +128,7 @@ export const getUser = createAsyncThunk(
       const { data } = await axios.get(`/users/?_id=${userId}`);
       return data;
     } catch (error) {
-      toast.error('An error occurred while fetching user data');
+      // toast.error('An error occurred while fetching user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -63,8 +63,9 @@ export const UserDataItem = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
+  // Запрос данных пользователя при первой загрузке компонента
   useEffect(() => {
-    dispatch(getUser(auth._id)); // Запрос данных пользователя при первой загрузке компонента
+    dispatch(getUser(auth._id));
   }, [dispatch, auth._id]);
 
   const handleSetActiveField = field => {

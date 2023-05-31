@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
-// import React, { useState, useEffect } from 'react';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { PetsData } from './PetsData/PetsData';
 import { UserContainer } from './UserContainer/UserContainer';
-// import { ModalCongrats } from './ModalCongrats/ModalCongrats';
+import { ModalCongrats } from './ModalCongrats/ModalCongrats';
 import { getUser } from '../../redux/auth/authSelectors';
 
 export const User = () => {
-  // const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(true);
   const timeData = useSelector(getUser);
 
   useEffect(() => {
@@ -16,13 +16,15 @@ export const User = () => {
 
     const interval = updatedAt - createdAt;
     if (interval > 60000) {
+      setModal(false);
     }
-  });
+  }, [timeData.createdAt, timeData.updatedAt]);
 
   return (
     <>
       <UserContainer></UserContainer>
       <PetsData />
+      {modal && <ModalCongrats />}{' '}
     </>
   );
 };
