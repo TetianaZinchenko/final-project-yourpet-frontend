@@ -12,16 +12,19 @@ export const FormContainer = styled.div`
   background-repeat: space repeat;
   background-size: contain;
   background-position-y: center;
+  padding-top: 20px;
 
   @media (min-width: 768px) {
     background-image: url(${bg_tablet});
-    padding-top: 92px;
+    /* padding-top: 92px; */
+    padding-top: 60px;
     padding-bottom: 268px;
     min-height: calc(100vh - 64px);
   }
   @media (min-width: 1280px) {
     background-image: url(${bg_desktop});
-    padding-top: 82px;
+    /* padding-top: 82px; */
+    padding-top: 40px;
     padding-bottom: 147px;
   }
 `;
@@ -48,12 +51,13 @@ export const Forma = styled(Form)`
   background-color: #fff;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
-  margin: 92px auto;
+  /* margin: 92px auto; */
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     width: 608px;
     padding: 60px 0 40px 0;
-    margin: 82px auto;
+    /* margin: 82px auto; */
   }
   @media (min-width: 1280px) {
     width: 458px;
