@@ -7,16 +7,16 @@ import { ModalCongrats } from './ModalCongrats/ModalCongrats';
 import { getUser } from '../../redux/auth/authSelectors';
 
 export const User = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const timeData = useSelector(getUser);
 
   useEffect(() => {
     const createdAt = new Date(timeData.createdAt);
-    const updatedAt = new Date(timeData.updatedAt);
+    const updatedAt = new Date();
 
     const interval = updatedAt - createdAt;
-    if (interval > 60000) {
-      setModal(false);
+    if (interval < 60000) {
+      setModal(true);
     }
   }, [timeData.createdAt, timeData.updatedAt]);
 

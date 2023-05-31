@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrened.com';
@@ -44,9 +45,9 @@ export const signUp = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.data.message === 'Email in use') {
-        toast.error('This email is already in use');
+        toast.error('Wrong login or password');
       } else {
-        toast.error('An error occurred during registration');
+        toast.error('Wrong login or password');
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,6 +79,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
     localStorage.removeItem('refreshToken');
+    localStorage.clear();
     toast.success('Logged out successfully');
   } catch (error) {
     toast.error('An error occurred during logout');
