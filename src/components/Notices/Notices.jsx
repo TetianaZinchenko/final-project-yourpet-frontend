@@ -48,10 +48,6 @@ export const Notices = () => {
   const lastNoticeIndex = currentPage * noticesPerPage;
   const firstNoticeIndex = lastNoticeIndex - noticesPerPage;
 
-  const paginate = pageNumber => {
-    setCurrentPage(pageNumber);
-  };
-
   let visibleNotices = [];
   switch (categoryName) {
     case 'favorite':
@@ -77,12 +73,21 @@ export const Notices = () => {
       break;
   }
 
-  const currentNotice = visibleNotices.slice(firstNoticeIndex, lastNoticeIndex);
+  const totalPages = Math.ceil(visibleNotices.length / noticesPerPage);
+
+  const paginate = pageNumber => {
+    if (pageNumber < 1 || pageNumber > totalPages) {
+      return;
+    }
+    setCurrentPage(pageNumber);
+    window.scroll(0, 0);
+  };
+  // const currentNotice = visibleNotices.slice(firstNoticeIndex, lastNoticeIndex);
 
   const getNoticesBySearch = query => {
     const noticesBySearch = [];
 
-    currentNotice.forEach(notice => {
+    visibleNotices.forEach(notice => {
       const noticeForSearch = {
         ...notice,
         avatar: '',
@@ -107,6 +112,11 @@ export const Notices = () => {
 
     return noticesBySearch;
   };
+
+  const currentNotice = getNoticesBySearch(query).slice(
+    firstNoticeIndex,
+    lastNoticeIndex
+  );
 
   // todo: useSelector(Filter)
   // filtered visibleNotices by filter
@@ -153,8 +163,6 @@ export const Notices = () => {
     // }
   };
 
-  // console.log(getNoticesBySearch(query));
-
   return (
     <>
       <NoticesSearch onFormSubmit={onFormSubmit} />
@@ -176,18 +184,21 @@ export const Notices = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          <NoticesCategoriesList
-            onClose={toggleModal}
-            pets={getNoticesBySearch(query)}
-          />
-          <Pagination
-            noticesPerPage={noticesPerPage}
-            totalNotices={visibleNotices.length}
-            paginate={paginate}
-            page={currentPage}
-          />
-        </>
+        <div
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          <NoticesCategoriesList onClose={toggleModal} pets={currentNotice} />
+          {currentNotice.length > 0 && (
+            <Pagination
+              noticesPerPage={noticesPerPage}
+              totalNotices={getNoticesBySearch(query)}
+              paginate={paginate}
+              page={currentPage}
+            />
+          )}
+        </div>
       )}
     </>
   );
