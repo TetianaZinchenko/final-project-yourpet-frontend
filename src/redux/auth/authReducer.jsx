@@ -38,7 +38,7 @@ export const authSlice = createSlice({
         // state.token = action.payload.data.newUser.token;
         state.isLoggedIn = true;
 
-        console.log('signUp.fulfilled payload:', action.payload);
+        // console.log('signUp.fulfilled payload:', action.payload);
       })
       .addCase(signIn.pending, state => {
         state.isLoading = true;
@@ -53,7 +53,7 @@ export const authSlice = createSlice({
         // state.user.token = action.payload.data.token;
         state.isLoggedIn = true;
         state.isLoading = false;
-        console.log('signIn.fulfilled payload:', action.payload);
+        // console.log('signIn.fulfilled payload:', action.payload);
       })
 
       .addCase(logOut.pending, state => {
