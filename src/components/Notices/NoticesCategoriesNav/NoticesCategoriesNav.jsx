@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { List, Button } from './NoticesCategoriesNav.styled';
+import { List, Button, ListItem } from './NoticesCategoriesNav.styled';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
@@ -20,9 +20,9 @@ export const NoticesCategoriesNav = () => {
     }
 
     return (
-      <li key={item}>
+      <ListItem key={item}>
         <Button to={`/notices/${path}`}>{filter}</Button>
-      </li>
+      </ListItem>
     );
   });
 
