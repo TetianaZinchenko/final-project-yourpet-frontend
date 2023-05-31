@@ -29,12 +29,13 @@ import {
   selectNoticeError,
   selectNoticePostStatus,
 } from 'redux/notices/noticesSelectors';
-import { useEffect } from 'react';
 import { resetStatus } from 'redux/notices/noticesSlice';
 import toast from 'react-hot-toast';
 import { addPet } from 'redux/pets/petsOperations';
 import { selectPetError, selectPetStatus } from 'redux/pets/petsSelectors';
 import { resetPetStatus } from 'redux/pets/petsSlice';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -108,42 +109,42 @@ export const AddPet = () => {
   const [step, setStep] = useState(1);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(resetStatus());
-  }, [dispatch]);
+  const isPetOption = selectedOption === 'your pet';
 
-  let resetFormik = () => {};
   const postStatus = useSelector(selectNoticePostStatus);
   const petStatus = useSelector(selectPetStatus);
   const postError = useSelector(selectNoticeError);
   const petError = useSelector(selectPetError);
+  const status = isPetOption ? petStatus : postStatus;
 
-  const status = selectedOption === 'your pet' ? petStatus : postStatus;
+  useEffect(() => {
+    switch (status) {
+      case 2:
+        if (isPetOption) {
+          dispatch(resetPetStatus());
+          navigate('/user');
+        } else {
+          dispatch(resetStatus());
+          navigate('/notices/my-pets');
+        }
+        break;
 
-  switch (status) {
-    case 2:
-      setStep(1);
-      resetFormik();
-      selectedOption === 'your pet'
-        ? dispatch(resetPetStatus())
-        : dispatch(resetStatus());
-      toast.success('Нову замітку було додано!');
-      break;
+      case 3:
+        if (isPetOption) {
+          toast.error(petError);
+          dispatch(resetPetStatus());
+        } else {
+          toast.error(postError);
+          dispatch(resetStatus());
+        }
+        break;
 
-    case 3:
-      if (selectedOption === 'your pet') {
-        toast.error(petError);
-        dispatch(resetPetStatus());
-      } else {
-        toast.error(postError);
-        dispatch(resetStatus());
-      }
-      break;
-
-    default:
-      break;
-  }
+      default:
+        break;
+    }
+  }, [status, dispatch, isPetOption, navigate, petError, postError]);
 
   const handleNextStep = (errors, values) => {
     if (step === 1 && values.category !== '' && !errors.category) {
@@ -199,7 +200,6 @@ export const AddPet = () => {
             avatar: '',
           }}
           onSubmit={(values, { resetForm }) => {
-            resetFormik = resetForm;
             formSubmit(values);
           }}
         >
