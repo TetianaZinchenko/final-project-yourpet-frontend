@@ -42,10 +42,20 @@ export const LoginForm = () => {
   const [showPass, setShowPass] = useState(false);
 
   const formSubmit = async ({ email, password }, { resetForm }) => {
+    try {
+      const signInResponse = await dispatch(signIn({ email, password }));
+
+      if (signInResponse.error) {
+
+        return; // Stop the login process
+      }
     await dispatch(signIn({ email, password }));
     resetForm();
     // Redirect to '/user' upon successful login
     navigate('/user');
+    } catch (error) {
+
+    }
   };
 
   const showPassword = () => {

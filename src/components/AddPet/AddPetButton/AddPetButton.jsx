@@ -13,7 +13,6 @@ export const AddPetButton = () => {
   const onAddPetClick = () => {
     if (!isLoggedIn) {
       toast.error('You need to sign in');
-      navigate('/login');
       return;
     }
     navigate('/add-pet');
