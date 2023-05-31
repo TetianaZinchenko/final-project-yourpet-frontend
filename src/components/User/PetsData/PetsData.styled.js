@@ -43,7 +43,6 @@ export const PetsDataTitle = styled.h2`
 `;
 
 export const AddPetBtn = styled(Link)`
-  width: 129px;
   height: 40px;
   padding: 8px 16px;
 

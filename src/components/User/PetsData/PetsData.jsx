@@ -20,7 +20,7 @@ import {
 export const PetsData = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectPetIsLoading);
-  const allPets = useSelector(getPets);
+  const allPets = useSelector(getPets) ?? [];
   const error = useSelector(selectPetError);
 
   useEffect(() => {
