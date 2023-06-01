@@ -1,33 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchNews } from './newsOperations';
 
-const pendingReducer = state => {
-  state.isLoading = true;
-};
 
-const fetchNewsSucceesReducer = (state, action) => {
-  state.items = action.payload;
-  state.isLoading = false;
-};
-
-const rejectedReducer = (state, action) => {
-  state.error = action.payload;
-  state.isLoading = false;
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
 };
 
 const newsSlice = createSlice({
-  name: 'news',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  name: 'friends',
+  initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchNews.pending, pendingReducer)
-      .addCase(fetchNews.fulfilled, fetchNewsSucceesReducer)
-      .addCase(fetchNews.rejected, rejectedReducer);
+      .addCase(fetchNews.pending, store => {
+        store.isLoading = true;
+      })
+      .addCase(fetchNews.fulfilled, (store, { payload }) => {
+        store.isLoading = false;
+        store.error = null;
+        store.items = payload;
+
+      })
+      .addCase(fetchNews.rejected, (store, { payload }) => {
+        store.isLoading = false;
+        store.error = payload;
+      });
   },
 });
+
 
 export const newsReducer = newsSlice.reducer;
