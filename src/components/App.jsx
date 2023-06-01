@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'react-toastify';
 import { lazy } from 'react';
 
 import { ThemeProvider } from '@emotion/react';
@@ -72,7 +72,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </ThemeProvider>
   );
 };
