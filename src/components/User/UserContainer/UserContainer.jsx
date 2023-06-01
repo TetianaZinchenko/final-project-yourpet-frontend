@@ -5,6 +5,7 @@ import styles from './UserContainer.module.css';
 export const UserContainer = () => {
   return (
     <>
+      <h1 className={styles.title}>My information:</h1>
       <div className={styles.container}>
         <UserData></UserData>
         <Logout></Logout>

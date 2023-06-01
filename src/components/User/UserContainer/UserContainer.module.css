@@ -1,7 +1,15 @@
 .container {
-  width: 395px;
-  height: 520px;
+  margin-top: 18px;
+  width: 280px;
+  height: 517px;
   background: #ffffff;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-  border-radius: 40px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+.title {
+  margin-top: 45px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
 }

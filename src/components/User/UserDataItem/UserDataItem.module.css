@@ -1,33 +1,42 @@
-.input {
-  border: 1px solid #54adff;
-  padding-left: 10px;
-  border-radius: 20px;
-  width: 255px;
-  height: 24px;
-  display: flex;
-  justify-content: space-between;
-}
-
 .containerInfo {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+.input {
+  border: 1px solid #54adff;
+  padding-left: 12px;
+  border-radius: 20px;
+  width: 190px;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  letter-spacing: 0.04em;
 }
 
 .div {
-  margin-top: 63px;
+  margin-top: 60px;
   display: flex;
-  width: 345px;
+  width: 264px;
   flex-direction: column;
-  margin-left: 16px;
+  margin-left: 8px;
 }
 .input p {
   margin-right: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .label {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
 }
 
 .buttonChek {

@@ -13,6 +13,7 @@ export const Div = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

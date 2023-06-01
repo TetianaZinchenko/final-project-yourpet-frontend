@@ -1,11 +1,17 @@
 .buttonLogOut {
+  margin-top: 32px;
   display: flex;
+  width: 95px;
+  height: 22px;
   align-items: center;
   background-color: transparent;
   justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
   color: #888888;
   width: 100px;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -13,11 +19,14 @@
 .h1 {
   text-align: center;
   margin-top: 50px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
 }
 
 .div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 48px;
 }
 
@@ -26,7 +35,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  max-width: 149px;
+  max-width: 80px;
   height: 40px;
   padding: 11px 0 12px 14px;
   text-align: center;
@@ -82,7 +91,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  max-width: 149px;
+  max-width: 80px;
   height: 40px;
   padding: 11px 0 14px;
   text-align: center;
