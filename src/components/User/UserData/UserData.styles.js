@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 
 export const UserDataContainer = styled.div`
-  p {
-    /* margin-bottom: 16px; */
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
 
@@ -22,6 +25,9 @@ export const ImgWrapper = styled.div`
   height: 182px;
   border-radius: 40px;
   overflow: hidden;
+  @media (min-width: 768px) {
+    margin-right: 76px;
+  }
 `;
 
 export const PreviewImage = styled.img`
