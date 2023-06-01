@@ -1,23 +1,36 @@
+
 import { useEffect, useMemo,  useState } from 'react';
 // import {  useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+
 import { useSearchParams } from 'react-router-dom';
-// import { selectIsLoading } from 'redux/news/newsSelectors';
 import News from '../components/News/News';
-// import Loader  from '../components/Loader/Loader';
+import Loader  from '../components/Loader/Loader';
 import { NoticesSearch } from '../components/Notices/NoticesSearch/NoticesSearch';
-// import { Pagination } from '../components/Pagination/Pagination';
+import { Pagination } from '../components/Pagination/Pagination';
 import { fetchNews } from 'redux/news/newsOperations';
 import { Section } from '../components/Section/Section';
 import { PageTitle } from '../components/OurFriends/FriendsItem/FriendsItem.styled';
-// import noNews from '../images/404_img/404_mobile@2x.png'
+
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectIsLoading, selectNews } from '../redux/news/newsSelectors';
+import noNews from '../images/404_img/404_mobile@2x.png'
+import { toast } from 'react-hot-toast';
 
 
 const NewsPage = () => {
-  const [news, setNews] = useState([]);
+  // const [news, setNews] = useState([]);
   // const [totalPages, setTotalPages] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams({});
-  // const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+  const news = useSelector(selectNews);
+
+  useEffect(() => {
+    dispatch(fetchNews());
+  }, [dispatch]);
+
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),
@@ -28,39 +41,39 @@ const NewsPage = () => {
       page: 1,
       ...params,
 
-    });
+    });})
     // isLoading(true);
-    const getNews = async params => {
-      try {
-        const newNews = await fetchNews(params);
-        if(!newNews){
-          setNews([]);
-          return;
-        }
-        setNews((newNews.data));
-        // if (!newNews.totalPages) {
-          // setTotalPages(0);
-          // setNews([]);
-        //   return;
-        // }
-        // setTotalPages(newNews.totalPages);
-      } catch (error) {
-        toast( 'Something wrong! Please reload the page!');
-      } finally {
-        // isLoading(false);
-      }
-    };
-    getNews(params);
-  }, [setSearchParams, params]);
-
-  const handleSubmit = searchQuery => {
-    setSearchParams({ searchQuery });
-    setNews([]);
-  };
-  // const handleSubmit = search => {
-  //   const nextParams = search !== '' ? { search } : {};
-  //   setSearchParams({ ...nextParams });
+  //   const getNews = async params => {
+  //     try {
+  //       const newNews = await dispatch(fetchNews(params));
+  //       if(!newNews){
+  //         setNews([]);
+  //         return;
+  //       }
+  //       setNews((newNews.data));
+  //       // if (!newNews.totalPages) {
+  //         // setTotalPages(0);
+  //         // setNews([]);
+  //       //   return;
+  //       // }
+  //       // setTotalPages(newNews.totalPages);
+  //     } catch (error) {
+  //       toast( 'Something wrong! Please reload the page!');
+  //     } finally {
+  //       // isLoading(false);
+  //     }
+  //   };
+  //   getNews(params);
+  // }, [setSearchParams, params]);
+  //
+  // const handleSubmit = searchQuery => {
+  //   setSearchParams({ searchQuery });
+  //   // setNews([]);
   // };
+  const handleSubmit = search => {
+    const nextParams = search !== '' ? { search } : {};
+    setSearchParams({ ...nextParams });
+  };
 
 // const paginate = pageNumber => {
 //   if (pageNumber < 1 || pageNumber > totalPages) {
@@ -74,13 +87,13 @@ const NewsPage = () => {
   return (
     <Section>
       <PageTitle>News</PageTitle>
-      {/*{isLoading && <Loader />}*/}
+      {isLoading && <Loader />}
       <NoticesSearch  onFormSubmit={handleSubmit}></NoticesSearch>
-      {/*{!news.length && <img src={noNews} alt="" />}*/}
+      {!news.length && <img src={noNews} alt="" />}
       {/*{news.length && <News news={news}></News>}*/}
       {/*<Pagination*/}
       {/*  paginate={paginate}*/}
-      {/*  totalNews={news.length}*/}
+      {/*  // totalNews={news.length}*/}
       {/*></Pagination>*/}
       <News news={news}></News>
     </Section>
