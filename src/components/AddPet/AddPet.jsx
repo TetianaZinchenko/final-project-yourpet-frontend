@@ -46,10 +46,12 @@ const addPetFormSchema = yup.object().shape({
         .max(50, 'Maximum 50 characters')
         .required('Title is required (min 2, max 50 characters)'),
   }),
+
   category: yup
     .string()
-    .oneOf(['your pet', 'sell', 'lost/found', 'in good hands'])
+    .oneOf(['your pet', 'sell', 'lost-found', 'for-free'])
     .required('Category is required'),
+
   name: yup
     .string()
     .min(2, 'Minimum 2 characters')
@@ -78,8 +80,8 @@ const addPetFormSchema = yup.object().shape({
   sex: yup.string().when('category', {
     is: category =>
       category === 'sell' ||
-      category === 'lost/found' ||
-      category === 'in good hands',
+      category === 'lost-found' ||
+      category === 'for-free',
     then: schema =>
       schema.oneOf(['Female', 'Male']).required('Sex is required'),
   }),
@@ -198,6 +200,7 @@ export const AddPet = () => {
             title: '',
             sex: 'Female',
             avatar: '',
+            price: 0,
           }}
           onSubmit={(values, { resetForm }) => {
             formSubmit(values);
@@ -367,16 +370,16 @@ export const AddPet = () => {
                         htmlFor="option3"
                         style={{
                           backgroundColor:
-                            selectedOption === 'lost/found' ? '#54adff' : '',
-                          color: selectedOption === 'lost/found' ? '#fff' : '',
+                            selectedOption === 'lost-found' ? '#54adff' : '',
+                          color: selectedOption === 'lost-found' ? '#fff' : '',
                         }}
-                        onClick={() => setSelectedOption('lost/found')}
+                        onClick={() => setSelectedOption('lost-found')}
                       >
                         <Field
                           style={{ appearance: 'none' }}
                           id="option3"
                           name="category"
-                          value="lost/found"
+                          value="lost-found"
                           type="radio"
                         />
                         lost/found
@@ -387,17 +390,16 @@ export const AddPet = () => {
                         htmlFor="option4"
                         style={{
                           backgroundColor:
-                            selectedOption === 'in good hands' ? '#54adff' : '',
-                          color:
-                            selectedOption === 'in good hands' ? '#fff' : '',
+                            selectedOption === 'for-free' ? '#54adff' : '',
+                          color: selectedOption === 'for-free' ? '#fff' : '',
                         }}
-                        onClick={() => setSelectedOption('in good hands')}
+                        onClick={() => setSelectedOption('for-free')}
                       >
                         <Field
                           style={{ appearance: 'none' }}
                           id="option4"
                           name="category"
-                          value="in good hands"
+                          value="for-free"
                           type="radio"
                         />
                         in good hands
