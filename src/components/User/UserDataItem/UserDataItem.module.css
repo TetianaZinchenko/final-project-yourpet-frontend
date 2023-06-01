@@ -32,17 +32,16 @@
 }
 
 .div {
-  margin-top: 60px;
+  margin-top: 20px;
   display: flex;
   width: 264px;
   flex-direction: column;
   margin-left: 8px;
   @media (min-width: 768px) {
-    margin-top: 20px;
     width: 355px;
   }
   @media (min-width: 1280px) {
-    margin-top: 60px;
+    margin-top: 20px;
     width: 355px;
     margin-left: 0px;
   }
