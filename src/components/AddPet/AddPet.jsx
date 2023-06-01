@@ -183,6 +183,28 @@ export const AddPet = () => {
         break;
     }
   };
+
+  const StepTitle = values => {
+    let title = 'Add pet';
+    if (step !== 1) {
+      switch (values.category) {
+        case 'sell':
+          title = 'Add pet for sale';
+          break;
+        case 'lost-found':
+          title = 'Add lost pet';
+          break;
+        default:
+          title = 'Add my pet';
+      }
+    }
+    return (
+      <Title category={values.category} step={step}>
+        {title}
+      </Title>
+    );
+  };
+
   const handlePreviousStep = () => setStep(step - 1);
 
   const screenWidth = window.innerWidth;
@@ -224,7 +246,8 @@ export const AddPet = () => {
               }}
             >
               <div>
-                <Title
+                <StepTitle category={values.category} stage={step} />
+                {/* <Title
                   style={{
                     textAlign:
                       step === 3 &&
@@ -235,7 +258,7 @@ export const AddPet = () => {
                   }}
                 >
                   Add Pet
-                </Title>
+                </Title> */}
                 <Stepper style={{ marginBottom: '30px' }}>
                   <Step>
                     <p
