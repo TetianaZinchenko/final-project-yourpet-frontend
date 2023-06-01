@@ -6,13 +6,13 @@ const News = ({ news }) => {
     < FriendList>
       {news
         .sort((a, b) => (a.date > b.date ? -1 : 1))
-        .map(({imageUrl, title, url, description, date}) => (
+        .map(({imgUrl, title, url, text, date, id}) => (
           <NewsItem
-            key={title}
+            key={id}
             title={title}
             url={url}
-            imageUrl={imageUrl}
-            description={description}
+            imageUrl={imgUrl}
+            description={text}
             date={date}
           />
         ))}

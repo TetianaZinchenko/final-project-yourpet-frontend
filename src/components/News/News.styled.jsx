@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+
 export const FriendList = styled.ul`
   display: grid;
   gap: 20px;
@@ -17,6 +18,7 @@ export const FriendList = styled.ul`
      padding: 0px 16px 81px 16px;
   }
 `;
+
 export const OneNews = styled.li`
    width: 100%;
   position: relative;

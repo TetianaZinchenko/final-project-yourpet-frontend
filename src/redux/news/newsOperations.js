@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrender.com';
@@ -16,3 +17,5 @@ export const fetchNews = createAsyncThunk(
     }
   },
 );
+
+
