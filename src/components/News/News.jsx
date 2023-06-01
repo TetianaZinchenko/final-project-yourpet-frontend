@@ -1,23 +1,25 @@
 import { NewsItem } from './NewsItem/NewsItem';
 import FriendList from './News.styled';
+import { nanoid } from 'nanoid';
 
 const News = ({ news }) => {
+
   return (
-    < FriendList>
+    <FriendList>
       {news
-        .sort((a, b) => (a.date > b.date ? -1 : 1))
-        .map(({imgUrl, title, url, text, date, id}) => (
+        .map(({ title, imgUrl, text, date, url, id }) => (
           <NewsItem
-            key={id}
+            key={{id} + nanoid(8)}
             title={title}
             url={url}
-            imageUrl={imgUrl}
-            description={text}
+            imgUrl={imgUrl}
+            text={text}
             date={date}
           />
         ))}
-    </ FriendList>
-  );
-};
+    </FriendList>
+  )
+}
+
 
 export default News;
