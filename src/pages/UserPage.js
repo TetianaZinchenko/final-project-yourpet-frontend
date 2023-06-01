@@ -5,7 +5,7 @@ import { User } from 'components/User/User';
 const UserPage = () => {
   return (
     <Section>
-      <h1>UserPage</h1>
+      {/* <h1>UserPage</h1> */}
       <User></User>
     </Section>
   );

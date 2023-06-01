@@ -96,33 +96,34 @@ export const UserData = () => {
   };
 
   return (
-    <UserDataContainer>
-      <p>My information:</p>
-      <Div>
-        <ImgWrapper onClick={handleDefaultImageClick}>
-          <PreviewImage src={previewUrl} alt="Preview" />
-        </ImgWrapper>
-        {!isPreviewConfirmed && (
-          <div>
-            <FileInput
-              id="fileInput"
-              type="file"
-              onChange={handleFileInputChange}
-            />
-          </div>
-        )}
-        {showButtons && ( // Показываем кнопки по условию showButtons
-          <BushowButtonstton>
-            <Button onClick={handleRejectPreview}>
-              <IoMdClose color="red" size={24} />
-            </Button>
-            <Button onClick={handleConfirmPreview}>
-              <img src={chekIcon} alt="" />
-            </Button>
-          </BushowButtonstton>
-        )}
-      </Div>
-      <UserDataItem />
-    </UserDataContainer>
+    <>
+      <UserDataContainer>
+        <Div>
+          <ImgWrapper onClick={handleDefaultImageClick}>
+            <PreviewImage src={previewUrl} alt="Preview" />
+          </ImgWrapper>
+          {!isPreviewConfirmed && (
+            <div>
+              <FileInput
+                id="fileInput"
+                type="file"
+                onChange={handleFileInputChange}
+              />
+            </div>
+          )}
+          {showButtons && ( // Показываем кнопки по условию showButtons
+            <BushowButtonstton>
+              <Button onClick={handleRejectPreview}>
+                <IoMdClose color="red" size={24} />
+              </Button>
+              <Button onClick={handleConfirmPreview}>
+                <img src={chekIcon} alt="" />
+              </Button>
+            </BushowButtonstton>
+          )}
+        </Div>
+        <UserDataItem />
+      </UserDataContainer>
+    </>
   );
 };
