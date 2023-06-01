@@ -5,6 +5,7 @@ import { PetsData } from './PetsData/PetsData';
 import { UserContainer } from './UserContainer/UserContainer';
 import { ModalCongrats } from './ModalCongrats/ModalCongrats';
 import { getUser } from '../../redux/auth/authSelectors';
+import { Container } from './User.styled';
 
 export const User = () => {
   const [modal, setModal] = useState(false);
@@ -22,8 +23,10 @@ export const User = () => {
 
   return (
     <>
-      <UserContainer></UserContainer>
-      <PetsData />
+      <Container>
+        <UserContainer></UserContainer>
+        <PetsData />
+      </Container>
       {modal && <ModalCongrats />}{' '}
     </>
   );

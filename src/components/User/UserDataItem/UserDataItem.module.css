@@ -6,6 +6,9 @@
     margin-bottom: 8px;
     margin-left: 20px;
   }
+  @media (min-width: 1280px) {
+    margin-left: 0px;
+  }
 }
 .input {
   border: 1px solid #54adff;
@@ -37,6 +40,11 @@
   @media (min-width: 768px) {
     margin-top: 20px;
     width: 355px;
+  }
+  @media (min-width: 1280px) {
+    margin-top: 60px;
+    width: 355px;
+    margin-left: 0px;
   }
 }
 .input p {

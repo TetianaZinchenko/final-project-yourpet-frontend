@@ -7,6 +7,9 @@ export const UserDataContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+  @media (min-width: 1280px) {
+    flex-direction: column;
+  }
 `;
 
 export const Div = styled.div`
@@ -27,6 +30,9 @@ export const ImgWrapper = styled.div`
   overflow: hidden;
   @media (min-width: 768px) {
     margin-right: 76px;
+  }
+  @media (min-width: 1280px) {
+    margin-right: 0px;
   }
 `;
 
