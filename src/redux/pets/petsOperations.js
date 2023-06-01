@@ -2,8 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { selectToken } from 'redux/auth/authSelectors';
 
-axios.defaults.baseURL = 'http://localhost:3000';
-
+axios.defaults.baseURL = 'https://final-project-yourpe-backend.onrender.com';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
