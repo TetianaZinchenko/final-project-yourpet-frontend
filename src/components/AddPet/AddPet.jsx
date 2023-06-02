@@ -49,10 +49,12 @@ const addPetFormSchema = yup.object().shape({
         .max(50, 'Maximum 50 characters')
         .required('Title is required (min 2, max 50 characters)'),
   }),
+
   category: yup
     .string()
-    .oneOf(['your pet', 'sell', 'lost/found', 'in good hands'])
+    .oneOf(['your pet', 'sell', 'lost-found', 'for-free'])
     .required('Category is required'),
+
   name: yup
     .string()
     .min(2, 'Minimum 2 characters')
@@ -81,8 +83,8 @@ const addPetFormSchema = yup.object().shape({
   sex: yup.string().when('category', {
     is: category =>
       category === 'sell' ||
-      category === 'lost/found' ||
-      category === 'in good hands',
+      category === 'lost-found' ||
+      category === 'for-free',
     then: schema =>
       schema.oneOf(['Female', 'Male']).required('Sex is required'),
   }),
@@ -123,7 +125,7 @@ export const AddPet = () => {
   const status = isPetOption ? petStatus : postStatus;
   const isMobile = useMediaQuery({ maxWidth: 767 });
   // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-  const isDesktop = useMediaQuery({ minWidth: 1280});
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   useEffect(() => {
     switch (status) {
@@ -187,9 +189,32 @@ export const AddPet = () => {
         break;
     }
   };
+
+  // const StepTitle = values => {
+  //   let title = 'Add pet';
+  //   if (step !== 1) {
+  //     switch (values.category) {
+  //       case 'sell':
+  //         title = 'Add pet for sale';
+  //         break;
+  //       case 'lost-found':
+  //         title = 'Add lost pet';
+  //         break;
+  //       default:
+  //         title = 'Add my pet';
+  //     }
+  //   }
+  //   return (
+  //     <Title category={values.category} step={step}>
+  //       {title}
+  //     </Title>
+  //   );
+  // };
+
   const handlePreviousStep = () => setStep(step - 1);
 
   const screenWidth = window.innerWidth;
+
   return (
     <>
       <FormContainer>
@@ -204,6 +229,7 @@ export const AddPet = () => {
             title: '',
             sex: 'Female',
             avatar: '',
+            price: 0,
           }}
           onSubmit={(values, { resetForm }) => {
             formSubmit(values);
@@ -213,11 +239,15 @@ export const AddPet = () => {
             <Forma
               style={{
                 width:
-                  (!isMobile && step === 3 &&
-                  selectedOption !== 'your pet') && (isDesktop ? '822px' : '702px'),
+                  !isMobile &&
+                  step === 3 &&
+                  selectedOption !== 'your pet' &&
+                  (isDesktop ? '822px' : '702px'),
                 padding:
-                 (!isMobile && step === 3 &&
-                  selectedOption !== 'your pet') && (isDesktop ? '20px 75px' : '20px 32px'),
+                  !isMobile &&
+                  step === 3 &&
+                  selectedOption !== 'your pet' &&
+                  (isDesktop ? '20px 75px' : '20px 32px'),
               }}
             >
               <div>
@@ -229,12 +259,39 @@ export const AddPet = () => {
                       screenWidth > 767
                         ? 'center'
                         : '',
+                    marginLeft: '12px',
+                  }}
+                >
+                  {step === 1
+                    ? 'Add pet'
+                    : selectedOption === 'sell'
+                    ? 'Add pet for sell'
+                    : selectedOption === 'lost/found'
+                    ? 'Add lost pet'
+                    : 'Add pet'}
+                </Title>
+                <Stepper style={{ marginBottom: '16px' }}>
+                  {/* <StepTitle category={values.category} stage={step} /> */}
+                  {/* <Title
+                  style={{
+                    textAlign:
+                      step === 3 &&
+                      selectedOption !== 'your pet' &&
+                      screenWidth > 767
+                        ? 'center'
+                        : '',
                     marginLeft: '12px'
                   }}
                 >
+
                   {step === 1 ? 'Add pet' : (selectedOption === 'sell' ? 'Add pet for sell' : (selectedOption === 'lost/found' ? 'Add lost pet' : 'Add pet'))}
                 </Title>
                 <Stepper style={{ marginBottom: '16px' }}>
+
+                  Add Pet
+                </Title> */}
+                  {/* <Stepper style={{ marginBottom: '30px' }}> */}
+
                   <Step>
                     <p
                       style={{
@@ -322,7 +379,7 @@ export const AddPet = () => {
                   </Step>
                 </Stepper>
                 {step === 1 && (
-                  <div style={{marginTop: '40px'}}>
+                  <div style={{ marginTop: '40px' }}>
                     <div>
                       <Option
                         htmlFor="option1"
@@ -368,16 +425,16 @@ export const AddPet = () => {
                         htmlFor="option3"
                         style={{
                           backgroundColor:
-                            selectedOption === 'lost/found' ? '#54adff' : '',
-                          color: selectedOption === 'lost/found' ? '#fff' : '',
+                            selectedOption === 'lost-found' ? '#54adff' : '',
+                          color: selectedOption === 'lost-found' ? '#fff' : '',
                         }}
-                        onClick={() => setSelectedOption('lost/found')}
+                        onClick={() => setSelectedOption('lost-found')}
                       >
                         <Field
                           style={{ appearance: 'none' }}
                           id="option3"
                           name="category"
-                          value="lost/found"
+                          value="lost-found"
                           type="radio"
                         />
                         lost/found
@@ -388,17 +445,16 @@ export const AddPet = () => {
                         htmlFor="option4"
                         style={{
                           backgroundColor:
-                            selectedOption === 'in good hands' ? '#54adff' : '',
-                          color:
-                            selectedOption === 'in good hands' ? '#fff' : '',
+                            selectedOption === 'for-free' ? '#54adff' : '',
+                          color: selectedOption === 'for-free' ? '#fff' : '',
                         }}
-                        onClick={() => setSelectedOption('in good hands')}
+                        onClick={() => setSelectedOption('for-free')}
                       >
                         <Field
                           style={{ appearance: 'none' }}
                           id="option4"
                           name="category"
-                          value="in good hands"
+                          value="for-free"
                           type="radio"
                         />
                         in good hands
@@ -407,14 +463,12 @@ export const AddPet = () => {
                   </div>
                 )}
                 {step === 2 && (
-                  <div style={{marginBottom: !isMobile && '36px'}}>
+                  <div style={{ marginBottom: !isMobile && '36px' }}>
                     {selectedOption !== 'your pet' && (
                       <div
                         style={{ marginBottom: '7px', position: 'relative' }}
                       >
-                        <InputTitle
-                          style={{ marginBottom: '8px' }}
-                        >
+                        <InputTitle style={{ marginBottom: '8px' }}>
                           Title of add
                         </InputTitle>
                         <Input
@@ -434,7 +488,7 @@ export const AddPet = () => {
                       </div>
                     )}
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <InputTitle style={{ marginBottom: '8px'}}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Pet's name
                       </InputTitle>
                       <Input
@@ -453,7 +507,7 @@ export const AddPet = () => {
                       <ErrorMessage component={ErrBox} name="name" />
                     </div>
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <InputTitle style={{ marginBottom: '8px'}}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Date of birth
                       </InputTitle>
                       <Input
@@ -472,7 +526,7 @@ export const AddPet = () => {
                       <ErrorMessage component={ErrBox} name="petBirthday" />
                     </div>
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <InputTitle style={{ marginBottom: '8px'}}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Breed
                       </InputTitle>
                       <Input
@@ -496,7 +550,10 @@ export const AddPet = () => {
               </div>
               <ButtonGroup
                 style={{
-                  justifyContent: step === 3 && selectedOption !== 'your pet' ? 'center' : 'right',
+                  justifyContent:
+                    step === 3 && selectedOption !== 'your pet'
+                      ? 'center'
+                      : 'right',
                 }}
               >
                 {step === 1 && (
