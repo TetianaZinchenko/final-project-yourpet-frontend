@@ -69,7 +69,7 @@ export const ModalNoticeMore = ({
               <Item>Name: </Item>
               <Item>Birthday: </Item>
               <Item>Breed: </Item>
-              {price !== '0' && <Item>Price: </Item>}
+              {price !== '0$' && price !== '0' && <Item>Price: </Item>}
               <Item>Place: </Item>
               <Item>The sex: </Item>
               <Item>Email: </Item>
@@ -79,7 +79,7 @@ export const ModalNoticeMore = ({
               <Item>{name}</Item>
               <Item>{petBirthday}</Item>
               <Item>{breed}</Item>
-              {price !== '0' && <Item>{price}</Item>}
+              {price !== '0$' && price !== '0' && <Item>{price}</Item>}
               <Item>{location}</Item>
               <Item>{sex}</Item>
               <Item>
