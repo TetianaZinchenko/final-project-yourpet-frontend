@@ -5,17 +5,20 @@ import * as yup from 'yup';
 import { Formik, ErrorMessage, Field } from 'formik';
 import { ReactComponent as Pawprint } from '../../icons/pawprint.svg';
 import { ReactComponent as ArrowLeft } from '../../icons/arrow-left.svg';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   Forma,
   FormContainer,
   Input,
   Title,
+  InputTitle,
   ErrBox,
   Option,
   Stepper,
   Step,
   StepLine,
+  ButtonGroup,
   CancelButton,
   PrevStepButton,
   NextStepButton,
@@ -120,6 +123,9 @@ export const AddPet = () => {
   const postError = useSelector(selectNoticeError);
   const petError = useSelector(selectPetError);
   const status = isPetOption ? petStatus : postStatus;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   useEffect(() => {
     switch (status) {
@@ -149,7 +155,7 @@ export const AddPet = () => {
   }, [status, dispatch, isPetOption, navigate, petError, postError]);
 
   const handleNextStep = (errors, values) => {
-    if (step === 1 && values.category !== '' && !errors.category) {
+    if (step === 1 && selectedOption !== '') {
       setStep(step + 1);
     } else if (
       step === 2 &&
@@ -183,9 +189,32 @@ export const AddPet = () => {
         break;
     }
   };
+
+  // const StepTitle = values => {
+  //   let title = 'Add pet';
+  //   if (step !== 1) {
+  //     switch (values.category) {
+  //       case 'sell':
+  //         title = 'Add pet for sale';
+  //         break;
+  //       case 'lost-found':
+  //         title = 'Add lost pet';
+  //         break;
+  //       default:
+  //         title = 'Add my pet';
+  //     }
+  //   }
+  //   return (
+  //     <Title category={values.category} step={step}>
+  //       {title}
+  //     </Title>
+  //   );
+  // };
+
   const handlePreviousStep = () => setStep(step - 1);
 
   const screenWidth = window.innerWidth;
+
   return (
     <>
       <FormContainer>
@@ -210,17 +239,15 @@ export const AddPet = () => {
             <Forma
               style={{
                 width:
+                  !isMobile &&
                   step === 3 &&
                   selectedOption !== 'your pet' &&
-                  screenWidth > 1279
-                    ? '822px'
-                    : '',
+                  (isDesktop ? '822px' : '702px'),
                 padding:
+                  !isMobile &&
                   step === 3 &&
                   selectedOption !== 'your pet' &&
-                  screenWidth > 1279
-                    ? '20px 75px'
-                    : '',
+                  (isDesktop ? '20px 75px' : '20px 32px'),
               }}
             >
               <div>
@@ -229,14 +256,42 @@ export const AddPet = () => {
                     textAlign:
                       step === 3 &&
                       selectedOption !== 'your pet' &&
-                      screenWidth > 1279
+                      screenWidth > 767
                         ? 'center'
                         : '',
+                    marginLeft: '12px',
                   }}
                 >
-                  Add Pet
+                  {step === 1
+                    ? 'Add pet'
+                    : selectedOption === 'sell'
+                    ? 'Add pet for sell'
+                    : selectedOption === 'lost/found'
+                    ? 'Add lost pet'
+                    : 'Add pet'}
                 </Title>
-                <Stepper style={{ marginBottom: '30px' }}>
+                <Stepper style={{ marginBottom: '16px' }}>
+                  {/* <StepTitle category={values.category} stage={step} /> */}
+                  {/* <Title
+                  style={{
+                    textAlign:
+                      step === 3 &&
+                      selectedOption !== 'your pet' &&
+                      screenWidth > 767
+                        ? 'center'
+                        : '',
+                    marginLeft: '12px'
+                  }}
+                >
+
+                  {step === 1 ? 'Add pet' : (selectedOption === 'sell' ? 'Add pet for sell' : (selectedOption === 'lost/found' ? 'Add lost pet' : 'Add pet'))}
+                </Title>
+                <Stepper style={{ marginBottom: '16px' }}>
+
+                  Add Pet
+                </Title> */}
+                  {/* <Stepper style={{ marginBottom: '30px' }}> */}
+
                   <Step>
                     <p
                       style={{
@@ -324,7 +379,7 @@ export const AddPet = () => {
                   </Step>
                 </Stepper>
                 {step === 1 && (
-                  <>
+                  <div style={{ marginTop: '40px' }}>
                     <div>
                       <Option
                         htmlFor="option1"
@@ -405,19 +460,17 @@ export const AddPet = () => {
                         in good hands
                       </Option>
                     </div>
-                  </>
+                  </div>
                 )}
                 {step === 2 && (
-                  <>
+                  <div style={{ marginBottom: !isMobile && '36px' }}>
                     {selectedOption !== 'your pet' && (
                       <div
                         style={{ marginBottom: '7px', position: 'relative' }}
                       >
-                        <Title
-                          style={{ fontSize: '20px', marginBottom: '0px' }}
-                        >
+                        <InputTitle style={{ marginBottom: '8px' }}>
                           Title of add
-                        </Title>
+                        </InputTitle>
                         <Input
                           name="title"
                           type="text"
@@ -435,9 +488,9 @@ export const AddPet = () => {
                       </div>
                     )}
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Pet's name
-                      </Title>
+                      </InputTitle>
                       <Input
                         name="name"
                         type="text"
@@ -454,9 +507,9 @@ export const AddPet = () => {
                       <ErrorMessage component={ErrBox} name="name" />
                     </div>
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Date of birth
-                      </Title>
+                      </InputTitle>
                       <Input
                         name="petBirthday"
                         type="text"
@@ -473,9 +526,9 @@ export const AddPet = () => {
                       <ErrorMessage component={ErrBox} name="petBirthday" />
                     </div>
                     <div style={{ marginBottom: '7px', position: 'relative' }}>
-                      <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+                      <InputTitle style={{ marginBottom: '8px' }}>
                         Breed
-                      </Title>
+                      </InputTitle>
                       <Input
                         name="breed"
                         type="text"
@@ -491,16 +544,16 @@ export const AddPet = () => {
                       />
                       <ErrorMessage component={ErrBox} name="breed" />
                     </div>
-                  </>
+                  </div>
                 )}
                 {step === 3 && <MoreInfo selectedOption={selectedOption} />}
               </div>
-              <div
+              <ButtonGroup
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  gap: '24px',
-                  marginBottom: '0px',
+                  justifyContent:
+                    step === 3 && selectedOption !== 'your pet'
+                      ? 'center'
+                      : 'right',
                 }}
               >
                 {step === 1 && (
@@ -530,7 +583,7 @@ export const AddPet = () => {
                     <Pawprint />
                   </NextStepButton>
                 )}
-              </div>
+              </ButtonGroup>
             </Forma>
           )}
         </Formik>
