@@ -31,7 +31,7 @@ export const MoreInfo = ({ selectedOption }) => {
     SetPetImage(image);
 
     // todo: upload server
-    console.error('todo: upload server');
+    // console.error('todo: upload server');
     var reader = new FileReader();
     reader.onload = function () {
       setFieldValue('avatar', reader.result);
@@ -45,9 +45,10 @@ export const MoreInfo = ({ selectedOption }) => {
     <>
       <Thumb
         style={{
-          marginBottom: (!isMobile && selectedOption !== 'your pet') ? '53px' : '',
+          marginBottom:
+            !isMobile && selectedOption !== 'your pet' ? '53px' : '',
           flexDirection: selectedOption === 'your pet' ? 'column' : '',
-          gap: (!isMobile && selectedOption !== 'your pet') ? '78px' : ''
+          gap: !isMobile && selectedOption !== 'your pet' ? '78px' : '',
         }}
       >
         <div
@@ -61,9 +62,7 @@ export const MoreInfo = ({ selectedOption }) => {
         >
           {selectedOption !== 'your pet' && (
             <div>
-              <InputTitle style={{ marginBottom: '0px' }}>
-                The sex
-              </InputTitle>
+              <InputTitle style={{ marginBottom: '0px' }}>The sex</InputTitle>
               <div style={{ display: 'flex', gap: '23px' }}>
                 <Option
                   htmlFor="female"
@@ -128,8 +127,14 @@ export const MoreInfo = ({ selectedOption }) => {
           <div
             style={{
               display: 'flex',
-              flexDirection: (selectedOption === 'your pet' || screenWidth < 768) ? 'row' : 'column',
-              alignItems: (selectedOption === 'your pet' || screenWidth < 768) ? 'center' : '',
+              flexDirection:
+                selectedOption === 'your pet' || screenWidth < 768
+                  ? 'row'
+                  : 'column',
+              alignItems:
+                selectedOption === 'your pet' || screenWidth < 768
+                  ? 'center'
+                  : '',
               justifyContent: 'left',
               marginBottom: '0px',
               gap: '16px',
@@ -139,7 +144,7 @@ export const MoreInfo = ({ selectedOption }) => {
               style={{
                 display: 'inline',
                 width:
-                  (screenWidth > 767 && selectedOption !== 'your pet')
+                  screenWidth > 767 && selectedOption !== 'your pet'
                     ? '200px'
                     : '114px',
                 marginBottom: '0px',
@@ -147,8 +152,8 @@ export const MoreInfo = ({ selectedOption }) => {
             >
               Load the pet's image:
             </InputTitle>
-            
-            <div style={{position: 'relative'}}>
+
+            <div style={{ position: 'relative' }}>
               <PlusFileButton type="button" onClick={handleFileButtonClick}>
                 {petImage && <Image src={petImage} />}
                 {!petImage && (
@@ -165,12 +170,11 @@ export const MoreInfo = ({ selectedOption }) => {
               />
               <ErrorMessage component={ErrBox} name="file" />
             </div>
-              
           </div>
         </div>
         <div
           style={{
-            width: '100%', 
+            width: '100%',
             display: 'flex',
             flexDirection: 'column',
             justifyContent:
@@ -181,9 +185,7 @@ export const MoreInfo = ({ selectedOption }) => {
         >
           {selectedOption !== 'your pet' && (
             <div style={{ marginBottom: '7px', position: 'relative' }}>
-              <InputTitle style={{ marginBottom: '0px' }}>
-                Location
-              </InputTitle>
+              <InputTitle style={{ marginBottom: '0px' }}>Location</InputTitle>
               <Input
                 name="location"
                 type="text"
@@ -203,9 +205,7 @@ export const MoreInfo = ({ selectedOption }) => {
           )}
           {selectedOption === 'sell' && (
             <div style={{ marginBottom: '7px', position: 'relative' }}>
-              <InputTitle style={{ marginBottom: '0px' }}>
-                Price
-              </InputTitle>
+              <InputTitle style={{ marginBottom: '0px' }}>Price</InputTitle>
               <Input
                 name="price"
                 type="text"
@@ -221,7 +221,15 @@ export const MoreInfo = ({ selectedOption }) => {
               <ErrorMessage component={ErrBox} name="price" />
             </div>
           )}
-          <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '0px', position: 'relative', marginTop: '17px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginBottom: '0px',
+              position: 'relative',
+              marginTop: '17px',
+            }}
+          >
             <InputTitle
               style={{
                 display: 'inline',

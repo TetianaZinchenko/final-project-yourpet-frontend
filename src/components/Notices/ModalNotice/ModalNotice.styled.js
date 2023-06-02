@@ -6,16 +6,18 @@ export const Backdrop = styled.div`
   position: fixed;
   z-index: 1000;
   top: 0;
-  left: 0;
+
   width: 100vw;
   height: 100vh;
   background-color: ${colors.backdrop};
   backdrop-filter: blur(4px);
+  overflow: auto;
+  overflow-y: auto;
 `;
 
 export const Content = styled.div`
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 300px;
@@ -24,6 +26,8 @@ export const Content = styled.div`
   border-radius: 20px;
   padding-top: 40px;
   padding-bottom: 16px;
+  overflow: auto;
+  overflow-x: auto; // Добавлено для горизонтальной прокрутки
 
   @media screen and (${media.tablet}) {
     width: 681px;
