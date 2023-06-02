@@ -266,7 +266,7 @@ export const AddPet = () => {
                     ? 'Add pet'
                     : selectedOption === 'sell'
                     ? 'Add pet for sell'
-                    : selectedOption === 'lost/found'
+                    : selectedOption === 'lost-found'
                     ? 'Add lost pet'
                     : 'Add pet'}
                 </Title>
