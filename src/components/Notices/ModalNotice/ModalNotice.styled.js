@@ -11,6 +11,7 @@ export const Backdrop = styled.div`
   height: 100vh;
   background-color: ${colors.backdrop};
   backdrop-filter: blur(4px);
+  overflow: auto;
 `;
 
 export const Content = styled.div`
