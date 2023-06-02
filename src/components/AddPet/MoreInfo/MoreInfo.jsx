@@ -6,6 +6,7 @@ import { ReactComponent as Female } from '../../../icons/female.svg';
 import { ReactComponent as Male } from '../../../icons/male.svg';
 import { Input, InputTitle, ErrBox, Option } from '../AddPet.styled';
 import { PlusFileButton, Image, Thumb } from './MoreInfo.styled';
+import { useMediaQuery } from 'react-responsive';
 
 export const MoreInfo = ({ selectedOption }) => {
   const { errors, touched, setFieldValue } = useFormikContext();
@@ -20,6 +21,8 @@ export const MoreInfo = ({ selectedOption }) => {
   };
 
   const [petImage, SetPetImage] = useState(null);
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const handleUploadImage = event => {
     const uploadImage = event.currentTarget.files[0];
@@ -42,7 +45,9 @@ export const MoreInfo = ({ selectedOption }) => {
     <>
       <Thumb
         style={{
-          marginBottom: selectedOption !== 'your pet' ? '53px' : '',
+          marginBottom: (!isMobile && selectedOption !== 'your pet') ? '53px' : '',
+          flexDirection: selectedOption === 'your pet' ? 'column' : '',
+          gap: (!isMobile && selectedOption !== 'your pet') ? '78px' : ''
         }}
       >
         <div

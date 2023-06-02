@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Thumb = styled.div`
   display: flex;
   flex-ddirection: row;
-  gap: 78px;
+  gap: 24px;
   @media (max-width: 767px) {
     flex-direction: column;
     gap: 0;

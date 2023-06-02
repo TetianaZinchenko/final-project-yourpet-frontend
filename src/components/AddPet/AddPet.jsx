@@ -121,8 +121,8 @@ export const AddPet = () => {
   const postError = useSelector(selectNoticeError);
   const petError = useSelector(selectPetError);
   const status = isPetOption ? petStatus : postStatus;
-  // const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280});
 
   useEffect(() => {
@@ -153,7 +153,7 @@ export const AddPet = () => {
   }, [status, dispatch, isPetOption, navigate, petError, postError]);
 
   const handleNextStep = (errors, values) => {
-    if (step === 1 && values.category !== '' && !errors.category) {
+    if (step === 1 && selectedOption !== '') {
       setStep(step + 1);
     } else if (
       step === 2 &&
@@ -213,17 +213,11 @@ export const AddPet = () => {
             <Forma
               style={{
                 width:
-                  step === 3 &&
-                  selectedOption !== 'your pet' &&
-                  isTablet
-                    ? '702px'
-                    : (isDesktop ? '822px' : ''),
+                  (!isMobile && step === 3 &&
+                  selectedOption !== 'your pet') && (isDesktop ? '822px' : '702px'),
                 padding:
-                  step === 3 &&
-                  selectedOption !== 'your pet' &&
-                  isTablet
-                    ? '20px 32px'
-                    : (isDesktop ? '20px 75px' : ''),
+                 (!isMobile && step === 3 &&
+                  selectedOption !== 'your pet') && (isDesktop ? '20px 75px' : '20px 32px'),
               }}
             >
               <div>
@@ -413,7 +407,7 @@ export const AddPet = () => {
                   </div>
                 )}
                 {step === 2 && (
-                  <div style={{marginBottom: '36px'}}>
+                  <div style={{marginBottom: !isMobile && '36px'}}>
                     {selectedOption !== 'your pet' && (
                       <div
                         style={{ marginBottom: '7px', position: 'relative' }}
