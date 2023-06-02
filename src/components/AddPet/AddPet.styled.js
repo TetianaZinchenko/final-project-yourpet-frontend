@@ -156,7 +156,7 @@ export const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
   gap: 24px;
-  marginBottom: 0px;
+  margin-bottom: 0px;
   @media (max-width: 767px) {
     margin-top: 24px;
     gap: 20px;
