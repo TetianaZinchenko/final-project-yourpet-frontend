@@ -82,6 +82,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     localStorage.clear();
     toast.success('Logged out successfully');
   } catch (error) {
+    localStorage.clear();
     toast.error('An error occurred during logout');
     return thunkAPI.rejectWithValue(error.message);
   }
