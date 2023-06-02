@@ -14,12 +14,11 @@ export const Backdrop = styled.div`
   overflow: auto;
 
   overflow-y: auto;
-
 `;
 
 export const Content = styled.div`
   position: relative;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 300px;
@@ -32,7 +31,7 @@ export const Content = styled.div`
   overflow-x: auto; // Добавлено для горизонтальной прокрутки
 
   @media screen and (${media.tablet}) {
-    top: 60%;
+    top: 50%;
     width: 681px;
     padding: 0;
     border-radius: 40px;
