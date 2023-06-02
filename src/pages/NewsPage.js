@@ -1,9 +1,9 @@
-const NewsPage = () => {
-  return (
-    <>
-      <h2>News</h2>
-    </>
-  );
-};
+// const NewsPage = () => {
+//   return (
+//     <>
+//       <h2>News</h2>
+//     </>
+//   );
+// };
 
-export default NewsPage;
+// export default NewsPage;
