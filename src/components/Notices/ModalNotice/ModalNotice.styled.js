@@ -12,7 +12,9 @@ export const Backdrop = styled.div`
   background-color: ${colors.backdrop};
   backdrop-filter: blur(4px);
   overflow: auto;
+
   overflow-y: auto;
+
 `;
 
 export const Content = styled.div`

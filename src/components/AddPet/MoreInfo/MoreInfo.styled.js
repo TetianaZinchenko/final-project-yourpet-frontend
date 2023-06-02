@@ -31,5 +31,8 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 40px;
+  border-radius: 20px;
+  @media (min-width: 768px) {
+    border-radius: 40px;
+  }
 `;

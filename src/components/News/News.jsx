@@ -1,7 +1,7 @@
 // import { NewsItem } from './NewsItem/NewsItem';
 
-const News = () => {
-  return <></>;
-};
+// const News = () => {
+//   return <></>;
+// };
 
-export default News;
+// export default News;
