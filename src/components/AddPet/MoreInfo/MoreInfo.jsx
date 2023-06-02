@@ -4,8 +4,8 @@ import { useFormikContext, ErrorMessage, Field } from 'formik';
 import { ReactComponent as PlusFile } from '../../../icons/plus.svg';
 import { ReactComponent as Female } from '../../../icons/female.svg';
 import { ReactComponent as Male } from '../../../icons/male.svg';
-import { Input, Title, ErrBox, Option } from '../AddPet.styled';
-import { PlusFileButton, Image } from './MoreInfo.styled';
+import { Input, InputTitle, ErrBox, Option } from '../AddPet.styled';
+import { PlusFileButton, Image, Thumb } from './MoreInfo.styled';
 
 export const MoreInfo = ({ selectedOption }) => {
   const { errors, touched, setFieldValue } = useFormikContext();
@@ -40,12 +40,9 @@ export const MoreInfo = ({ selectedOption }) => {
 
   return (
     <>
-      <div
+      <Thumb
         style={{
-          display: 'flex',
-          flexDirection: selectedOption === 'your pet' ? 'column' : 'row',
-          gap:
-            screenWidth > 1279 && selectedOption !== 'your pet' ? '78px' : '',
+          marginBottom: selectedOption !== 'your pet' ? '53px' : '',
         }}
       >
         <div
@@ -59,9 +56,9 @@ export const MoreInfo = ({ selectedOption }) => {
         >
           {selectedOption !== 'your pet' && (
             <div>
-              <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+              <InputTitle style={{ marginBottom: '0px' }}>
                 The sex
-              </Title>
+              </InputTitle>
               <div style={{ display: 'flex', gap: '23px' }}>
                 <Option
                   htmlFor="female"
@@ -126,27 +123,27 @@ export const MoreInfo = ({ selectedOption }) => {
           <div
             style={{
               display: 'flex',
-              flexDirection: selectedOption === 'your pet' ? 'row' : 'column',
-              alignItems: selectedOption === 'your pet' ? 'center' : '',
+              flexDirection: (selectedOption === 'your pet' || screenWidth < 768) ? 'row' : 'column',
+              alignItems: (selectedOption === 'your pet' || screenWidth < 768) ? 'center' : '',
               justifyContent: 'left',
               marginBottom: '0px',
               gap: '16px',
             }}
           >
-            <Title
+            <InputTitle
               style={{
                 display: 'inline',
-                fontSize: '20px',
                 width:
-                  screenWidth > 1279 && selectedOption !== 'your pet'
-                    ? '100%'
+                  (screenWidth > 767 && selectedOption !== 'your pet')
+                    ? '200px'
                     : '114px',
                 marginBottom: '0px',
               }}
             >
               Load the pet's image:
-            </Title>
-            <div>
+            </InputTitle>
+            
+            <div style={{position: 'relative'}}>
               <PlusFileButton type="button" onClick={handleFileButtonClick}>
                 {petImage && <Image src={petImage} />}
                 {!petImage && (
@@ -163,10 +160,12 @@ export const MoreInfo = ({ selectedOption }) => {
               />
               <ErrorMessage component={ErrBox} name="file" />
             </div>
+              
           </div>
         </div>
         <div
           style={{
+            width: '100%', 
             display: 'flex',
             flexDirection: 'column',
             justifyContent:
@@ -177,15 +176,16 @@ export const MoreInfo = ({ selectedOption }) => {
         >
           {selectedOption !== 'your pet' && (
             <div style={{ marginBottom: '7px', position: 'relative' }}>
-              <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+              <InputTitle style={{ marginBottom: '0px' }}>
                 Location
-              </Title>
+              </InputTitle>
               <Input
                 name="location"
                 type="text"
                 autoComplete="off"
                 placeholder="Type title"
                 style={{
+                  width: '100%',
                   border:
                     touched.location &&
                     (errors.location
@@ -198,15 +198,16 @@ export const MoreInfo = ({ selectedOption }) => {
           )}
           {selectedOption === 'sell' && (
             <div style={{ marginBottom: '7px', position: 'relative' }}>
-              <Title style={{ fontSize: '20px', marginBottom: '0px' }}>
+              <InputTitle style={{ marginBottom: '0px' }}>
                 Price
-              </Title>
+              </InputTitle>
               <Input
                 name="price"
                 type="text"
                 autoComplete="off"
                 placeholder="Type title"
                 style={{
+                  width: '100%',
                   border:
                     touched.price &&
                     (errors.price ? '1px solid #F43F5E' : '1px solid #00C3AD'),
@@ -215,17 +216,16 @@ export const MoreInfo = ({ selectedOption }) => {
               <ErrorMessage component={ErrBox} name="price" />
             </div>
           )}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Title
+          <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '0px', position: 'relative', marginTop: '17px' }}>
+            <InputTitle
               style={{
                 display: 'inline',
-                fontSize: '20px',
                 marginBottom: '0px',
                 width: '100%',
               }}
             >
               Comment
-            </Title>
+            </InputTitle>
             <Input
               as="textarea"
               rows={
@@ -240,14 +240,14 @@ export const MoreInfo = ({ selectedOption }) => {
               autoComplete="off"
               style={{
                 borderRadius: '20px',
-                maxWidth: '100%',
-                marginBottom: '0px',
+                width: '100%',
+                marginBottom: '7px',
               }}
             ></Input>
             <ErrorMessage component={ErrBox} name="comments" />
           </div>
         </div>
-      </div>
+      </Thumb>
     </>
   );
 };
