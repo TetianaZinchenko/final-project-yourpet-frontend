@@ -1,6 +1,6 @@
 import { ReactComponent as SearchIcon } from '../../../icons/search.svg';
 import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
-import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {
@@ -51,8 +51,4 @@ export const NoticesSearch = ({ onFormSubmit }) => {
       </Form>
     </>
   );
-};
-
-NoticesSearch.propType = {
-  onSubmit: PropTypes.func.isRequired,
 };

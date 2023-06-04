@@ -18,7 +18,7 @@ const UserPage = lazy(() => import('../pages/UserPage'));
 const AddPetPage = lazy(() => import('../pages/AddPetPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
-// const NewsPage = lazy(() => import('../pages/NewsPage'));
+const NewsPage = lazy(() => import('../pages/NewsPage'));
 
 export const App = () => {
   return (
@@ -58,7 +58,7 @@ export const App = () => {
           />
 
           <Route path="/friends" element={<OurFriendsPage />} />
-          {/* <Route path="/news" element={<NewsPage />} /> */}
+          <Route path="/news" element={<NewsPage />} />
           {/* <Route
             path="*"
             element={<Navigate to="404" component={<NotFoundPage />} />}
@@ -66,7 +66,6 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-      {/* <ToastContainer /> */}
     </ThemeProvider>
   );
 };

@@ -1,9 +1,12 @@
-// const NewsPage = () => {
-//   return (
-//     <>
-//       <h2>News</h2>
-//     </>
-//   );
-// };
+import { News } from '../components/News/News';
 
-// export default NewsPage;
+const NewsPage = () => {
+  return (
+    <>
+      <h2>News</h2>
+      <News></News>
+    </>
+  );
+};
+
+export default NewsPage;
