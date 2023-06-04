@@ -1,9 +1,10 @@
 import { News } from '../components/News/News';
+import { Title } from './Page.styled';
 
 const NewsPage = () => {
   return (
     <>
-      <h2>News</h2>
+      <Title>News</Title>
       <News></News>
     </>
   );

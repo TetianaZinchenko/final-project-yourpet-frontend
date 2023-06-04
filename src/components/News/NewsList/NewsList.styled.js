@@ -3,6 +3,7 @@ import { theme } from 'theme/theme';
 const { media } = theme;
 
 export const Container = styled.div`
+  margin-top: 60px;
   position: relative;
 `;
 
@@ -17,7 +18,7 @@ export const List = styled.ul`
   align-items: center;
 
   @media screen and (${media.tablet}) {
-    gap: 32px;
+    gap: 31px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 704px;

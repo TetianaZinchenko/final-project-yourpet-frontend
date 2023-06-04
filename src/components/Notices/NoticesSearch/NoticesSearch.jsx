@@ -3,13 +3,7 @@ import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {
-  Title,
-  Form,
-  Input,
-  ClearUpBtn,
-  SubmitBtn,
-} from './NoticesSearch.styled';
+import { Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
 
 export const NoticesSearch = ({ onFormSubmit }) => {
   const [query, setQuery] = useState('');
@@ -32,7 +26,6 @@ export const NoticesSearch = ({ onFormSubmit }) => {
 
   return (
     <>
-      <Title>Find your favorite pet</Title>
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"

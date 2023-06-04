@@ -5,6 +5,7 @@ import { Notices } from 'components/Notices/Notices';
 import { Section } from 'components/Section/Section';
 import { useSelector } from 'react-redux';
 import { selectModal } from 'redux/modal/modalSelectors';
+import { Title } from './Page.styled';
 
 export default function NoticesPage() {
   const modal = useSelector(selectModal);
@@ -39,6 +40,7 @@ export default function NoticesPage() {
 
   return (
     <Section>
+      <Title>Find your favorite pet</Title>
       <Notices />
       {modalContent}
     </Section>

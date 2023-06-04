@@ -1,0 +1,45 @@
+.paginateContainer {
+  margin-top: 48px;
+  width: 280px;
+  height: 52px;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 45px;
+  background: #fef9f9;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #cce4fb;
+  background: #fff;
+}
+svg {
+  width: 16px;
+  height: 16px;
+}
+.pageNumber {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  padding: 4px 8px;
+  margin-right: 4px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #cce4fb;
+  color: #cce4fb;
+}
+
+.active {
+  background: #54adff;
+  border: 1px solid #cce4fb;
+}
