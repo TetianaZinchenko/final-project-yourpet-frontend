@@ -6,6 +6,7 @@ import styles from './News.module.css';
 
 export const News = () => {
   const [query, setQuery] = useState('');
+  const [initialData, setInitialData] = useState(null);
   const [response, setResponse] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -17,7 +18,9 @@ export const News = () => {
 
   useEffect(() => {
     if (query !== '') {
-      searchNews(query);
+      filterNews(query);
+    } else {
+      setResponse(initialData);
     }
   }, [query]);
 
@@ -27,6 +30,7 @@ export const News = () => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
+        setInitialData(data);
         setResponse(data);
         setCurrentPage(1);
         console.log(data);
@@ -36,17 +40,12 @@ export const News = () => {
       });
   };
 
-  const searchNews = query => {
-    const url = `https://final-project-yourpe-backend.onrender.com/friends/news.json?query=${query}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setResponse(data);
-        setCurrentPage(1);
-      })
-      .catch(error => {
-        console.log('Error:', error);
-      });
+  const filterNews = query => {
+    const filteredData = initialData.filter(item =>
+      item.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setResponse(filteredData);
+    setCurrentPage(1);
   };
 
   const onFormSubmit = query => {
