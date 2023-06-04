@@ -24,6 +24,7 @@ export const News = () => {
     } else {
       setResponse(initialData);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const fetchNews = () => {
