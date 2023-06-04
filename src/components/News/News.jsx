@@ -3,12 +3,14 @@ import { NewsList } from './NewsList/NewsList';
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import icons from '../../icons/icons.svg';
 import styles from './News.module.css';
+import Loader from 'components/Loader/Loader';
 
 export const News = () => {
   const [query, setQuery] = useState('');
   const [initialData, setInitialData] = useState(null);
   const [response, setResponse] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const itemsPerPage = 6;
   const maxPageNumbers = 3;
 
@@ -25,6 +27,7 @@ export const News = () => {
   }, [query]);
 
   const fetchNews = () => {
+    setIsLoading(true);
     const url =
       'https://final-project-yourpe-backend.onrender.com/friends/news.json';
     fetch(url)
@@ -33,10 +36,11 @@ export const News = () => {
         setInitialData(data);
         setResponse(data);
         setCurrentPage(1);
-        console.log(data);
+        setIsLoading(false);
       })
       .catch(error => {
         console.log('Error:', error);
+        setIsLoading(false);
       });
   };
 
@@ -86,39 +90,43 @@ export const News = () => {
   return (
     <>
       <NoticesSearch onFormSubmit={onFormSubmit} />
-      {response && (
-        <>
-          <NewsList
-            news={response}
-            currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-          />
-          <div className={styles.centered}>
-            <div className={styles.paginateContainer}>
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={styles.buttons}
-              >
-                <svg>
-                  <use href={icons + '#icon-Vector'}></use>
-                </svg>
-              </button>
-              {getPageNumbers()}
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={
-                  currentPage === Math.ceil(response.length / itemsPerPage)
-                }
-                className={styles.buttons}
-              >
-                <svg>
-                  <use href={icons + '#icon-Vectorright'}></use>
-                </svg>
-              </button>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        response && (
+          <>
+            <NewsList
+              news={response}
+              currentPage={currentPage}
+              itemsPerPage={itemsPerPage}
+            />
+            <div className={styles.centered}>
+              <div className={styles.paginateContainer}>
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={styles.buttons}
+                >
+                  <svg>
+                    <use href={icons + '#icon-Vector'}></use>
+                  </svg>
+                </button>
+                {getPageNumbers()}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={
+                    currentPage === Math.ceil(response.length / itemsPerPage)
+                  }
+                  className={styles.buttons}
+                >
+                  <svg>
+                    <use href={icons + '#icon-Vectorright'}></use>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-        </>
+          </>
+        )
       )}
     </>
   );
