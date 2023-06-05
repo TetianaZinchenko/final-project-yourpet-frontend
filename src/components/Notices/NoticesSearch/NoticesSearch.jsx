@@ -1,15 +1,9 @@
 import { ReactComponent as SearchIcon } from '../../../icons/search.svg';
 import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
-import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {
-  Title,
-  Form,
-  Input,
-  ClearUpBtn,
-  SubmitBtn,
-} from './NoticesSearch.styled';
+import { Form, Input, ClearUpBtn, SubmitBtn } from './NoticesSearch.styled';
 
 export const NoticesSearch = ({ onFormSubmit }) => {
   const [query, setQuery] = useState('');
@@ -32,7 +26,6 @@ export const NoticesSearch = ({ onFormSubmit }) => {
 
   return (
     <>
-      <Title>Find your favorite pet</Title>
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
@@ -51,8 +44,4 @@ export const NoticesSearch = ({ onFormSubmit }) => {
       </Form>
     </>
   );
-};
-
-NoticesSearch.propType = {
-  onSubmit: PropTypes.func.isRequired,
 };

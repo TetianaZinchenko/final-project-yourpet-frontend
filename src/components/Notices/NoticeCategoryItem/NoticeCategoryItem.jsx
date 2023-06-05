@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import {
   Image,
   Title,
-  Container,
+  ContainerHover,
   ImageContainer,
   Info,
   BtnLearnMore,
@@ -107,7 +107,7 @@ export const NoticeCategoryItem = ({ pet }) => {
   };
 
   return (
-    <Container>
+    <ContainerHover>
       <ImageContainer>
         <Image src={avatar} alt={title} />
         <Type>{makeCategory(category)}</Type>
@@ -153,6 +153,6 @@ export const NoticeCategoryItem = ({ pet }) => {
           </SvgPaw>
         </BtnLearnMore>
       </Info>
-    </Container>
+    </ContainerHover>
   );
 };

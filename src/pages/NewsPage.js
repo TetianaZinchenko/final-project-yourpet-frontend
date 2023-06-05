@@ -1,9 +1,16 @@
-// const NewsPage = () => {
-//   return (
-//     <>
-//       <h2>News</h2>
-//     </>
-//   );
-// };
+import { News } from '../components/News/News';
+import { Title } from './Page.styled';
+import Spider from 'components/Spider/Spider';
 
-// export default NewsPage;
+const NewsPage = () => {
+  return (
+    <>
+      <Spider>
+        <Title>News</Title>
+        <News></News>
+      </Spider>
+    </>
+  );
+};
+
+export default NewsPage;

@@ -13,6 +13,7 @@ export const Container = styled.div`
   background: ${colors.white};
   box-shadow: ${shadows.defaultShadow};
   border-radius: 0px 0px 40px 40px;
+  transition: transform 0.3s ease;
 
   @media screen and (${media.tablet}) {
     width: 336px;
@@ -20,6 +21,11 @@ export const Container = styled.div`
 
   @media screen and (${media.desktop}) {
     width: 288px;
+  }
+`;
+export const ContainerHover = styled(Container)`
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
