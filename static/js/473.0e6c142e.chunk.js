@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfinal_project_yourpet_frontend=self.webpackChunkfinal_project_yourpet_frontend||[]).push([[473],{5473:function(c,e,n){n(2791);e.Z=n.p+"static/media/icons.95c842bb5b0a25f7c3a62cb27af3c310.svg"}}]);
+//# sourceMappingURL=473.0e6c142e.chunk.js.map
